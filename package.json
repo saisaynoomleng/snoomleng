@@ -19,11 +19,11 @@
     "test:coverage": "pnpm --color -r run vitest --coverage"
   },
   "devDependencies": {
-    "@manypkg/cli": "^0.25.1",
-    "prettier": "^3.9.6",
-    "syncpack": "^15.3.3",
-    "turbo": "^2.10.9",
-    "typescript": "^7.0.2"
+    "@manypkg/cli": "0.25.1",
+    "prettier": "3.9.6",
+    "syncpack": "15.3.3",
+    "turbo": "2.10.9",
+    "typescript": "^5"
   },
   "engines": {
     "pnpm": "11.9.0",
