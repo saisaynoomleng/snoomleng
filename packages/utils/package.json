@@ -12,5 +12,11 @@
   },
   "devDependencies": {
     "typescript": "^5"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
   }
 }

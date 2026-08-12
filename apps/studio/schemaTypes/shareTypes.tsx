@@ -1,3 +1,6 @@
+import {formatTitle} from '@snoomleng/utils'
+import {CiLink} from 'react-icons/ci'
+import {MdOutline10K} from 'react-icons/md'
 import {defineArrayMember, defineField, defineType} from 'sanity'
 
 export const imageWithAlt = defineType({
@@ -35,6 +38,14 @@ export const blockContent = defineType({
         decorators: [
           {title: 'Strong', value: 'strong'},
           {title: 'Emphasis', value: 'em'},
+          {
+            title: 'Highlight',
+            value: 'highlight',
+            component: (props) => (
+              <span style={{backgroundColor: '#2d93ad'}}>{props.children}</span>
+            ),
+            icon: MdOutline10K,
+          },
         ],
         annotations: [
           {
@@ -93,7 +104,6 @@ export const socialLink = defineType({
           {title: 'LinkedIn', value: 'linked-in'},
           {title: 'GitHub', value: 'git-hub'},
           {title: 'LeetCode', value: 'leet-code'},
-          {title: 'Email', value: 'email'},
         ],
       },
     }),
@@ -102,4 +112,15 @@ export const socialLink = defineType({
       type: 'url',
     }),
   ],
+  preview: {
+    select: {
+      name: 'platform',
+    },
+    prepare({name}) {
+      return {
+        title: name ? formatTitle(name) : 'Platform not provided',
+        media: CiLink,
+      }
+    },
+  },
 })
