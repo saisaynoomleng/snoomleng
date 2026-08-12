@@ -87,21 +87,6 @@ The contact system uses asynchronous processing with Amazon SQS and Lambda. Cont
 
 The applications are containerized with Docker and deployed through a CI/CD pipeline using GitHub Actions and AWS infrastructure.
 
-## Project Structure
-
-apps/
-├── web/ # Portfolio
-├── blog/ # Blog
-├── admin/ # Admin dashboard
-├── api/ # Express API
-└── sanity/ # Sanity Studio
-
-packages/
-├── db/ # Database & Drizzle
-├── ui/ # Shared UI components
-├── email/ # Email utilities
-└── utils/ # Shared utilities
-
 ## Development
 
 ### Requirements
@@ -113,8 +98,8 @@ packages/
 ### Install
 
 ```bash
-git clone <repository-url>
-cd <repository-name>
+git clone https://github.com/saisaynoomleng/snoomleng.git
+cd snoomleng
 pnpm install
 ```
 
@@ -140,7 +125,7 @@ GitHub Actions automatically runs checks such as linting, type checking, and bui
 
 ## Author
 
-**Sai Say Noom Leng**
+### saisaynoomleng
 
 Developer focused on full-stack development, backend engineering, and cloud infrastructure.
 

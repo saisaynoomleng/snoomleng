@@ -1,0 +1,25 @@
+{
+  "name": "@snoomleng/email",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./styles": "./src/globals.css"
+  },
+  "dependencies": {
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.18",
+    "@types/react-dom": "^19.2.4"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json"
+  }
+}

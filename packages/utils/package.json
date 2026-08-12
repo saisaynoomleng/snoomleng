@@ -1,0 +1,16 @@
+{
+  "name": "@snoomleng/utils",
+  "version": "1.0.0",
+  "type": "module",
+  "types": "./dist/index.d.ts",
+  "private": true,
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "test": "vitest run",
+    "test:coverage": "vitest run --coverage",
+    "test:watch": "vitest"
+  },
+  "devDependencies": {
+    "typescript": "^5"
+  }
+}
