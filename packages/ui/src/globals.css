@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Slab:ital,wght@0,100..700;1,100..700&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
 @import 'tailwindcss';
 @import 'tw-animate-css';
 @import 'shadcn/tailwind.css';
@@ -48,16 +49,16 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
+  --background: var(--color-brand-white);
+  --foreground: var(--color-brand-black);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
+  --primary: var(--color-brand-primary-500);
+  --primary-foreground: var(--color-brand-secondary-950);
+  --secondary: var(--color-brand-secondary-400);
+  --secondary-foreground: var(--color-brand-primary-950);
   --muted: oklch(0.97 0 0);
   --muted-foreground: oklch(0.556 0 0);
   --accent: oklch(0.97 0 0);
@@ -113,6 +114,88 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
+}
+
+@theme {
+  /* colors */
+  --color-brand-black: #0f0f0f;
+  --color-brand-white: #fbfbfb;
+
+  --color-brand-primary-50: #f0fafb;
+  --color-brand-primary-100: #d8f1f5;
+  --color-brand-primary-200: #b5e3ec;
+  --color-brand-primary-300: #83cddd;
+  --color-brand-primary-400: #49afc7;
+  --color-brand-primary-500: #2d93ad;
+  --color-brand-primary-600: #287792;
+  --color-brand-primary-700: #276177;
+  --color-brand-primary-800: #275163;
+  --color-brand-primary-900: #254454;
+  --color-brand-primary-950: #132c39;
+
+  --color-brand-secondary-50: #fcf5f0;
+  --color-brand-secondary-100: #f8e8dc;
+  --color-brand-secondary-200: #f0cdb8;
+  --color-brand-secondary-300: #e5ac8c;
+  --color-brand-secondary-400: #de8f6e;
+  --color-brand-secondary-500: #d2633d;
+  --color-brand-secondary-600: #c44d32;
+  --color-brand-secondary-700: #a33b2b;
+  --color-brand-secondary-800: #833129;
+  --color-brand-secondary-900: #6a2b24;
+  --color-brand-secondary-950: #391311;
+
+  --color-brand-success-50: #f6f9f4;
+  --color-brand-success-100: #eaf2e6;
+  --color-brand-success-200: #d6e4ce;
+  --color-brand-success-300: #b5cda8;
+  --color-brand-success-400: #88ab75;
+  --color-brand-success-500: #6b9057;
+  --color-brand-success-600: #557544;
+  --color-brand-success-700: #455d38;
+  --color-brand-success-800: #394b30;
+  --color-brand-success-900: #2f3f28;
+  --color-brand-success-950: #172112;
+
+  --color-brand-error-50: #fdf3f3;
+  --color-brand-error-100: #fce4e5;
+  --color-brand-error-200: #fbcdcf;
+  --color-brand-error-300: #f7aaad;
+  --color-brand-error-400: #f0797d;
+  --color-brand-error-500: #e54e53;
+  --color-brand-error-600: #d13136;
+  --color-brand-error-700: #c1292e;
+  --color-brand-error-800: #922226;
+  --color-brand-error-900: #792326;
+  --color-brand-error-950: #410e10;
+
+  --color-brand-warning-50: #fffee7;
+  --color-brand-warning-100: #fffdc2;
+  --color-brand-warning-200: #fffa8a;
+  --color-brand-warning-300: #fff147;
+  --color-brand-warning-400: #ffe713;
+  --color-brand-warning-500: #f1d302;
+  --color-brand-warning-600: #c9a300;
+  --color-brand-warning-700: #9e7802;
+  --color-brand-warning-800: #815e0a;
+  --color-brand-warning-900: #6d4e0f;
+  --color-brand-warning-950: #402a03;
+
+  --color-brand-rose-50: #fcf5f4;
+  --color-brand-rose-100: #fae9e6;
+  --color-brand-rose-200: #f7d7d1;
+  --color-brand-rose-300: #f0bbb1;
+  --color-brand-rose-400: #e69383;
+  --color-brand-rose-500: #d66853;
+  --color-brand-rose-600: #c3543f;
+  --color-brand-rose-700: #a44331;
+  --color-brand-rose-800: #883b2c;
+  --color-brand-rose-900: #72362a;
+  --color-brand-rose-950: #3d1912;
+
+  /* typography */
+
+  /* breakpoints */
 }
 
 @layer base {
