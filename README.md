@@ -1,4 +1,4 @@
-# Snoomleng — Personal Portfolio
+# snoomleng — Personal Portfolio
 
 My personal developer portfolio and blog, built to showcase my projects, technical experience, and writing.
 
