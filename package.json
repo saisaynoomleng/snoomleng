@@ -1,0 +1,33 @@
+{
+  "name": "snoomleng",
+  "private": true,
+  "type": "module",
+  "version": "1.0.0",
+  "keywords": [
+    "portfolio",
+    "snoomleng",
+    "developer",
+    "software engineer"
+  ],
+  "scripts": {
+    "dev": "turbo dev",
+    "build": "turbo build",
+    "lint": "turbo lint",
+    "format": "prettier --write .",
+    "clean": "turbo clean",
+    "test": "pnpm --color -r run vitest",
+    "test:coverage": "pnpm --color -r run vitest --coverage"
+  },
+  "devDependencies": {
+    "@manypkg/cli": "^0.25.1",
+    "prettier": "^3.9.6",
+    "syncpack": "^15.3.3",
+    "turbo": "^2.10.9",
+    "typescript": "^7.0.2"
+  },
+  "engines": {
+    "pnpm": "11.9.0",
+    "node": "24.19.0"
+  },
+  "packageManager": "pnpm@11.9.0"
+}
