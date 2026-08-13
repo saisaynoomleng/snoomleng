@@ -20,9 +20,8 @@ export const technologyType = defineType({
       },
     }),
     defineField({
-      name: 'mainImage',
-      type: 'imageWithAlt',
-      validation: (rule) => rule.required(),
+      name: 'icon',
+      type: 'string',
     }),
     defineField({
       name: 'type',

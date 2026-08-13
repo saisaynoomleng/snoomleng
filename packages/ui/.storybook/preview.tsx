@@ -2,6 +2,9 @@ import type { Preview } from '@storybook/react-vite';
 import { withThemeByClassName } from '@storybook/addon-themes';
 import '../src/globals.css';
 
+import { TooltipProvider } from '../src/components/ui';
+import { Toaster } from 'sonner';
+
 const preview: Preview = {
   parameters: {
     controls: {
@@ -26,6 +29,14 @@ const preview: Preview = {
       },
       defaultTheme: 'light',
     }),
+    (Story) => (
+      <>
+        <TooltipProvider>
+          <Story />
+          <Toaster richColors position="bottom-center" />
+        </TooltipProvider>
+      </>
+    ),
   ],
 };
 

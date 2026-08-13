@@ -24,3 +24,10 @@ export const ABOUT_QUERY = defineQuery(`*[_type == 'about'
   },
   body,
  }`);
+
+export const TECHSTACK_QUERY = defineQuery(`*[_type == 'technology'
+ && defined(slug.current)]{
+  _id,
+  name,
+  icon
+ }`);
