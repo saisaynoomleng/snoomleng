@@ -88,4 +88,12 @@ const component: PortableTextComponents = {
       );
     },
   },
+  list: {
+    bullet: ({ children }) => (
+      <ul className="list-disc marker:text-primary">{children}</ul>
+    ),
+    number: ({ children }) => (
+      <ol className="list-decimal marker:text-primary">{children}</ol>
+    ),
+  },
 };

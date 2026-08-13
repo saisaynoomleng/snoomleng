@@ -22,7 +22,7 @@ export const aboutType = defineType({
     }),
     defineField({
       name: 'body',
-      type: 'text',
+      type: 'blockContent',
     }),
     defineField({
       name: 'workFlow',

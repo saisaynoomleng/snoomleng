@@ -26,7 +26,47 @@ const meta: Meta<typeof Hero> = {
     actions: mockHero.actions,
     body: mockHero.body,
   },
-  argTypes: {},
+  argTypes: {
+    title: {
+      control: 'text',
+      description: 'Hero Section Title',
+    },
+
+    position: {
+      control: false,
+      description: 'My current positions in strings of array',
+    },
+
+    media: {
+      control: false,
+      description: 'Image URL and Image Alternative Text for the Hero image',
+    },
+
+    body: {
+      control: false,
+      description: 'Hero text content in Portable Text Component Blocks',
+    },
+
+    actions: {
+      control: false,
+      description: 'Call to action links in Hero Section',
+    },
+
+    renderAction: {
+      control: false,
+      description: 'React Elements to be renders in Next.js',
+    },
+
+    renderMedia: {
+      control: false,
+      description: 'React Elements to be renders in Next.js',
+    },
+
+    className: {
+      control: 'text',
+      description: 'Additional TailwindCSS classes',
+    },
+  },
 };
 
 export default meta;
