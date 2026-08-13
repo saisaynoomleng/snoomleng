@@ -32,6 +32,11 @@ const meta: Meta<typeof TechStack> = {
         },
       },
     },
+
+    className: {
+      control: 'text',
+      description: 'Additional TailwindCSS classes',
+    },
   },
 };
 
