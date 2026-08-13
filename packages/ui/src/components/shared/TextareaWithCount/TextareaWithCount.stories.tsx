@@ -19,7 +19,27 @@ const meta: Meta<typeof TextareaWithCount> = {
     maxLength: 20,
     label: 'Message',
   },
-  argTypes: {},
+  argTypes: {
+    maxLength: {
+      control: 'number',
+      description: 'Determine the textarea maximum input length',
+    },
+
+    className: {
+      control: 'text',
+      description: 'Additional TailwindCSS classes',
+    },
+
+    label: {
+      control: 'text',
+      description: 'Label for the textarea',
+    },
+
+    errorMessage: {
+      control: 'text',
+      description: 'Error message to display on the UI',
+    },
+  },
 };
 
 export default meta;

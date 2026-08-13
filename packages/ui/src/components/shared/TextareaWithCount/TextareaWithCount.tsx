@@ -7,7 +7,6 @@ import {
   InputGroupText,
   InputGroupTextarea,
 } from '#components/ui/input-group';
-import { Textarea } from '#components/ui/textarea';
 import clsx from 'clsx';
 import React, { ComponentPropsWithoutRef, useState } from 'react';
 import { twMerge } from 'tailwind-merge';

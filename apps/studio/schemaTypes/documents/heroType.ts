@@ -22,12 +22,22 @@ export const heroType = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: 'position',
+      title: 'Position',
+      type: 'array',
+      of: [{type: 'string'}],
+    }),
+    defineField({
       name: 'title',
       type: 'string',
     }),
     defineField({
       name: 'body',
       type: 'blockContent',
+    }),
+    defineField({
+      name: 'mainImage',
+      type: 'imageWithAlt',
     }),
     defineField({
       name: 'actions',

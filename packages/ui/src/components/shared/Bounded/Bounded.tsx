@@ -41,7 +41,7 @@ const spacingVariants: Record<Spacing, string> = {
 export const Bounded = <T extends React.ElementType>({
   as,
   size = 'md',
-  padding = 'sm',
+  padding = 'md',
   spacing = 'none',
   centered = true,
   className,
