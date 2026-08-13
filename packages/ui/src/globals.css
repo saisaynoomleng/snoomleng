@@ -64,7 +64,7 @@
   --accent: oklch(0.97 0 0);
   --accent-foreground: oklch(0.205 0 0);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
+  --border: var(--color-brand-black);
   --input: oklch(0.922 0 0);
   --ring: oklch(0.708 0 0);
   --chart-1: oklch(0.646 0.222 41.116);
@@ -194,8 +194,23 @@
   --color-brand-rose-950: #3d1912;
 
   /* typography */
+  /* font families */
+  --font-heading: 'Josefin Slab', serif;
+  --font-body: 'Open Sans', sans-serif;
+
+  /* font sizes */
+  --text-fs-900: 4.5rem;
+  --text-fs-800: 3.75rem;
+  --text-fs-700: 3rem;
+  --text-fs-600: 2.25rem;
+  --text-fs-500: 1.5rem;
+  --text-fs-400: 1rem;
+  --text-fs-300: 0.875rem;
+  --text-fs-200: 0.5rem;
 
   /* breakpoints */
+  --breakpoint-lg: 1280px;
+  --breakpoint-md: 760px;
 }
 
 @layer base {
@@ -203,6 +218,23 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground text-fs-400 overflow-x-hidden tracking-normal leading-normal font-body font-normal;
   }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply text-balance leading-none;
+  }
+  p {
+    @apply text-pretty;
+  }
+}
+
+@utility brand-box-shadow {
+  box-shadow: 5px 4px 0px -1px rgba(15, 15, 15, 1);
+  -webkit-box-shadow: 5px 4px 0px -1px rgba(15, 15, 15, 1);
+  -moz-box-shadow: 5px 4px 0px -1px rgba(15, 15, 15, 1);
 }
