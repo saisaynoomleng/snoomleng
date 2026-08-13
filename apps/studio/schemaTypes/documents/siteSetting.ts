@@ -90,6 +90,11 @@ export const siteSetting = defineType({
       initialValue: true,
       group: 'branding',
     }),
+    defineField({
+      name: 'availability',
+      type: 'text',
+      group: 'branding',
+    }),
 
     // navigation
     defineField({

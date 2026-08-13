@@ -9,12 +9,38 @@ import {
   TableHeader,
   TableRow,
 } from '#components/ui/table';
+import { Card, CardContent } from '#components/ui/card';
 
 import { CiSettings } from 'react-icons/ci';
 import { MdOutlineViewQuilt } from 'react-icons/md';
 import { GiFiles, GiStairsGoal, GiSuitcase } from 'react-icons/gi';
 import { FaLinux } from 'react-icons/fa';
-import { Card, CardContent, CardFooter } from '#components/ui/card';
+import {
+  SiBetterauth,
+  SiClerk,
+  SiDocker,
+  SiDrizzle,
+  SiExpress,
+  SiGithub,
+  SiGsap,
+  SiLinux,
+  SiNeon,
+  SiNextdotjs,
+  SiNginx,
+  SiPostgresql,
+  SiReact,
+  SiReacthookform,
+  SiSanity,
+  SiShadcnui,
+  SiStorybook,
+  SiTailwindcss,
+  SiTanstack,
+  SiTypescript,
+  SiVim,
+  SiVitest,
+  SiZod,
+} from 'react-icons/si';
+import { FaAws } from 'react-icons/fa';
 
 const icons = [
   <CiSettings />,
@@ -23,6 +49,30 @@ const icons = [
   <GiStairsGoal />,
   <GiSuitcase />,
   <FaLinux />,
+  <SiBetterauth />,
+  <SiClerk />,
+  <SiDocker />,
+  <SiDrizzle />,
+  <SiExpress />,
+  <SiGithub />,
+  <SiGsap />,
+  <SiLinux />,
+  <SiNeon />,
+  <SiNextdotjs />,
+  <SiNginx />,
+  <SiPostgresql />,
+  <SiReact />,
+  <SiReacthookform />,
+  <SiSanity />,
+  <SiShadcnui />,
+  <SiStorybook />,
+  <SiTailwindcss />,
+  <SiTanstack />,
+  <SiTypescript />,
+  <SiVim />,
+  <SiVitest />,
+  <SiZod />,
+  <FaAws />,
 ];
 
 const fontSizes = {

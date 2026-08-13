@@ -22,7 +22,7 @@ export type ActionResponse<T> =
       success: true;
       message: string;
     }
-  | { sucess: false; message: string; field?: keyof T };
+  | { success: false; message: string; field: keyof T };
 
 /**
  * Validate Image upload response type
