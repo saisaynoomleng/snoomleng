@@ -24,6 +24,7 @@ const meta: Meta<typeof Hero> = {
       alt: mockHero.imageAlt,
     },
     actions: mockHero.actions,
+    body: mockHero.body,
   },
   argTypes: {},
 };
@@ -36,7 +37,7 @@ export const Default: Story = {
     <Hero
       {...args}
       renderMedia={(props) => (
-        <img src={props.src} alt={props.alt} className="saturate-0" />
+        <img src={props.src} alt={props.alt} className="saturate-100" />
       )}
       renderAction={(props) => <a href={props.href}>{props.label}</a>}
     />
@@ -44,6 +45,7 @@ export const Default: Story = {
   play: async ({ canvas }) => {
     const title = canvas.getByText(mockHero.title);
     const image = canvas.getByRole('img');
+    const links = canvas.getAllByRole('link');
 
     await expect(title).toBeInTheDocument();
     await expect(image).toBeInTheDocument();
@@ -52,5 +54,6 @@ export const Default: Story = {
       expect.stringContaining('cdn.sanity.io'),
     );
     await expect(image).toHaveAttribute('alt');
+    await expect(links).toHaveLength(2);
   },
 };

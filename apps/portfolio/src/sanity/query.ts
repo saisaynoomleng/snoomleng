@@ -14,3 +14,13 @@ export const MAIN_HERO_QUERY = defineQuery(`*[_type == 'hero'
   "imageAlt": mainImage.alt,
   position[],
  }`);
+
+export const ABOUT_QUERY = defineQuery(`*[_type == 'about'
+ && slug.current == 'about'][0]{
+  "workflows": workFlow[]{
+    _key,
+    body,
+    title
+  },
+  body,
+ }`);

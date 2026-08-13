@@ -1,13 +1,14 @@
 import React from 'react';
-import { Bounded } from '../../shared';
+import { Bounded, PortableTextRenderer } from '../../shared';
 import type { CallToAction, Media } from '@snoomleng/utils';
 import { twMerge } from 'tailwind-merge';
 import clsx from 'clsx';
 import { Button } from '#components/ui/button';
+import { PortableTextBlock } from '@portabletext/react';
 
 type HeroProps = {
   title: string;
-  body: React.ReactNode;
+  body: PortableTextBlock[];
   actions: CTA[] | CallToAction;
   media: Media;
   renderAction: (props: CallToAction) => React.ReactElement;
@@ -35,7 +36,7 @@ export const Hero = ({
         clsx('grid md:grid-cols-2 md:gap-x-6 md:justify-between', className),
       )}
     >
-      <div className="flex flex-col gap-y-4">
+      <div className="flex flex-col gap-y-6 md:gap-y-8 md:justify-center">
         <div className="flex gap-x-2 items-baseline">
           <span className="w-3 aspect-square bg-primary"></span>
           {position.map((item, index) => (
@@ -54,7 +55,8 @@ export const Hero = ({
         </div>
 
         <h1 className="text-fs-600 md:text-fs-700 uppercase">{title}</h1>
-        {/* body */}
+
+        {body && <PortableTextRenderer value={body} />}
 
         <div className="flex gap-x-4 items-center">
           {Array.isArray(actions) ? (
