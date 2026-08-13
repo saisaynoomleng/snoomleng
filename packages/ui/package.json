@@ -12,6 +12,7 @@
     "./styles": "./src/globals.css"
   },
   "dependencies": {
+    "@snoomleng/utils": "workspace:*",
     "@base-ui/react": "^1.7.0",
     "@shadcn/react": "^0.3.0",
     "@tailwindcss/vite": "^4.3.3",

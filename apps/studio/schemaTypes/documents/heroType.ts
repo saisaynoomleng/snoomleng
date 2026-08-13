@@ -36,6 +36,10 @@ export const heroType = defineType({
       type: 'blockContent',
     }),
     defineField({
+      name: 'mainImage',
+      type: 'imageWithAlt',
+    }),
+    defineField({
       name: 'actions',
       type: 'array',
       of: [
