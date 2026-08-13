@@ -18,6 +18,7 @@ const meta: Meta<typeof SectionTitle> = {
   args: {
     as: 'h2',
     label: 'About me',
+    size: 'sm',
   },
 
   argTypes: {
@@ -25,6 +26,21 @@ const meta: Meta<typeof SectionTitle> = {
       control: 'radio',
       options: ['h2', 'h3', 'h4', 'h5', 'h6'],
       description: 'Any heading tag from h2 to h6, default to h2',
+    },
+
+    size: {
+      control: 'radio',
+      options: ['sm', 'md', 'lg'],
+      table: {
+        type: {
+          summary: 'Predefined font-sizes for the title, default to sm',
+          detail: `
+            sm: 'text-fs-500 md:text-fs-600 lg:text-fs-700',
+            md: 'text-fs-600 md:text-fs-700 lg:text-fs-800',
+            lg: 'text-fs-700 md:text-fs-800 lg:text-fs-900',
+          `,
+        },
+      },
     },
 
     className: {
@@ -43,7 +59,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: (args) => <SectionTitle {...args} />,
+  render: (args) => <SectionTitle {...args} size="md" />,
   play: async ({ canvas }) => {
     const heading = canvas.getByRole('heading');
 
