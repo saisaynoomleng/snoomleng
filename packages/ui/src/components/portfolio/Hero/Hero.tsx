@@ -32,6 +32,7 @@ export const Hero = ({
   return (
     <Bounded
       size="full"
+      padding="none"
       className={twMerge(
         clsx('grid md:grid-cols-2 md:gap-x-6 md:justify-between', className),
       )}
@@ -77,9 +78,7 @@ export const Hero = ({
         </div>
       </div>
 
-      <div className="aspect-square overflow-hidden relative mx-auto">
-        {renderMedia({ src: media.src, alt: media.alt })}
-      </div>
+      {renderMedia({ src: media.src, alt: media.alt })}
     </Bounded>
   );
 };
