@@ -24,7 +24,7 @@ export const Header = async ({
     <header
       className={twMerge(
         clsx(
-          'flex items-center justify-between p-2 max-w-7xl mx-auto w-full',
+          'flex items-center justify-between px-4 py-2 max-w-7xl mx-auto w-full',
           className,
         ),
       )}

@@ -34,7 +34,10 @@ export const Hero = ({
       size="full"
       padding="none"
       className={twMerge(
-        clsx('grid md:grid-cols-2 md:gap-x-6 md:justify-between', className),
+        clsx(
+          'grid md:grid-cols-2 md:gap-x-6 md:justify-between md:items-center min-h-screen',
+          className,
+        ),
       )}
     >
       <div className="flex flex-col gap-y-6 md:gap-y-8 md:justify-center">

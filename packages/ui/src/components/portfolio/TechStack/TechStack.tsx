@@ -42,7 +42,7 @@ type TechStackProps = {
   techs: TechProps[];
 };
 
-type TechProps = {
+export type TechProps = {
   _id: string;
   icon: string;
   name: string;

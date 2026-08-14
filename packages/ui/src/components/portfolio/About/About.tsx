@@ -11,7 +11,7 @@ type AboutProps = {
   location: string;
 };
 
-type Workflow = {
+export type Workflow = {
   _key: string;
   body: string;
   title: string;
