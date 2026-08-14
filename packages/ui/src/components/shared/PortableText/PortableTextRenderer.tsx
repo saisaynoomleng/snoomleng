@@ -97,3 +97,5 @@ const component: PortableTextComponents = {
     ),
   },
 };
+
+export type { PortableTextBlock };
