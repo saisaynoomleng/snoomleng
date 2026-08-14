@@ -41,6 +41,7 @@ import {
   SiZod,
 } from 'react-icons/si';
 import { FaAws } from 'react-icons/fa';
+import { RxHamburgerMenu } from 'react-icons/rx';
 
 const icons = [
   <CiSettings />,
@@ -73,6 +74,7 @@ const icons = [
   <SiVitest />,
   <SiZod />,
   <FaAws />,
+  <RxHamburgerMenu />,
 ];
 
 const fontSizes = {

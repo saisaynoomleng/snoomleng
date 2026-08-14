@@ -444,6 +444,45 @@ export type ALL_EMPLOYMENTS_QUERY_RESULT = Array<{
   endedAt: string | null;
 }>;
 
+// Source: src/sanity/query.ts
+// Variable: SITE_SETTINGS_QUERY
+// Query: *[_type == 'siteSetting'][0]{  contactInfo,  footerColumns,  navigation[],  "logoUrl": primaryLogo.asset->url,  "logoAlt": primaryLogo.alt,  socialLinks[]}
+export type SITE_SETTINGS_QUERY_RESULT = {
+  contactInfo: {
+    email?: string;
+    linkedInUrl?: string;
+    leetCodeURL?: string;
+    gitHubURL?: string;
+    city?: string;
+    state?: string;
+  } | null;
+  footerColumns: Array<{
+    columnTitle?: string;
+    columnLinks?: Array<{
+      label?: string;
+      href?: string;
+      _type: 'columnLink';
+      _key: string;
+    }>;
+    _type: 'footerColumn';
+    _key: string;
+  }> | null;
+  navigation: Array<{
+    label?: string;
+    href?: string;
+    isButton?: boolean;
+    _type: 'navLink';
+    _key: string;
+  }> | null;
+  logoUrl: string | null;
+  logoAlt: string | null;
+  socialLinks: Array<
+    {
+      _key: string;
+    } & SocialLink
+  > | null;
+} | null;
+
 // Query TypeMap
 import '@sanity/client';
 declare module '@sanity/client' {
@@ -453,5 +492,6 @@ declare module '@sanity/client' {
     "*[_type == 'technology'\n && defined(slug.current)]{\n  _id,\n  name,\n  icon\n }": TECHSTACK_QUERY_RESULT;
     '*[_type == \'project\'\n && defined(slug.current)]\n  | order(createdAt){\n    _id,\n    name,\n    "slug": slug.current,\n    startedAt,\n    endedAt,\n    excerpt,\n    links[]{\n      _key,\n      label,\n      url\n    },\n    stacks[]\n}': ALL_PROJECTS_QUERY_RESULT;
     "*[_type == 'employment'\n && defined(slug.current)]\n  | order(startedAt desc){\n  _id,\n  body,\n  name,\n  companyName,\n  startedAt,\n  endedAt\n }": ALL_EMPLOYMENTS_QUERY_RESULT;
+    '*[_type == \'siteSetting\'][0]{\n  contactInfo,\n  footerColumns,\n  navigation[],\n  "logoUrl": primaryLogo.asset->url,\n  "logoAlt": primaryLogo.alt,\n  socialLinks[]\n}': SITE_SETTINGS_QUERY_RESULT;
   }
 }
