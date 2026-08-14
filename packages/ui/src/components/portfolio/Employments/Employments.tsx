@@ -7,10 +7,10 @@ import { formatYear } from '@snoomleng/utils';
 
 type EmployementsProps = {
   className?: string;
-  employments: Employments[];
+  employments: Employment[];
 };
 
-type Employments = {
+export type Employment = {
   _id: string;
   body: PortableTextBlock[];
   name: string;

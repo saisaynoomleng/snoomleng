@@ -13,7 +13,7 @@ type ProjectCardProps = {
   renderAction: (props: CallToAction) => React.ReactElement;
 };
 
-type Project = {
+export type Project = {
   _id: string;
   excerpt: string;
   startedAt: string;
@@ -40,8 +40,7 @@ export const Projects = ({
       as="div"
       padding="none"
       size="full"
-      spacing="lg"
-      className={twMerge(clsx('', className))}
+      className={twMerge(clsx('space-y-8', className))}
     >
       <SectionTitle label="Things i shipped" />
 

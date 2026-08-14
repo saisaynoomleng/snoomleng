@@ -42,6 +42,7 @@ import {
 } from 'react-icons/si';
 import { FaAws } from 'react-icons/fa';
 import { RxHamburgerMenu } from 'react-icons/rx';
+import { IoIosArrowRoundDown } from 'react-icons/io';
 
 const icons = [
   <CiSettings />,
@@ -75,6 +76,7 @@ const icons = [
   <SiZod />,
   <FaAws />,
   <RxHamburgerMenu />,
+  <IoIosArrowRoundDown />,
 ];
 
 const fontSizes = {
