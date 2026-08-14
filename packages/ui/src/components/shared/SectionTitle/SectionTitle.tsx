@@ -14,9 +14,9 @@ type SectionTitleProps<T extends Heading> = {
 type Size = 'sm' | 'md' | 'lg';
 
 const sizeVariants: Record<Size, string> = {
-  sm: 'text-fs-500 md:text-fs-600 lg:text-fs-700',
-  md: 'text-fs-600 md:text-fs-700 lg:text-fs-800',
-  lg: 'text-fs-700 md:text-fs-800 lg:text-fs-900',
+  sm: 'text-fs-400 md:text-fs-500 lg:text-fs-600',
+  md: 'text-fs-500 md:text-fs-600 lg:text-fs-700',
+  lg: 'text-fs-600 md:text-fs-700 lg:text-fs-800',
 };
 
 export const SectionTitle = <T extends Heading>({

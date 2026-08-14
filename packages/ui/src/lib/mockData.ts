@@ -431,3 +431,88 @@ export const mockProject = [
     startedAt: '2026-08-08',
   },
 ];
+
+export const mockEmployments = [
+  {
+    _id: '4c2b8cf1-394f-472c-bcaf-6155d4dac9cb',
+    body: [
+      {
+        _key: '0e95c7fc1799',
+        _type: 'block',
+        children: [
+          {
+            _key: '7d0e6d87206d',
+            _type: 'span',
+            marks: [],
+            text: 'Provided reliable on-demand delivery services while managing high-volume orders, route optimization, and customer communication in a fast-paced environment.',
+          },
+        ],
+        level: 1,
+        listItem: 'bullet',
+        markDefs: [],
+        style: 'normal',
+      },
+    ],
+    companyName: 'DoorDash',
+    endedAt: null,
+    name: 'Delivery Driver',
+    startedAt: '2025-09-10',
+  },
+  {
+    _id: '5620dfaf-429e-43a7-8f55-66f868b181a5',
+    body: [
+      {
+        _key: '505e62aee987',
+        _type: 'block',
+        children: [
+          {
+            _key: '74d6bb3fece6',
+            _type: 'span',
+            marks: [],
+            text: 'Specialized in editorial, commercial, wedding, and pre-wedding photography, delivering high-quality visual content tailored to client needs',
+          },
+        ],
+        level: 1,
+        listItem: 'bullet',
+        markDefs: [],
+        style: 'normal',
+      },
+      {
+        _key: '6bbbb48f0b23',
+        _type: 'block',
+        children: [
+          {
+            _key: 'bf9b94ac5fa6',
+            _type: 'span',
+            marks: [],
+            text: 'Collaborated with prominent franchises including Miss Universe Myanmar and Super Model Myanmar, as well as various local companies and agencies',
+          },
+        ],
+        level: 1,
+        listItem: 'bullet',
+        markDefs: [],
+        style: 'normal',
+      },
+      {
+        _key: '79be363faf41',
+        _type: 'block',
+        children: [
+          {
+            _key: 'ac94899cb329',
+            _type: 'span',
+            marks: [],
+            text: 'Participated in workshops and events across Southeast Asia, earning certificates of completion',
+          },
+        ],
+        level: 1,
+        listItem: 'bullet',
+        markDefs: [],
+        style: 'normal',
+      },
+    ],
+    companyName: 'GreenMile Production',
+    endedAt: '2023-10-23',
+    name: 'Founder/Photographer',
+    startedAt: '2016-12-25',
+  },
+];

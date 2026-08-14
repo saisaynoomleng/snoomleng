@@ -48,3 +48,14 @@ export const ALL_PROJECTS_QUERY = defineQuery(`*[_type == 'project'
     },
     stacks[]
 }`);
+
+export const ALL_EMPLOYMENTS_QUERY = defineQuery(`*[_type == 'employment'
+ && defined(slug.current)]
+  | order(startedAt desc){
+  _id,
+  body,
+  name,
+  companyName,
+  startedAt,
+  endedAt
+ }`);
