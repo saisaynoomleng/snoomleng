@@ -377,74 +377,6 @@ export type AllSanitySchemaTypes =
   | Geopoint;
 
 // Source: src/sanity/query.ts
-// Variable: MAIN_HERO_QUERY
-// Query: *[_type == 'hero' && slug.current == "home-page"][0]{  _id,  title,  body,  actions[]{    _key,    label,    href  },  "imageUrl": mainImage.asset->url,  "imageAlt": mainImage.alt,  position[], }
-export type MAIN_HERO_QUERY_RESULT = {
-  _id: string;
-  title: string | null;
-  body: BlockContent | null;
-  actions: Array<{
-    _key: string;
-    label: string | null;
-    href: string | null;
-  }> | null;
-  imageUrl: string | null;
-  imageAlt: string | null;
-  position: Array<string> | null;
-} | null;
-
-// Source: src/sanity/query.ts
-// Variable: ABOUT_QUERY
-// Query: *[_type == 'about' && slug.current == 'about'][0]{  "workflows": workFlow[]{    _key,    body,    title  },  body, }
-export type ABOUT_QUERY_RESULT = {
-  workflows: Array<{
-    _key: string;
-    body: string | null;
-    title: string | null;
-  }> | null;
-  body: BlockContent | null;
-} | null;
-
-// Source: src/sanity/query.ts
-// Variable: TECHSTACK_QUERY
-// Query: *[_type == 'technology' && defined(slug.current)]{  _id,  name,  icon }
-export type TECHSTACK_QUERY_RESULT = Array<{
-  _id: string;
-  name: string | null;
-  icon: string | null;
-}>;
-
-// Source: src/sanity/query.ts
-// Variable: ALL_PROJECTS_QUERY
-// Query: *[_type == 'project' && defined(slug.current)]  | order(createdAt){    _id,    name,    "slug": slug.current,    startedAt,    endedAt,    excerpt,    links[]{      _key,      label,      url    },    stacks[]}
-export type ALL_PROJECTS_QUERY_RESULT = Array<{
-  _id: string;
-  name: string | null;
-  slug: string | null;
-  startedAt: string | null;
-  endedAt: string | null;
-  excerpt: string | null;
-  links: Array<{
-    _key: string;
-    label: string | null;
-    url: string | null;
-  }> | null;
-  stacks: Array<string> | null;
-}>;
-
-// Source: src/sanity/query.ts
-// Variable: ALL_EMPLOYMENTS_QUERY
-// Query: *[_type == 'employment' && defined(slug.current)]  | order(startedAt desc){  _id,  body,  name,  companyName,  startedAt,  endedAt }
-export type ALL_EMPLOYMENTS_QUERY_RESULT = Array<{
-  _id: string;
-  body: BlockContent | null;
-  name: string | null;
-  companyName: string | null;
-  startedAt: string | null;
-  endedAt: string | null;
-}>;
-
-// Source: src/sanity/query.ts
 // Variable: SITE_SETTINGS_QUERY
 // Query: *[_type == 'siteSetting'][0]{  contactInfo,  footerColumns,  navigation[],  "logoUrl": primaryLogo.asset->url,  "logoAlt": primaryLogo.alt,  socialLinks[]}
 export type SITE_SETTINGS_QUERY_RESULT = {
@@ -483,15 +415,79 @@ export type SITE_SETTINGS_QUERY_RESULT = {
   > | null;
 } | null;
 
+// Source: src/sanity/query.ts
+// Variable: HOME_PAGE_QUERY
+// Query: {  "settings": *[_type == 'siteSetting'][0]{      contactInfo,      "logoUrl": primaryLogo.asset->url,      "logoAlt": primaryLogo.alt,      socialLinks[],      mode  },  "hero": *[_type == 'hero'   && slug.current == "home-page"][0]{      _id,      title,      body,      actions[]{        _key,        label,        href      },      "imageUrl": mainImage.asset->url,      "imageAlt": mainImage.alt,      position[],   },  "technology": *[_type == 'technology'   && defined(slug.current)]{      _id,      name,      icon  },  "projects": *[_type == 'project'   && defined(slug.current)]    | order(createdAt){      _id,      name,      "slug": slug.current,      startedAt,      endedAt,      excerpt,      links[]{        _key,        label,        url      },      stacks[],      type    },  "employments": *[_type == 'employment'   && defined(slug.current)]    | order(startedAt desc){      _id,      body,      name,      companyName,      startedAt,      endedAt   },  "about": *[_type == 'about'    && slug.current == 'about'][0]{      body, }}
+export type HOME_PAGE_QUERY_RESULT = {
+  settings: {
+    contactInfo: {
+      email?: string;
+      linkedInUrl?: string;
+      leetCodeURL?: string;
+      gitHubURL?: string;
+      city?: string;
+      state?: string;
+    } | null;
+    logoUrl: string | null;
+    logoAlt: string | null;
+    socialLinks: Array<
+      {
+        _key: string;
+      } & SocialLink
+    > | null;
+    mode: Array<string> | null;
+  } | null;
+  hero: {
+    _id: string;
+    title: string | null;
+    body: BlockContent | null;
+    actions: Array<{
+      _key: string;
+      label: string | null;
+      href: string | null;
+    }> | null;
+    imageUrl: string | null;
+    imageAlt: string | null;
+    position: Array<string> | null;
+  } | null;
+  technology: Array<{
+    _id: string;
+    name: string | null;
+    icon: string | null;
+  }>;
+  projects: Array<{
+    _id: string;
+    name: string | null;
+    slug: string | null;
+    startedAt: string | null;
+    endedAt: string | null;
+    excerpt: string | null;
+    links: Array<{
+      _key: string;
+      label: string | null;
+      url: string | null;
+    }> | null;
+    stacks: Array<string> | null;
+    type: string | null;
+  }>;
+  employments: Array<{
+    _id: string;
+    body: BlockContent | null;
+    name: string | null;
+    companyName: string | null;
+    startedAt: string | null;
+    endedAt: string | null;
+  }>;
+  about: {
+    body: BlockContent | null;
+  } | null;
+};
+
 // Query TypeMap
 import '@sanity/client';
 declare module '@sanity/client' {
   interface SanityQueries {
-    '*[_type == \'hero\'\n && slug.current == "home-page"][0]{\n  _id,\n  title,\n  body,\n  actions[]{\n    _key,\n    label,\n    href\n  },\n  "imageUrl": mainImage.asset->url,\n  "imageAlt": mainImage.alt,\n  position[],\n }': MAIN_HERO_QUERY_RESULT;
-    "*[_type == 'about'\n && slug.current == 'about'][0]{\n  \"workflows\": workFlow[]{\n    _key,\n    body,\n    title\n  },\n  body,\n }": ABOUT_QUERY_RESULT;
-    "*[_type == 'technology'\n && defined(slug.current)]{\n  _id,\n  name,\n  icon\n }": TECHSTACK_QUERY_RESULT;
-    '*[_type == \'project\'\n && defined(slug.current)]\n  | order(createdAt){\n    _id,\n    name,\n    "slug": slug.current,\n    startedAt,\n    endedAt,\n    excerpt,\n    links[]{\n      _key,\n      label,\n      url\n    },\n    stacks[]\n}': ALL_PROJECTS_QUERY_RESULT;
-    "*[_type == 'employment'\n && defined(slug.current)]\n  | order(startedAt desc){\n  _id,\n  body,\n  name,\n  companyName,\n  startedAt,\n  endedAt\n }": ALL_EMPLOYMENTS_QUERY_RESULT;
     '*[_type == \'siteSetting\'][0]{\n  contactInfo,\n  footerColumns,\n  navigation[],\n  "logoUrl": primaryLogo.asset->url,\n  "logoAlt": primaryLogo.alt,\n  socialLinks[]\n}': SITE_SETTINGS_QUERY_RESULT;
+    '{\n  "settings": *[_type == \'siteSetting\'][0]{\n      contactInfo,\n      "logoUrl": primaryLogo.asset->url,\n      "logoAlt": primaryLogo.alt,\n      socialLinks[],\n      mode\n  },\n  "hero": *[_type == \'hero\'\n   && slug.current == "home-page"][0]{\n      _id,\n      title,\n      body,\n      actions[]{\n        _key,\n        label,\n        href\n      },\n      "imageUrl": mainImage.asset->url,\n      "imageAlt": mainImage.alt,\n      position[],\n   },\n  "technology": *[_type == \'technology\'\n   && defined(slug.current)]{\n      _id,\n      name,\n      icon\n  },\n  "projects": *[_type == \'project\'\n   && defined(slug.current)]\n    | order(createdAt){\n      _id,\n      name,\n      "slug": slug.current,\n      startedAt,\n      endedAt,\n      excerpt,\n      links[]{\n        _key,\n        label,\n        url\n      },\n      stacks[],\n      type\n    },\n  "employments": *[_type == \'employment\'\n   && defined(slug.current)]\n    | order(startedAt desc){\n      _id,\n      body,\n      name,\n      companyName,\n      startedAt,\n      endedAt\n   },\n  "about": *[_type == \'about\'\n    && slug.current == \'about\'][0]{\n      body,\n }\n}': HOME_PAGE_QUERY_RESULT;
   }
 }

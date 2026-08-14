@@ -1,11 +1,11 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Hero, type CTA } from './Hero';
+import { HeroSection } from './HeroSection';
 import { mockHero } from '#lib/mockData';
 import { expect } from 'storybook/test';
 
-const meta: Meta<typeof Hero> = {
-  title: 'Components/Portfolio/Hero',
-  component: Hero,
+const meta: Meta<typeof HeroSection> = {
+  title: 'Components/Portfolio/HeroSection',
+  component: HeroSection,
   tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',
@@ -74,7 +74,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render: (args) => (
-    <Hero
+    <HeroSection
       {...args}
       renderMedia={(props) => (
         <img src={props.src} alt={props.alt} className="saturate-100" />

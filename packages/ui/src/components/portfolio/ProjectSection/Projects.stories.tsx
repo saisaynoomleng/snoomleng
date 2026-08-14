@@ -1,16 +1,16 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { Projects } from './Projects';
+import { ProjectSection } from './ProjectSection';
 import { mockProject } from '#lib/mockData';
 
-const meta: Meta<typeof Projects> = {
-  title: 'Components/Portfolio/Projects',
-  component: Projects,
+const meta: Meta<typeof ProjectSection> = {
+  title: 'Components/Portfolio/ProjectSection',
+  component: ProjectSection,
   tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',
     docs: {
       description: {
-        components: 'Project Section to display on the webpage',
+        component: 'Project Section to display on the webpage',
       },
     },
   },
@@ -18,6 +18,7 @@ const meta: Meta<typeof Projects> = {
   args: {
     projects: mockProject,
   },
+
   argTypes: {
     className: {
       control: 'text',
@@ -28,6 +29,11 @@ const meta: Meta<typeof Projects> = {
       control: false,
       description: 'Array of Project Data',
     },
+
+    renderAction: {
+      control: false,
+      description: 'Action to be rendered in Next.js',
+    },
   },
 };
 
@@ -36,7 +42,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   render: (args) => (
-    <Projects
+    <ProjectSection
       {...args}
       renderAction={(props) => (
         <a
