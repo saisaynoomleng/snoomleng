@@ -46,17 +46,17 @@ type ContactFormProps = {
 const LINKS = [
   {
     name: 'LinkedIn',
-    icon: <FaLinkedin />,
+    icon: <FaLinkedin aria-hidden={true} />,
     url: 'https://www.linkedin.com/in/sai-say-noom-leng-72a94031a/',
   },
   {
     name: 'GitHub',
-    icon: <SiGithub />,
+    icon: <SiGithub aria-hidden={true} />,
     url: 'https://github.com/saisaynoomleng',
   },
   {
     name: 'LeetCode',
-    icon: <SiLeetcode />,
+    icon: <SiLeetcode aria-hidden={true} />,
     url: 'https://leetcode.com/u/saisaynoomleng/',
   },
 ];
@@ -121,7 +121,7 @@ export const ContactForm = ({
                   <FieldLabel htmlFor="name">Name</FieldLabel>
                   <Input
                     {...field}
-                    type="string"
+                    type="text"
                     id="name"
                     aria-invalid={fieldState.invalid}
                     autoComplete="off"
@@ -187,7 +187,7 @@ export const ContactForm = ({
                     />
                     <InputGroupAddon align="block-end">
                       <InputGroupText className="tabular-nums">
-                        {field.value.length}/3000 characters
+                        {field.value.length.toLocaleString()}/3000
                       </InputGroupText>
                     </InputGroupAddon>
                   </InputGroup>
@@ -207,7 +207,7 @@ export const ContactForm = ({
             >
               Reset
             </Button>
-            <Button type="submit">Send a letter</Button>
+            <Button type="submit">Send a Message</Button>
           </Field>
         </form>
 
@@ -217,8 +217,8 @@ export const ContactForm = ({
               <p className="font-semibold">Direct Contact</p>
               <a
                 href="mailto:saileng9723@gmail.com"
-                target="_blank"
                 className="hover:underline underline-offset-4 decoration-primary decoration-wavy"
+                aria-label="eamil link"
               >
                 saileng9723@gmail.com
               </a>
@@ -240,9 +240,14 @@ export const ContactForm = ({
 
           <div className="flex items-end gap-x-4">
             {LINKS.map((link) => (
-              <Tooltip>
+              <Tooltip key={link.name}>
                 <TooltipTrigger asChild className="p-1 border">
-                  <a key={link.name} target="_blank" href={link.url}>
+                  <a
+                    target="_blank"
+                    href={link.url}
+                    aria-label={`${link.name} link`}
+                    rel="noopener noreferrer"
+                  >
                     <span className="text-fs-500">{link.icon}</span>
                   </a>
                 </TooltipTrigger>

@@ -77,7 +77,7 @@ export const Hero = ({
         </div>
       </div>
 
-      <div className="aspect-square overflow-hidden relative">
+      <div className="aspect-square overflow-hidden relative mx-auto">
         {renderMedia({ src: media.src, alt: media.alt })}
       </div>
     </Bounded>

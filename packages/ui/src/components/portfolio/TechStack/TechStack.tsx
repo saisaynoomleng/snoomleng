@@ -94,9 +94,12 @@ export const TechStack = ({
 
           return (
             <Tooltip key={t._id}>
-              <TooltipTrigger className="w-fit">
+              <TooltipTrigger className="w-fit" asChild>
                 {Icon && (
-                  <Icon className="text-fs-600 text-muted-foreground hover:text-primary" />
+                  <Icon
+                    className="text-fs-600 text-muted-foreground hover:text-primary"
+                    aria-hidden={true}
+                  />
                 )}
               </TooltipTrigger>
               <TooltipContent>{t.name}</TooltipContent>
