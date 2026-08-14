@@ -31,3 +31,20 @@ export const TECHSTACK_QUERY = defineQuery(`*[_type == 'technology'
   name,
   icon
  }`);
+
+export const ALL_PROJECTS_QUERY = defineQuery(`*[_type == 'project'
+ && defined(slug.current)]
+  | order(createdAt){
+    _id,
+    name,
+    "slug": slug.current,
+    startedAt,
+    endedAt,
+    excerpt,
+    links[]{
+      _key,
+      label,
+      url
+    },
+    stacks[]
+}`);
