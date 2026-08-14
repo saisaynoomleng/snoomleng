@@ -43,7 +43,7 @@ export const Projects = ({
       spacing="lg"
       className={twMerge(clsx('', className))}
     >
-      <SectionTitle label="Selected Works" />
+      <SectionTitle label="Things i shipped" />
 
       <div>
         {projects.map((p, index) => {
