@@ -2,15 +2,7 @@ import { handleContactForm } from '@/actions/handleContactForm';
 import { RenderAction } from '@/components/RenderAction';
 import { RenderMedia } from '@/components/RenderMedia';
 import { sanityFetch } from '@/sanity/live';
-import {
-  ABOUT_QUERY,
-  ALL_EMPLOYMENTS_QUERY,
-  ALL_PROJECTS_QUERY,
-  HOME_PAGE_QUERY,
-  MAIN_HERO_QUERY,
-  SITE_SETTINGS_QUERY,
-  TECHSTACK_QUERY,
-} from '@/sanity/query';
+import { HOME_PAGE_QUERY } from '@/sanity/query';
 import {
   AboutSection,
   Bounded,
