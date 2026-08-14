@@ -1,5 +1,9 @@
-import Image from 'next/image';
+import { Bounded, SectionTitle } from '@snoomleng/ui';
 
 export default function Home() {
-  return <>Hello</>;
+  return (
+    <Bounded>
+      <SectionTitle label="home" />
+    </Bounded>
+  );
 }

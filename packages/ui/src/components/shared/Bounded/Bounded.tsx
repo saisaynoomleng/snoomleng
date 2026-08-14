@@ -54,6 +54,7 @@ export const Bounded = <T extends React.ElementType>({
     <Comp
       className={twMerge(
         clsx(
+          'w-full',
           sizeVariants[size],
           paddingVariants[padding],
           spacingVariants[spacing],

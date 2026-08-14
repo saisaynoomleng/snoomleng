@@ -59,3 +59,12 @@ export const ALL_EMPLOYMENTS_QUERY = defineQuery(`*[_type == 'employment'
   startedAt,
   endedAt
  }`);
+
+export const SITE_SETTINGS_QUERY = defineQuery(`*[_type == 'siteSetting'][0]{
+  contactInfo,
+  footerColumns,
+  navigation[],
+  "logoUrl": primaryLogo.asset->url,
+  "logoAlt": primaryLogo.alt,
+  socialLinks[]
+}`);
