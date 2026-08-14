@@ -37,12 +37,12 @@ import {
 } from 'react-icons/si';
 import { FaAws } from 'react-icons/fa';
 
-type TechStackProps = {
+export type TechnologySectionProps = {
   className?: string;
-  techs: TechProps[];
+  techs: TechnologyProps[];
 };
 
-export type TechProps = {
+export type TechnologyProps = {
   _id: string;
   icon: string;
   name: string;
@@ -75,10 +75,10 @@ const iconMap = {
   drizzle: SiDrizzle,
 } as const;
 
-export const TechStack = ({
+export const TechnologySection = ({
   className,
   techs,
-}: TechStackProps): React.JSX.Element => {
+}: TechnologySectionProps): React.JSX.Element => {
   return (
     <Bounded
       size="full"

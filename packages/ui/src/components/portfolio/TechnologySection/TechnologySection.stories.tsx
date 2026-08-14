@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { TechStack } from './TechStack';
+import { TechnologySection } from './TechnologySection';
 import { mockTechs } from '#lib/mockData';
 
-const meta: Meta<typeof TechStack> = {
-  title: 'Components/Portfolio/TechStack',
-  component: TechStack,
+const meta: Meta<typeof TechnologySection> = {
+  title: 'Components/Portfolio/TechnologySection',
+  component: TechnologySection,
   tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',
@@ -23,7 +23,7 @@ const meta: Meta<typeof TechStack> = {
       control: false,
       table: {
         type: {
-          summary: 'My tech stack Data Shape',
+          summary: 'Array of Technologies data',
           detail: `
             _id: string;
             icon: string;
@@ -44,5 +44,5 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: (args) => <TechStack {...args} />,
+  render: (args) => <TechnologySection {...args} />,
 };

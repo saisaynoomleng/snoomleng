@@ -1,3 +1,12 @@
+import { fn } from 'storybook/test';
+
+export const mockFormAction = fn(async () => {
+  return {
+    success: true,
+    message: 'Form Submission Success',
+  };
+});
+
 export const mockHero = {
   _id: '1dc35efd-93c2-45c9-87fe-f1f0b584c301',
   actions: [
@@ -127,6 +136,7 @@ export const mockAbout = {
       title: 'Test, Refine & Ship',
     },
   ],
+  mode: ['Remote', 'Intl', 'Full Time', 'Part Time'],
 };
 
 export const mockTechs = [
@@ -311,8 +321,10 @@ export const mockProject = [
       'AWS Secrets Manager',
     ],
     startedAt: '2026-08-08',
+    type: 'Personal Project',
   },
   {
+    type: 'Personal Project',
     _id: '64bd3159-b9f3-4344-a044-ec479c0663cssdf1',
     endedAt: '2026-08-20',
     excerpt:
@@ -372,6 +384,7 @@ export const mockProject = [
     startedAt: '2026-08-08',
   },
   {
+    type: 'Personal Project',
     _id: '64bd3159sfasdf-b9f3-4344-a044-ec479c0663c1',
     endedAt: '2026-08-20',
     excerpt:

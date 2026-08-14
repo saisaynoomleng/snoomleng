@@ -6,7 +6,7 @@ import clsx from 'clsx';
 import { Button } from '#components/ui/button';
 import { PortableTextBlock } from '@portabletext/react';
 
-type HeroProps = {
+export type HeroSectionProps = {
   title: string;
   body: PortableTextBlock[];
   actions: CTA[] | CallToAction;
@@ -19,7 +19,7 @@ type HeroProps = {
 
 export type CTA = CallToAction & { _key: string };
 
-export const Hero = ({
+export const HeroSection = ({
   title,
   body,
   actions,
@@ -28,7 +28,7 @@ export const Hero = ({
   renderMedia,
   position,
   className,
-}: HeroProps): React.JSX.Element => {
+}: HeroSectionProps): React.JSX.Element => {
   return (
     <Bounded
       size="full"

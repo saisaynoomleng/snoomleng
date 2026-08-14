@@ -1,10 +1,10 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { About } from './About';
+import { AboutSection } from './AboutSection';
 import { mockAbout } from '#lib/mockData';
 
-const meta: Meta<typeof About> = {
-  title: 'Components/Portfolio/About',
-  component: About,
+const meta: Meta<typeof AboutSection> = {
+  title: 'Components/Portfolio/AboutSection',
+  component: AboutSection,
   tags: ['autodocs'],
   parameters: {
     layout: 'fullscreen',
@@ -16,9 +16,10 @@ const meta: Meta<typeof About> = {
   },
 
   args: {
-    workflows: mockAbout.workflows,
     body: mockAbout.body,
     location: 'Cleveland, OH',
+    mode: mockAbout.mode,
+    status: true,
   },
   argTypes: {
     className: {
@@ -36,9 +37,14 @@ const meta: Meta<typeof About> = {
       description: 'Summary of about me in Portable Text Blocks',
     },
 
-    workflows: {
+    status: {
+      control: 'boolean',
+      description: 'Determine whether available for hiring',
+    },
+
+    mode: {
       control: false,
-      description: 'How I think and work',
+      description: 'Array of strings',
     },
   },
 };
@@ -47,5 +53,5 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  render: (args) => <About {...args} />,
+  render: (args) => <AboutSection {...args} />,
 };

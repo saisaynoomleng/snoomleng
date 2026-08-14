@@ -5,12 +5,12 @@ import { twMerge } from 'tailwind-merge';
 import clsx from 'clsx';
 import { formatYear } from '@snoomleng/utils';
 
-type EmployementsProps = {
+export type EmployementSectionProps = {
   className?: string;
-  employments: Employment[];
+  employments: EmploymentProps[];
 };
 
-export type Employment = {
+export type EmploymentProps = {
   _id: string;
   body: PortableTextBlock[];
   name: string;
@@ -19,10 +19,10 @@ export type Employment = {
   endedAt: string | null;
 };
 
-export const Employments = ({
+export const EmploymentSection = ({
   className,
   employments,
-}: EmployementsProps): React.JSX.Element => {
+}: EmployementSectionProps): React.JSX.Element => {
   return (
     <Bounded
       className={twMerge(clsx('', className))}

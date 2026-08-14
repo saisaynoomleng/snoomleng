@@ -1,3 +1,4 @@
+import { handleContactForm } from '@/actions/handleContactForm';
 import { RenderAction } from '@/components/RenderAction';
 import { RenderMedia } from '@/components/RenderMedia';
 import { sanityFetch } from '@/sanity/live';
@@ -5,41 +6,38 @@ import {
   ABOUT_QUERY,
   ALL_EMPLOYMENTS_QUERY,
   ALL_PROJECTS_QUERY,
+  HOME_PAGE_QUERY,
   MAIN_HERO_QUERY,
   SITE_SETTINGS_QUERY,
   TECHSTACK_QUERY,
 } from '@/sanity/query';
 import {
-  About,
+  AboutSection,
   Bounded,
-  ContactForm,
+  ContactFormSection,
   CTA,
-  Employment,
-  Employments,
-  Hero,
+  EmploymentSection,
+  EmploymentProps,
+  HeroSection,
   PortableTextBlock,
   Project,
-  Projects,
+  ProjectSection,
   Separator,
-  TechProps,
-  TechStack,
-  Workflow,
+  TechnologySection,
+  TechnologyProps,
 } from '@snoomleng/ui';
 
 export default async function Home() {
-  const { data: hero } = await sanityFetch({ query: MAIN_HERO_QUERY });
-  const { data: technologies } = await sanityFetch({ query: TECHSTACK_QUERY });
-  const { data: about } = await sanityFetch({ query: ABOUT_QUERY });
-  const { data: setting } = await sanityFetch({ query: SITE_SETTINGS_QUERY });
-  const { data: projects } = await sanityFetch({ query: ALL_PROJECTS_QUERY });
-  const { data: employments } = await sanityFetch({
-    query: ALL_EMPLOYMENTS_QUERY,
-  });
+  const { data: homepage } = await sanityFetch({ query: HOME_PAGE_QUERY });
+
+  if (!homepage) return <>Loading...</>;
+
+  const { hero, projects, about, technology, settings, employments } = homepage;
 
   return (
     <Bounded spacing="lg">
       {hero && (
-        <Hero
+        <HeroSection
           title={hero.title || ''}
           body={hero.body as PortableTextBlock[]}
           actions={hero.actions as CTA[]}
@@ -51,25 +49,24 @@ export default async function Home() {
       )}
 
       {about && (
-        <About
+        <AboutSection
           body={about.body as PortableTextBlock[]}
-          workflows={about.workflows as Workflow[]}
           location={
-            setting?.contactInfo
-              ? `${setting.contactInfo.city}, ${setting.contactInfo.state}`
+            settings?.contactInfo
+              ? `${settings.contactInfo.city}, ${settings.contactInfo.state}`
               : ''
           }
+          mode={settings?.mode as string[]}
+          status={true}
         />
       )}
 
-      <Separator />
-
-      {technologies && <TechStack techs={technologies as TechProps[]} />}
-
-      <Separator />
+      {technology && (
+        <TechnologySection techs={technology as TechnologyProps[]} />
+      )}
 
       {projects && (
-        <Projects
+        <ProjectSection
           projects={projects as Project[]}
           renderAction={(props) =>
             RenderAction({ props, className: 'hover:text-primary' })
@@ -77,13 +74,11 @@ export default async function Home() {
         />
       )}
 
-      <Separator />
+      {employments && (
+        <EmploymentSection employments={employments as EmploymentProps[]} />
+      )}
 
-      {employments && <Employments employments={employments as Employment[]} />}
-
-      <Separator />
-
-      <ContactForm />
+      <ContactFormSection action={handleContactForm} />
     </Bounded>
   );
 }
