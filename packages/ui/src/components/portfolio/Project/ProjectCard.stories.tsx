@@ -18,7 +18,17 @@ const meta: Meta<typeof Projects> = {
   args: {
     projects: mockProject,
   },
-  argTypes: {},
+  argTypes: {
+    className: {
+      control: 'text',
+      description: 'Additional TailwindCSS classes',
+    },
+
+    projects: {
+      control: false,
+      description: 'Array of Project Data',
+    },
+  },
 };
 
 export default meta;
