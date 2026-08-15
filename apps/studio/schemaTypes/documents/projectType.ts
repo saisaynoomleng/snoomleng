@@ -72,6 +72,10 @@ export const projectType = defineType({
       type: 'imageWithAlt',
       validation: (rule) => rule.required(),
     }),
+    defineField({
+      name: 'seo',
+      type: 'seo',
+    }),
   ],
   preview: {
     select: {

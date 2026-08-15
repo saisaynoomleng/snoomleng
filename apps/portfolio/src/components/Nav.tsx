@@ -5,7 +5,7 @@ import { Button } from '@snoomleng/ui';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 
@@ -66,13 +66,21 @@ export const MobileNav = ({
   const [open, setOpen] = useState<boolean>(false);
   const pathname = usePathname();
 
+  useEffect(() => {
+    document.body.style.overflowY = open ? 'hidden' : '';
+
+    return () => {
+      document.body.style.overflowY = '';
+    };
+  }, [open]);
+
   if (!links) return null;
 
   return (
     <>
       <Button
         variant="outline"
-        className="relative z-10 shadow-none! md:hidden"
+        className="relative z-50 shadow-none! md:hidden"
         onClick={() => setOpen((prevOpen) => !prevOpen)}
       >
         {open ? (
@@ -91,7 +99,7 @@ export const MobileNav = ({
         aria-label="main menu"
         className={twMerge(
           clsx(
-            'md:hidden flex flex-col fixed bg-primary/10 inset-0 backdrop-blur-2xl transition-transform duration-200 ease-in-out justify-center items-center gap-y-4',
+            'md:hidden flex flex-col fixed bg-primary/10 inset-0 backdrop-blur-2xl transition-transform duration-200 ease-in-out justify-center items-center gap-y-4 z-40',
             open ? 'translate-y-0' : '-translate-y-full',
           ),
         )}

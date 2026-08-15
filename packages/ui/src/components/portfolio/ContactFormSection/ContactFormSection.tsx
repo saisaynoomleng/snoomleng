@@ -57,6 +57,7 @@ export const ContactFormSection = ({
       className={twMerge(clsx('flex flex-col gap-y-4', className))}
       size="full"
       padding="none"
+      id="contacts"
     >
       <SectionTitle label="Let's Work Together" />
 

@@ -218,6 +218,9 @@
   * {
     @apply border-border outline-ring/50;
   }
+  html {
+    @apply scroll-smooth;
+  }
   body {
     @apply bg-background text-foreground text-fs-400 overflow-x-hidden tracking-normal leading-normal font-body font-normal;
   }
@@ -238,4 +241,8 @@
   box-shadow: 5px 4px 0px -1px rgba(15, 15, 15, 1);
   -webkit-box-shadow: 5px 4px 0px -1px rgba(15, 15, 15, 1);
   -moz-box-shadow: 5px 4px 0px -1px rgba(15, 15, 15, 1);
+}
+
+@utility link-url {
+  @apply hover:underline underline-offset-2 decoration-primary decoration-wavy;
 }
