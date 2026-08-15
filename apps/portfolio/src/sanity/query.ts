@@ -1,12 +1,24 @@
 import { defineQuery } from 'next-sanity';
 
-export const SITE_SETTINGS_QUERY = defineQuery(`*[_type == 'siteSetting'][0]{
+export const HEADER_QUERY = defineQuery(`*[_type == 'siteSetting'][0]{
   contactInfo,
-  footerColumns,
   navigation[],
   "logoUrl": primaryLogo.asset->url,
   "logoAlt": primaryLogo.alt,
-  socialLinks[]
+}`);
+
+export const FOOTER_QUERY = defineQuery(`*[_type == 'siteSetting'][0]{
+  contactInfo,
+  footerColumns,
+  "logoUrl": primaryLogo.asset->url,
+  "logoAlt": primaryLogo.alt,
+  socialLinks[]{
+    _key,
+    icon,
+    platform,
+    url
+  },
+  footerText,
 }`);
 
 export const HOME_PAGE_QUERY = defineQuery(`{

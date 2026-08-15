@@ -4,7 +4,7 @@ import { twMerge } from 'tailwind-merge';
 import Image from 'next/image';
 import { urlFor } from '@/sanity/image';
 import { sanityFetch } from '@/sanity/live';
-import { SITE_SETTINGS_QUERY } from '@/sanity/query';
+import { HEADER_QUERY } from '@/sanity/query';
 import React from 'react';
 import { Button } from '@snoomleng/ui';
 import { DesktopNav, MobileNav } from './Nav';
@@ -16,7 +16,7 @@ type HeaderProps = {
 export const Header = async ({
   className,
 }: HeaderProps): Promise<React.JSX.Element> => {
-  const { data: settings } = await sanityFetch({ query: SITE_SETTINGS_QUERY });
+  const { data: settings } = await sanityFetch({ query: HEADER_QUERY });
 
   if (!settings) return <>Loading...</>;
 

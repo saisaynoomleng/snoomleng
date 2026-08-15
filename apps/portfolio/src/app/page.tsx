@@ -14,7 +14,6 @@ import {
   PortableTextBlock,
   Project,
   ProjectSection,
-  Separator,
   TechnologySection,
   TechnologyProps,
 } from '@snoomleng/ui';

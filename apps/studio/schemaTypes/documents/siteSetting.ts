@@ -38,6 +38,7 @@ export const siteSetting = defineType({
       type: 'array',
       of: [{type: 'socialLink'}],
       group: 'branding',
+      validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'contactInfo',
@@ -170,6 +171,13 @@ export const siteSetting = defineType({
           ],
         }),
       ],
+    }),
+    defineField({
+      name: 'footerText',
+      title: 'Footer Text',
+      type: 'text',
+      validation: (rule) => rule.required(),
+      group: 'footer',
     }),
   ],
 })

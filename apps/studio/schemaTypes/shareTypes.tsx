@@ -95,10 +95,12 @@ export const seo = defineType({
 export const socialLink = defineType({
   name: 'socialLink',
   type: 'object',
+  validation: (rule) => rule.required(),
   fields: [
     defineField({
       name: 'platform',
       type: 'string',
+      validation: (rule) => rule.required(),
       options: {
         list: [
           {title: 'LinkedIn', value: 'linked-in'},
@@ -110,6 +112,10 @@ export const socialLink = defineType({
     defineField({
       name: 'url',
       type: 'url',
+    }),
+    defineField({
+      name: 'icon',
+      type: 'string',
     }),
   ],
   preview: {

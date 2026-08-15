@@ -79,6 +79,15 @@ export type Project = {
   body?: BlockContent;
   type?: string;
   mainImage?: ImageWithAlt;
+  seo?: Seo;
+};
+
+export type Seo = {
+  _type: 'seo';
+  metaTitle?: string;
+  metaDescription?: string;
+  ogImage?: ImageWithAlt;
+  noIndex?: boolean;
 };
 
 export type SanityImageAssetReference = {
@@ -194,20 +203,13 @@ export type SiteSetting = {
     _type: 'footerColumn';
     _key: string;
   }>;
+  footerText?: string;
 };
 
 export type SocialLink = {
   _type: 'socialLink';
   platform?: 'linked-in' | 'git-hub' | 'leet-code';
   url?: string;
-};
-
-export type Seo = {
-  _type: 'seo';
-  metaTitle?: string;
-  metaDescription?: string;
-  ogImage?: ImageWithAlt;
-  noIndex?: boolean;
 };
 
 export type SanityImageCrop = {
@@ -354,6 +356,7 @@ export type AllSanitySchemaTypes =
   | BlockContent
   | Slug
   | Project
+  | Seo
   | SanityImageAssetReference
   | ImageWithAlt
   | Technology
@@ -361,7 +364,6 @@ export type AllSanitySchemaTypes =
   | Hero
   | SiteSetting
   | SocialLink
-  | Seo
   | SanityImageCrop
   | SanityImageHotspot
   | MediaFolderReference
@@ -377,9 +379,32 @@ export type AllSanitySchemaTypes =
   | Geopoint;
 
 // Source: src/sanity/query.ts
-// Variable: SITE_SETTINGS_QUERY
-// Query: *[_type == 'siteSetting'][0]{  contactInfo,  footerColumns,  navigation[],  "logoUrl": primaryLogo.asset->url,  "logoAlt": primaryLogo.alt,  socialLinks[]}
-export type SITE_SETTINGS_QUERY_RESULT = {
+// Variable: HEADER_QUERY
+// Query: *[_type == 'siteSetting'][0]{  contactInfo,  navigation[],  "logoUrl": primaryLogo.asset->url,  "logoAlt": primaryLogo.alt,}
+export type HEADER_QUERY_RESULT = {
+  contactInfo: {
+    email?: string;
+    linkedInUrl?: string;
+    leetCodeURL?: string;
+    gitHubURL?: string;
+    city?: string;
+    state?: string;
+  } | null;
+  navigation: Array<{
+    label?: string;
+    href?: string;
+    isButton?: boolean;
+    _type: 'navLink';
+    _key: string;
+  }> | null;
+  logoUrl: string | null;
+  logoAlt: string | null;
+} | null;
+
+// Source: src/sanity/query.ts
+// Variable: FOOTER_QUERY
+// Query: *[_type == 'siteSetting'][0]{  contactInfo,  footerColumns,  "logoUrl": primaryLogo.asset->url,  "logoAlt": primaryLogo.alt,  socialLinks[]{    _key,    icon,    platform,    url  },  footerText,}
+export type FOOTER_QUERY_RESULT = {
   contactInfo: {
     email?: string;
     linkedInUrl?: string;
@@ -399,20 +424,15 @@ export type SITE_SETTINGS_QUERY_RESULT = {
     _type: 'footerColumn';
     _key: string;
   }> | null;
-  navigation: Array<{
-    label?: string;
-    href?: string;
-    isButton?: boolean;
-    _type: 'navLink';
-    _key: string;
-  }> | null;
   logoUrl: string | null;
   logoAlt: string | null;
-  socialLinks: Array<
-    {
-      _key: string;
-    } & SocialLink
-  > | null;
+  socialLinks: Array<{
+    _key: string;
+    icon: null;
+    platform: 'git-hub' | 'leet-code' | 'linked-in' | null;
+    url: string | null;
+  }> | null;
+  footerText: string | null;
 } | null;
 
 // Source: src/sanity/query.ts
@@ -487,7 +507,8 @@ export type HOME_PAGE_QUERY_RESULT = {
 import '@sanity/client';
 declare module '@sanity/client' {
   interface SanityQueries {
-    '*[_type == \'siteSetting\'][0]{\n  contactInfo,\n  footerColumns,\n  navigation[],\n  "logoUrl": primaryLogo.asset->url,\n  "logoAlt": primaryLogo.alt,\n  socialLinks[]\n}': SITE_SETTINGS_QUERY_RESULT;
+    '*[_type == \'siteSetting\'][0]{\n  contactInfo,\n  navigation[],\n  "logoUrl": primaryLogo.asset->url,\n  "logoAlt": primaryLogo.alt,\n}': HEADER_QUERY_RESULT;
+    '*[_type == \'siteSetting\'][0]{\n  contactInfo,\n  footerColumns,\n  "logoUrl": primaryLogo.asset->url,\n  "logoAlt": primaryLogo.alt,\n  socialLinks[]{\n    _key,\n    icon,\n    platform,\n    url\n  },\n  footerText,\n}': FOOTER_QUERY_RESULT;
     '{\n  "settings": *[_type == \'siteSetting\'][0]{\n      contactInfo,\n      "logoUrl": primaryLogo.asset->url,\n      "logoAlt": primaryLogo.alt,\n      socialLinks[],\n      mode\n  },\n  "hero": *[_type == \'hero\'\n   && slug.current == "home-page"][0]{\n      _id,\n      title,\n      body,\n      actions[]{\n        _key,\n        label,\n        href\n      },\n      "imageUrl": mainImage.asset->url,\n      "imageAlt": mainImage.alt,\n      position[],\n   },\n  "technology": *[_type == \'technology\'\n   && defined(slug.current)]{\n      _id,\n      name,\n      icon\n  },\n  "projects": *[_type == \'project\'\n   && defined(slug.current)]\n    | order(createdAt){\n      _id,\n      name,\n      "slug": slug.current,\n      startedAt,\n      endedAt,\n      excerpt,\n      links[]{\n        _key,\n        label,\n        url\n      },\n      stacks[],\n      type\n    },\n  "employments": *[_type == \'employment\'\n   && defined(slug.current)]\n    | order(startedAt desc){\n      _id,\n      body,\n      name,\n      companyName,\n      startedAt,\n      endedAt\n   },\n  "about": *[_type == \'about\'\n    && slug.current == \'about\'][0]{\n      body,\n }\n}': HOME_PAGE_QUERY_RESULT;
   }
 }
