@@ -14,10 +14,10 @@ export type ProjectDisplayCardProps = {
   media: Media;
   renderMedia: (props: Media) => React.ReactElement;
   name: string;
-  type: keyof typeof projectIconMap;
+  type: string;
 };
 
-export const projectIconMap = {
+const projectIconMap = {
   property: RiHotelLine,
   'health-care': MdHealthAndSafety,
   'e-commerce': PiShoppingBagFill,
@@ -31,7 +31,7 @@ export const ProjectDisplayCard = ({
   name,
   type,
 }: ProjectDisplayCardProps): React.JSX.Element => {
-  const Icon = projectIconMap[type];
+  const Icon = projectIconMap[type as keyof typeof projectIconMap];
 
   return (
     <div

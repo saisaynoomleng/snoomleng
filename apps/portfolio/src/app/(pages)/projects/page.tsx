@@ -1,9 +1,16 @@
-import { Bounded, SectionTitle } from '@snoomleng/ui';
-import React from 'react';
+import {
+  Bounded,
+  ProjectDisplayCard,
+  ProjectDisplayCardSkeleton,
+  SectionTitle,
+} from '@snoomleng/ui';
+import React, { Suspense } from 'react';
 import type { Metadata } from 'next';
 import { sanityFetch } from '@/sanity/live';
 import { ALL_PROJECTS_QUERY } from '@/sanity/query';
 import { notFound } from 'next/navigation';
+import Link from 'next/link';
+import { RenderMedia } from '@/components/RenderMedia';
 
 export const metadata: Metadata = {
   title: 'Projects',
@@ -26,6 +33,21 @@ const ProjectsPage = async (): Promise<React.JSX.Element> => {
           a journey of solving problems, designing solutions, and building
           reliable experiences from concept to completion.
         </p>
+      </div>
+
+      <div className="grid md:grid-cols-4 md:gap-x-4 gap-y-4">
+        {projects.map((p) => (
+          <Suspense key={p._id} fallback={<ProjectDisplayCardSkeleton />}>
+            <Link href={`/projects/${p.slug}`}>
+              <ProjectDisplayCard
+                name={p.name || ''}
+                type={p.type || ''}
+                media={{ src: p.imageUrl || '', alt: p.imageAlt || '' }}
+                renderMedia={(props) => RenderMedia({ props })}
+              />
+            </Link>
+          </Suspense>
+        ))}
       </div>
     </Bounded>
   );
