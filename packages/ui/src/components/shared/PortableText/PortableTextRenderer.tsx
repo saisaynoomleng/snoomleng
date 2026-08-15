@@ -22,7 +22,9 @@ export const PortableTextRenderer = ({
       as="div"
       size="full"
       padding="none"
-      className={twMerge(clsx('prose', className))}
+      className={twMerge(
+        clsx('prose prose-sm md:prose-lg min-w-full', className),
+      )}
     >
       <PortableText value={value} components={component} />
     </Bounded>

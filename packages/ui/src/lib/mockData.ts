@@ -564,3 +564,10 @@ export const mockProjectCards = [
     type: 'e-commerce',
   },
 ];
+
+export const mockProjectDetailTable = {
+  endedAt: '2026-08-20',
+  name: 'snoomleng',
+  type: 'portfolio',
+  startedAt: '2026-08-08',
+};

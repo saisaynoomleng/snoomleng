@@ -9,6 +9,7 @@ import { CiLink } from 'react-icons/ci';
 import React from 'react';
 import { Project } from './ProjectSection';
 import { CallToAction, formatDate } from '@snoomleng/utils';
+import { ProjectLink } from '../ProjectLink';
 
 export type ProjectCardProps = {
   projects: Project[];
@@ -66,25 +67,11 @@ export const ProjectCard = ({
                 })}
 
                 {p.links.map((link) => (
-                  <Tooltip key={link._key}>
-                    <TooltipTrigger asChild>
-                      <a
-                        rel="noreferrer noindex"
-                        href={link.url}
-                        aria-label={link.label}
-                        className="text-fs-500 font-semibold hover:text-primary"
-                      >
-                        <span>
-                          {link.label === 'Repo' ? (
-                            <SiGithub aria-hidden={true} />
-                          ) : (
-                            <CiLink aria-hidden={true} />
-                          )}
-                        </span>
-                      </a>
-                    </TooltipTrigger>
-                    <TooltipContent>{link.label}</TooltipContent>
-                  </Tooltip>
+                  <ProjectLink
+                    key={link._key}
+                    href={link.url}
+                    label={link.label}
+                  />
                 ))}
               </div>
             </div>
