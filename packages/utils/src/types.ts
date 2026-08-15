@@ -29,3 +29,10 @@ export type ActionResponse<T> =
  */
 export type ImageResponse =
   { success: true; file: File } | { success: false; message: string };
+
+/**
+ * Slug Params
+ */
+export type SlugParamsProps = {
+  params: Promise<{ slug: string }>;
+};

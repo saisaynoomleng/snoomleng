@@ -553,6 +553,30 @@ export type ALL_PROJECTS_QUERY_RESULT = Array<{
   type: string | null;
 }>;
 
+// Source: src/sanity/query.ts
+// Variable: PROJECT_QUERY
+// Query: *[_type == 'project'  && slug.current == $slug][0]{    body,    startedAt,    endedAt,    links[]{      _key,      label,      url    },    name,    seo{      metaTitle,      metaDescription,      "imageUrl": ogImage.asset->url,      "imageAlt": ogImage.alt    },    stacks[],    type,    "slug": slug.current}
+export type PROJECT_QUERY_RESULT = {
+  body: BlockContent | null;
+  startedAt: string | null;
+  endedAt: string | null;
+  links: Array<{
+    _key: string;
+    label: string | null;
+    url: string | null;
+  }> | null;
+  name: string | null;
+  seo: {
+    metaTitle: string | null;
+    metaDescription: string | null;
+    imageUrl: string | null;
+    imageAlt: string | null;
+  } | null;
+  stacks: Array<string> | null;
+  type: string | null;
+  slug: string | null;
+} | null;
+
 // Query TypeMap
 import '@sanity/client';
 declare module '@sanity/client' {
@@ -562,5 +586,6 @@ declare module '@sanity/client' {
     '{\n  "settings": *[_type == \'siteSetting\'][0]{\n      contactInfo,\n      "logoUrl": primaryLogo.asset->url,\n      "logoAlt": primaryLogo.alt,\n      socialLinks[],\n      mode\n  },\n  "hero": *[_type == \'hero\'\n   && slug.current == "home-page"][0]{\n      _id,\n      title,\n      body,\n      actions[]{\n        _key,\n        label,\n        href\n      },\n      "imageUrl": mainImage.asset->url,\n      "imageAlt": mainImage.alt,\n      position[],\n   },\n  "technology": *[_type == \'technology\'\n   && defined(slug.current)]{\n      _id,\n      name,\n      icon\n  },\n  "projects": *[_type == \'project\'\n   && defined(slug.current)]\n    | order(createdAt){\n      _id,\n      name,\n      "slug": slug.current,\n      startedAt,\n      endedAt,\n      excerpt,\n      links[]{\n        _key,\n        label,\n        url\n      },\n      stacks[],\n      type\n    },\n  "employments": *[_type == \'employment\'\n   && defined(slug.current)]\n    | order(startedAt desc){\n      _id,\n      body,\n      name,\n      companyName,\n      startedAt,\n      endedAt\n   },\n  "about": *[_type == \'about\'\n    && slug.current == \'about\'][0]{\n      body,\n }\n}': HOME_PAGE_QUERY_RESULT;
     '{\n  "detail": *[_type == \'about\'\n    && slug.current == \'about\'][0]{\n      body,\n      name,\n      workFlow[]{\n        _key,\n        body,\n        title\n      },\n      expertises[]{\n        _key,\n        body,\n        title\n      }\n    },\n  "hero": *[_type == \'hero\'\n    && slug.current == \'about-page\'][0]{\n        title,\n        body,\n        actions[0]{\n          _key,\n          label,\n          href\n        },\n        "imageUrl": mainImage.asset->url,\n        "imageAlt": mainImage.alt,\n        position[],\n    }\n}': ABOUT_PAGE_QUERY_RESULT;
     '*[_type == \'project\'\n  && defined(slug.current)]\n  | order(createdAt desc){\n    _id,\n    name,\n    "slug": slug.current,\n    "imageUrl": mainImage.asset->url,\n    "imageAlt": mainImage.alt,\n    type\n}': ALL_PROJECTS_QUERY_RESULT;
+    '*[_type == \'project\'\n  && slug.current == $slug][0]{\n    body,\n    startedAt,\n    endedAt,\n    links[]{\n      _key,\n      label,\n      url\n    },\n    name,\n    seo{\n      metaTitle,\n      metaDescription,\n      "imageUrl": ogImage.asset->url,\n      "imageAlt": ogImage.alt\n    },\n    stacks[],\n    type,\n    "slug": slug.current\n}\n  ': PROJECT_QUERY_RESULT;
   }
 }

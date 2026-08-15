@@ -123,3 +123,26 @@ export const ALL_PROJECTS_QUERY = defineQuery(`*[_type == 'project'
     "imageAlt": mainImage.alt,
     type
 }`);
+
+export const PROJECT_QUERY = defineQuery(`*[_type == 'project'
+  && slug.current == $slug][0]{
+    body,
+    startedAt,
+    endedAt,
+    links[]{
+      _key,
+      label,
+      url
+    },
+    name,
+    seo{
+      metaTitle,
+      metaDescription,
+      "imageUrl": ogImage.asset->url,
+      "imageAlt": ogImage.alt
+    },
+    stacks[],
+    type,
+    "slug": slug.current
+}
+  `);
