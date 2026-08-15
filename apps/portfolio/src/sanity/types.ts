@@ -134,6 +134,11 @@ export type About = {
   name?: string;
   slug?: Slug;
   body?: BlockContent;
+  expertises?: Array<{
+    title?: string;
+    body?: BlockContent;
+    _key: string;
+  }>;
   workFlow?: Array<{
     title?: string;
     body?: string;
@@ -210,6 +215,7 @@ export type SocialLink = {
   _type: 'socialLink';
   platform?: 'linked-in' | 'git-hub' | 'leet-code';
   url?: string;
+  icon?: string;
 };
 
 export type SanityImageCrop = {
@@ -428,7 +434,7 @@ export type FOOTER_QUERY_RESULT = {
   logoAlt: string | null;
   socialLinks: Array<{
     _key: string;
-    icon: null;
+    icon: string | null;
     platform: 'git-hub' | 'leet-code' | 'linked-in' | null;
     url: string | null;
   }> | null;
@@ -503,6 +509,38 @@ export type HOME_PAGE_QUERY_RESULT = {
   } | null;
 };
 
+// Source: src/sanity/query.ts
+// Variable: ABOUT_PAGE_QUERY
+// Query: {  "detail": *[_type == 'about'    && slug.current == 'about'][0]{      body,      name,      workFlow[]{        _key,        body,        title      },      expertises[]{        _key,        body,        title      }    },  "hero": *[_type == 'hero'    && slug.current == 'about-page'][0]{        title,        body,        actions[0]{          _key,          label,          href        },        "imageUrl": mainImage.asset->url,        "imageAlt": mainImage.alt,        position[],    }}
+export type ABOUT_PAGE_QUERY_RESULT = {
+  detail: {
+    body: BlockContent | null;
+    name: string | null;
+    workFlow: Array<{
+      _key: string;
+      body: string | null;
+      title: string | null;
+    }> | null;
+    expertises: Array<{
+      _key: string;
+      body: BlockContent | null;
+      title: string | null;
+    }> | null;
+  } | null;
+  hero: {
+    title: string | null;
+    body: BlockContent | null;
+    actions: {
+      _key: string;
+      label: string | null;
+      href: string | null;
+    } | null;
+    imageUrl: string | null;
+    imageAlt: string | null;
+    position: Array<string> | null;
+  } | null;
+};
+
 // Query TypeMap
 import '@sanity/client';
 declare module '@sanity/client' {
@@ -510,5 +548,6 @@ declare module '@sanity/client' {
     '*[_type == \'siteSetting\'][0]{\n  contactInfo,\n  navigation[],\n  "logoUrl": primaryLogo.asset->url,\n  "logoAlt": primaryLogo.alt,\n}': HEADER_QUERY_RESULT;
     '*[_type == \'siteSetting\'][0]{\n  contactInfo,\n  footerColumns,\n  "logoUrl": primaryLogo.asset->url,\n  "logoAlt": primaryLogo.alt,\n  socialLinks[]{\n    _key,\n    icon,\n    platform,\n    url\n  },\n  footerText,\n}': FOOTER_QUERY_RESULT;
     '{\n  "settings": *[_type == \'siteSetting\'][0]{\n      contactInfo,\n      "logoUrl": primaryLogo.asset->url,\n      "logoAlt": primaryLogo.alt,\n      socialLinks[],\n      mode\n  },\n  "hero": *[_type == \'hero\'\n   && slug.current == "home-page"][0]{\n      _id,\n      title,\n      body,\n      actions[]{\n        _key,\n        label,\n        href\n      },\n      "imageUrl": mainImage.asset->url,\n      "imageAlt": mainImage.alt,\n      position[],\n   },\n  "technology": *[_type == \'technology\'\n   && defined(slug.current)]{\n      _id,\n      name,\n      icon\n  },\n  "projects": *[_type == \'project\'\n   && defined(slug.current)]\n    | order(createdAt){\n      _id,\n      name,\n      "slug": slug.current,\n      startedAt,\n      endedAt,\n      excerpt,\n      links[]{\n        _key,\n        label,\n        url\n      },\n      stacks[],\n      type\n    },\n  "employments": *[_type == \'employment\'\n   && defined(slug.current)]\n    | order(startedAt desc){\n      _id,\n      body,\n      name,\n      companyName,\n      startedAt,\n      endedAt\n   },\n  "about": *[_type == \'about\'\n    && slug.current == \'about\'][0]{\n      body,\n }\n}': HOME_PAGE_QUERY_RESULT;
+    '{\n  "detail": *[_type == \'about\'\n    && slug.current == \'about\'][0]{\n      body,\n      name,\n      workFlow[]{\n        _key,\n        body,\n        title\n      },\n      expertises[]{\n        _key,\n        body,\n        title\n      }\n    },\n  "hero": *[_type == \'hero\'\n    && slug.current == \'about-page\'][0]{\n        title,\n        body,\n        actions[0]{\n          _key,\n          label,\n          href\n        },\n        "imageUrl": mainImage.asset->url,\n        "imageAlt": mainImage.alt,\n        position[],\n    }\n}': ABOUT_PAGE_QUERY_RESULT;
   }
 }

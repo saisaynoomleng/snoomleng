@@ -1,6 +1,6 @@
 'use client';
 
-import { SITE_SETTINGS_QUERY_RESULT } from '@/sanity/types';
+import { HEADER_QUERY_RESULT } from '@/sanity/types';
 import { Button } from '@snoomleng/ui';
 import clsx from 'clsx';
 import Link from 'next/link';
@@ -13,7 +13,7 @@ import { RxHamburgerMenu } from 'react-icons/rx';
 import { IoClose } from 'react-icons/io5';
 
 type NavLinksProps = {
-  links: NonNullable<SITE_SETTINGS_QUERY_RESULT>['navigation'];
+  links: NonNullable<HEADER_QUERY_RESULT>['navigation'];
 };
 
 export const DesktopNav = ({

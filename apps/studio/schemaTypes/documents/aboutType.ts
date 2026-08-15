@@ -25,6 +25,25 @@ export const aboutType = defineType({
       type: 'blockContent',
     }),
     defineField({
+      name: 'expertises',
+      type: 'array',
+      of: [
+        defineArrayMember({
+          type: 'object',
+          fields: [
+            defineField({
+              name: 'title',
+              type: 'string',
+            }),
+            defineField({
+              name: 'body',
+              type: 'blockContent',
+            }),
+          ],
+        }),
+      ],
+    }),
+    defineField({
       name: 'workFlow',
       type: 'array',
       of: [

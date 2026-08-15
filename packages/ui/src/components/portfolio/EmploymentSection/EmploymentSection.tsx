@@ -52,7 +52,7 @@ export const EmploymentSection = ({
             </div>
 
             {e.body && (
-              <div className="prose prose-sm">
+              <div className="prose prose-sm min-w-full">
                 <PortableTextRenderer value={e.body} />
               </div>
             )}
