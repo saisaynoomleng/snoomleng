@@ -81,3 +81,34 @@ export const HOME_PAGE_QUERY = defineQuery(`{
       body,
  }
 }`);
+
+export const ABOUT_PAGE_QUERY = defineQuery(`{
+  "detail": *[_type == 'about'
+    && slug.current == 'about'][0]{
+      body,
+      name,
+      workFlow[]{
+        _key,
+        body,
+        title
+      },
+      expertises[]{
+        _key,
+        body,
+        title
+      }
+    },
+  "hero": *[_type == 'hero'
+    && slug.current == 'about-page'][0]{
+        title,
+        body,
+        actions[0]{
+          _key,
+          label,
+          href
+        },
+        "imageUrl": mainImage.asset->url,
+        "imageAlt": mainImage.alt,
+        position[],
+    }
+}`);
