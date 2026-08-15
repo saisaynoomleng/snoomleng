@@ -541,6 +541,18 @@ export type ABOUT_PAGE_QUERY_RESULT = {
   } | null;
 };
 
+// Source: src/sanity/query.ts
+// Variable: ALL_PROJECTS_QUERY
+// Query: *[_type == 'project'  && defined(slug.current)]  | order(createdAt desc){    _id,    name,    "slug": slug.current,    "imageUrl": mainImage.asset->url,    "imageAlt": mainImage.alt,    type}
+export type ALL_PROJECTS_QUERY_RESULT = Array<{
+  _id: string;
+  name: string | null;
+  slug: string | null;
+  imageUrl: string | null;
+  imageAlt: string | null;
+  type: string | null;
+}>;
+
 // Query TypeMap
 import '@sanity/client';
 declare module '@sanity/client' {
@@ -549,5 +561,6 @@ declare module '@sanity/client' {
     '*[_type == \'siteSetting\'][0]{\n  contactInfo,\n  footerColumns,\n  "logoUrl": primaryLogo.asset->url,\n  "logoAlt": primaryLogo.alt,\n  socialLinks[]{\n    _key,\n    icon,\n    platform,\n    url\n  },\n  footerText,\n}': FOOTER_QUERY_RESULT;
     '{\n  "settings": *[_type == \'siteSetting\'][0]{\n      contactInfo,\n      "logoUrl": primaryLogo.asset->url,\n      "logoAlt": primaryLogo.alt,\n      socialLinks[],\n      mode\n  },\n  "hero": *[_type == \'hero\'\n   && slug.current == "home-page"][0]{\n      _id,\n      title,\n      body,\n      actions[]{\n        _key,\n        label,\n        href\n      },\n      "imageUrl": mainImage.asset->url,\n      "imageAlt": mainImage.alt,\n      position[],\n   },\n  "technology": *[_type == \'technology\'\n   && defined(slug.current)]{\n      _id,\n      name,\n      icon\n  },\n  "projects": *[_type == \'project\'\n   && defined(slug.current)]\n    | order(createdAt){\n      _id,\n      name,\n      "slug": slug.current,\n      startedAt,\n      endedAt,\n      excerpt,\n      links[]{\n        _key,\n        label,\n        url\n      },\n      stacks[],\n      type\n    },\n  "employments": *[_type == \'employment\'\n   && defined(slug.current)]\n    | order(startedAt desc){\n      _id,\n      body,\n      name,\n      companyName,\n      startedAt,\n      endedAt\n   },\n  "about": *[_type == \'about\'\n    && slug.current == \'about\'][0]{\n      body,\n }\n}': HOME_PAGE_QUERY_RESULT;
     '{\n  "detail": *[_type == \'about\'\n    && slug.current == \'about\'][0]{\n      body,\n      name,\n      workFlow[]{\n        _key,\n        body,\n        title\n      },\n      expertises[]{\n        _key,\n        body,\n        title\n      }\n    },\n  "hero": *[_type == \'hero\'\n    && slug.current == \'about-page\'][0]{\n        title,\n        body,\n        actions[0]{\n          _key,\n          label,\n          href\n        },\n        "imageUrl": mainImage.asset->url,\n        "imageAlt": mainImage.alt,\n        position[],\n    }\n}': ABOUT_PAGE_QUERY_RESULT;
+    '*[_type == \'project\'\n  && defined(slug.current)]\n  | order(createdAt desc){\n    _id,\n    name,\n    "slug": slug.current,\n    "imageUrl": mainImage.asset->url,\n    "imageAlt": mainImage.alt,\n    type\n}': ALL_PROJECTS_QUERY_RESULT;
   }
 }

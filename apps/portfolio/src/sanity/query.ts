@@ -119,8 +119,6 @@ export const ALL_PROJECTS_QUERY = defineQuery(`*[_type == 'project'
     _id,
     name,
     "slug": slug.current,
-    startedAt,
-    endedAt,
     "imageUrl": mainImage.asset->url,
     "imageAlt": mainImage.alt,
     type

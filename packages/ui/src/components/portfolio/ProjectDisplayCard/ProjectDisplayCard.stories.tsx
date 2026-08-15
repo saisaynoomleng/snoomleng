@@ -1,7 +1,8 @@
 import type { Meta, StoryObj } from '@storybook/react-vite';
-import { ProjectDisplayCard, projectIconMap } from './ProjectDisplayCard';
+import { ProjectDisplayCard } from './ProjectDisplayCard';
 import { mockProjectCards } from '#lib/mockData';
 import { expect } from 'storybook/test';
+import { ProjectDisplayCardSkeleton } from './ProjectDisplayCardSkeleton';
 
 const meta: Meta<typeof ProjectDisplayCard> = {
   title: 'Components/Portfolio/ProjectDisplayCard',
@@ -22,7 +23,7 @@ const meta: Meta<typeof ProjectDisplayCard> = {
       alt: mockProjectCards[3]?.imageAlt as string,
     },
     name: mockProjectCards[3]?.name as string,
-    type: mockProjectCards[3]?.type as keyof typeof projectIconMap,
+    type: mockProjectCards[3]?.type as string,
   },
 
   argTypes: {
@@ -86,3 +87,5 @@ export const Default: Story = {
     await expect(type).toBeInTheDocument();
   },
 };
+
+export const Loading = () => <ProjectDisplayCardSkeleton />;
