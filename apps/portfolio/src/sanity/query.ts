@@ -112,3 +112,16 @@ export const ABOUT_PAGE_QUERY = defineQuery(`{
         position[],
     }
 }`);
+
+export const ALL_PROJECTS_QUERY = defineQuery(`*[_type == 'project'
+  && defined(slug.current)]
+  | order(createdAt desc){
+    _id,
+    name,
+    "slug": slug.current,
+    startedAt,
+    endedAt,
+    "imageUrl": mainImage.asset->url,
+    "imageAlt": mainImage.alt,
+    type
+}`);

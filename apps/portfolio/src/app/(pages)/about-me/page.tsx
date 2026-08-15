@@ -10,7 +10,7 @@ import {
   SectionTitle,
 } from '@snoomleng/ui';
 import { CallToAction } from '@snoomleng/utils';
-import { Metadata } from 'next';
+import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import React from 'react';
 

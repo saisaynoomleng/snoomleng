@@ -43,8 +43,15 @@ import {
 import { FaAws } from 'react-icons/fa';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { IoIosArrowRoundDown } from 'react-icons/io';
+import { RiHotelLine } from 'react-icons/ri';
+import { MdHealthAndSafety } from 'react-icons/md';
+import { PiShoppingBagFill } from 'react-icons/pi';
+import { BsSuitcaseLgFill } from 'react-icons/bs';
 
 const icons = [
+  <MdHealthAndSafety />,
+  <PiShoppingBagFill />,
+  <BsSuitcaseLgFill />,
   <CiSettings />,
   <MdOutlineViewQuilt />,
   <GiFiles />,
@@ -77,6 +84,7 @@ const icons = [
   <FaAws />,
   <RxHamburgerMenu />,
   <IoIosArrowRoundDown />,
+  <RiHotelLine />,
 ];
 
 const fontSizes = {

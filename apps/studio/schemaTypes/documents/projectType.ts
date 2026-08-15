@@ -66,6 +66,14 @@ export const projectType = defineType({
     defineField({
       name: 'type',
       type: 'string',
+      options: {
+        list: [
+          {title: 'Property', value: 'property'},
+          {title: 'Portfolio', value: 'portfolio'},
+          {title: 'Health Care', value: 'health-care'},
+          {title: 'E Commerce', value: 'e-commerce'},
+        ],
+      },
     }),
     defineField({
       name: 'mainImage',
