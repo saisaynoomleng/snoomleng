@@ -35,8 +35,6 @@ export const Footer = async ({
     socialLinks,
   } = footer;
 
-  console.log(socialLinks);
-
   return (
     <footer
       className={twMerge(

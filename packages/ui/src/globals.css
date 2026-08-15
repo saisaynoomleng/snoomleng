@@ -238,11 +238,38 @@
 }
 
 @utility brand-box-shadow {
-  box-shadow: 5px 4px 0px -1px rgba(15, 15, 15, 1);
-  -webkit-box-shadow: 5px 4px 0px -1px rgba(15, 15, 15, 1);
-  -moz-box-shadow: 5px 4px 0px -1px rgba(15, 15, 15, 1);
+  box-shadow: 5px 4px 0px -1px var(--color-brand-secondary-500);
+  -webkit-box-shadow: 5px 4px 0px -1px var(--color-brand-secondary-500);
+  -moz-box-shadow: 5px 4px 0px -1px var(--color-brand-secondary-500);
 }
 
 @utility link-url {
   @apply hover:underline underline-offset-2 decoration-primary decoration-wavy;
+}
+
+/* animation */
+@keyframes myRotateAnimation {
+  from {
+    transform: rotate(0);
+  }
+  50% {
+    transform: rotate(45deg);
+  }
+  75% {
+    transform: rotate(-45deg);
+  }
+  to {
+    transform: rotate(0);
+  }
+}
+
+@utility animate-brand-rotate {
+  animation-name: myRotateAnimation;
+  animation-duration: 3.4s;
+  animation-timing-function: ease;
+  animation-delay: 0s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;
+  animation-fill-mode: both;
+  animation-play-state: running;
 }

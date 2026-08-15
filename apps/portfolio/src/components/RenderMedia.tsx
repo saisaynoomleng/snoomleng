@@ -11,6 +11,8 @@ export const RenderMedia = ({ props }: { props: Media }): React.JSX.Element => {
         fill
         loading="eager"
         className="min-w-full"
+        sizes="(max-width: 500px) 100vw, 66vw"
+        priority
       />
     </div>
   );
