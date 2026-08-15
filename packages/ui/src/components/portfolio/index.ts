@@ -4,3 +4,4 @@ export * from './TechnologySection';
 export * from './ContactFormSection';
 export * from './ProjectSection';
 export * from './EmploymentSection';
+export * from './ProjectDisplayCard';

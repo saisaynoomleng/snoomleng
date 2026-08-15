@@ -529,3 +529,38 @@ export const mockEmployments = [
     startedAt: '2016-12-25',
   },
 ];
+
+export const mockProjectCards = [
+  {
+    _id: '521f9926-1db4-4326-bdf2-173d3232ddeb',
+    imageAlt: 'Properties animated',
+    imageUrl:
+      'https://cdn.sanity.io/images/h5ref3kt/production/4d8ad65968d9a8373e86e1e90244aa39c348816c-1024x1024.jpg',
+    name: 'Haru Properties',
+    type: 'property',
+  },
+  {
+    _id: '64bd3159-b9f3-4344-a044-ec479c0663c1',
+    imageAlt: 'animated developer coding ',
+    imageUrl:
+      'https://cdn.sanity.io/images/h5ref3kt/production/261ef35dee5abc9e20ffa163f10bd5c6c59489f7-736x736.jpg',
+    name: 'snoomleng',
+    type: 'portfolio',
+  },
+  {
+    _id: '8e65efd2-f156-42c7-b1ec-a6f6a3943a87',
+    imageAlt: 'animated health care hospital',
+    imageUrl:
+      'https://cdn.sanity.io/images/h5ref3kt/production/9e00958645bb96f87f0de9971daf3824a6f6bc82-736x736.jpg',
+    name: 'Haru Clinic',
+    type: 'health-care',
+  },
+  {
+    _id: 'cbc84773-77cc-4e51-971e-a607f86b212b',
+    imageAlt: 'animated e commerce dashboard',
+    imageUrl:
+      'https://cdn.sanity.io/images/h5ref3kt/production/b76d347bbd498a638f9d961739619d8ee97b1ee9-1024x1024.jpg',
+    name: 'Haru Commerce',
+    type: 'e-commerce',
+  },
+];
