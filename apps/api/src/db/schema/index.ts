@@ -4,3 +4,5 @@ export * from './users.schema';
 export * from './sessions.schema';
 export * from './verification.schema';
 export * from './accounts.schema';
+export * from './blogs.schema';
+export * from './comments.schema';
