@@ -5,9 +5,10 @@
   "type": "module",
   "types": "./dist/index.d.ts",
   "scripts": {
-    "dev": "tsx --watch src/index.ts",
+    "dev": "tsx --watch src/server.ts",
     "build": "tsc -p tsconfig.build.json",
-    "test": "vitest"
+    "test": "vitest",
+    "clean": "rm -rf ./dist"
   },
   "exports": {
     ".": {
@@ -16,6 +17,7 @@
     }
   },
   "dependencies": {
+    "better-auth": "^1.6.29",
     "cors": "^2.8.6",
     "express": "^5.2.1",
     "helmet": "^8.3.0",
@@ -26,7 +28,9 @@
     "@types/express": "^5.0.6",
     "@types/helmet": "^4.0.0",
     "@types/morgan": "^1.9.10",
+    "dotenv": "^17.4.2",
     "tsx": "^4.23.12",
-    "typescript": "^5"
+    "typescript": "^5",
+    "zod": "^4.4.3"
   }
 }
