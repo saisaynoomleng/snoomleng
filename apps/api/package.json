@@ -8,7 +8,10 @@
     "dev": "tsx --watch src/server.ts",
     "build": "tsc -p tsconfig.build.json",
     "test": "vitest",
-    "clean": "rm -rf ./dist"
+    "clean": "rm -rf ./dist",
+    "db:push": "drizzle-kit push",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate": "drizzle-kit migrate"
   },
   "exports": {
     ".": {

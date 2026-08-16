@@ -11,3 +11,12 @@ export const timestamps = {
     .defaultNow()
     .$onUpdate(() => new Date()),
 };
+
+export const ContactStauts = t.pgEnum('contactStatus', [
+  'new',
+  'replied',
+  'spam',
+  'important',
+]);
+
+export const userRole = t.pgEnum('userRole', ['admin', 'user']);

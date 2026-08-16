@@ -1,6 +1,6 @@
 import 'dotenv/config';
 
-import { relations } from './schema/relations';
+import { relations } from './relations';
 import { Pool } from 'pg';
 import { drizzle } from 'drizzle-orm/node-postgres';
 import env, { isProd } from '../lib/env';
