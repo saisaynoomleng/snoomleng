@@ -12,4 +12,10 @@ export const relations = defineRelations(schema, (r) => ({
       to: r.AccountTable.userId,
     }),
   },
+  BlogTable: {
+    comments: r.many.CommentTable({
+      from: r.BlogTable.id,
+      to: r.CommentTable.blogId,
+    }),
+  },
 }));
