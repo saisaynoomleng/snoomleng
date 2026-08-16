@@ -59,6 +59,7 @@ try {
   process.exit(1);
 }
 
+export const isProd = () => env.APP_STAGE === 'prod';
 export const isDev = () => env.APP_STAGE === 'dev';
 export const isTest = () => env.APP_STAGE === 'test';
 
