@@ -15,18 +15,59 @@
 export declare const internalGroqTypeReferenceTo: unique symbol;
 
 // Source: src/sanity/extract.json
-export type Employment = {
+export type BlogCategoryReference = {
+  _ref: string;
+  _type: 'reference';
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: 'blogCategory';
+};
+
+export type BlogFocusReference = {
+  _ref: string;
+  _type: 'reference';
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: 'blogFocus';
+};
+
+export type Blog = {
   _id: string;
-  _type: 'employment';
+  _type: 'blog';
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
   name?: string;
   slug?: Slug;
-  startedAt?: string;
-  endedAt?: string;
+  publishedAt?: string;
+  excerpt?: string;
   body?: BlockContent;
-  companyName?: string;
+  mainImage?: ImageWithAlt;
+  category?: BlogCategoryReference;
+  focus?: BlogFocusReference;
+  seo?: Seo;
+};
+
+export type Seo = {
+  _type: 'seo';
+  metaTitle?: string;
+  metaDescription?: string;
+  ogImage?: ImageWithAlt;
+  noIndex?: boolean;
+};
+
+export type SanityImageAssetReference = {
+  _ref: string;
+  _type: 'reference';
+  _weak?: boolean;
+  [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
+};
+
+export type ImageWithAlt = {
+  _type: 'imageWithAlt';
+  asset?: SanityImageAssetReference;
+  media?: unknown;
+  hotspot?: SanityImageHotspot;
+  crop?: SanityImageCrop;
+  alt?: string;
 };
 
 export type BlockContent = Array<
@@ -59,6 +100,41 @@ export type Slug = {
   source?: string;
 };
 
+export type BlogFocus = {
+  _id: string;
+  _type: 'blogFocus';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  slug?: Slug;
+};
+
+export type BlogCategory = {
+  _id: string;
+  _type: 'blogCategory';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  slug?: Slug;
+  mainImage?: ImageWithAlt;
+};
+
+export type Employment = {
+  _id: string;
+  _type: 'employment';
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: string;
+  slug?: Slug;
+  startedAt?: string;
+  endedAt?: string;
+  body?: BlockContent;
+  companyName?: string;
+};
+
 export type Project = {
   _id: string;
   _type: 'project';
@@ -80,30 +156,6 @@ export type Project = {
   type?: 'property' | 'portfolio' | 'health-care' | 'e-commerce';
   mainImage?: ImageWithAlt;
   seo?: Seo;
-};
-
-export type Seo = {
-  _type: 'seo';
-  metaTitle?: string;
-  metaDescription?: string;
-  ogImage?: ImageWithAlt;
-  noIndex?: boolean;
-};
-
-export type SanityImageAssetReference = {
-  _ref: string;
-  _type: 'reference';
-  _weak?: boolean;
-  [internalGroqTypeReferenceTo]?: 'sanity.imageAsset';
-};
-
-export type ImageWithAlt = {
-  _type: 'imageWithAlt';
-  asset?: SanityImageAssetReference;
-  media?: unknown;
-  hotspot?: SanityImageHotspot;
-  crop?: SanityImageCrop;
-  alt?: string;
 };
 
 export type Technology = {
@@ -358,13 +410,18 @@ export type Geopoint = {
 };
 
 export type AllSanitySchemaTypes =
-  | Employment
-  | BlockContent
-  | Slug
-  | Project
+  | BlogCategoryReference
+  | BlogFocusReference
+  | Blog
   | Seo
   | SanityImageAssetReference
   | ImageWithAlt
+  | BlockContent
+  | Slug
+  | BlogFocus
+  | BlogCategory
+  | Employment
+  | Project
   | Technology
   | About
   | Hero
@@ -383,3 +440,32 @@ export type AllSanitySchemaTypes =
   | SanityAssetSourceData
   | SanityImageAsset
   | Geopoint;
+
+// Source: src/sanity/query.ts
+// Variable: ALL_BLOGS_QUERY
+// Query: *[_type == 'blog' && defined(slug.current)]  | order(publishedAt desc){    name,    "slug": slug.current,    publishedAt,    "imageUrl": mainImage.asset->url,    'imageAlt': mainImage.alt,    excerpt  }
+export type ALL_BLOGS_QUERY_RESULT = Array<{
+  name: string | null;
+  slug: string | null;
+  publishedAt: string | null;
+  imageUrl: string | null;
+  imageAlt: string | null;
+  excerpt: string | null;
+}>;
+
+// Source: src/sanity/query.ts
+// Variable: BLOG_LOGO_QUERY
+// Query: *[_type == 'siteSetting'][0]{  "imageUrl": secondaryLogo.asset->url,  "imageAlt": secondaryLogo.alt}
+export type BLOG_LOGO_QUERY_RESULT = {
+  imageUrl: string | null;
+  imageAlt: string | null;
+} | null;
+
+// Query TypeMap
+import '@sanity/client';
+declare module '@sanity/client' {
+  interface SanityQueries {
+    '*[_type == \'blog\'\n && defined(slug.current)]\n  | order(publishedAt desc){\n    name,\n    "slug": slug.current,\n    publishedAt,\n    "imageUrl": mainImage.asset->url,\n    \'imageAlt\': mainImage.alt,\n    excerpt\n  }': ALL_BLOGS_QUERY_RESULT;
+    '*[_type == \'siteSetting\'][0]{\n  "imageUrl": secondaryLogo.asset->url,\n  "imageAlt": secondaryLogo.alt\n}': BLOG_LOGO_QUERY_RESULT;
+  }
+}
