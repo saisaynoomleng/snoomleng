@@ -12,8 +12,8 @@ import {
 import { Card, CardContent } from '#components/ui/card';
 
 import { CiSettings } from 'react-icons/ci';
-import { MdOutlineViewQuilt } from 'react-icons/md';
-import { GiFiles, GiStairsGoal, GiSuitcase } from 'react-icons/gi';
+import { MdCategory, MdOutlineViewQuilt } from 'react-icons/md';
+import { GiFiles, GiNewspaper, GiStairsGoal, GiSuitcase } from 'react-icons/gi';
 import { FaLinux } from 'react-icons/fa';
 import {
   SiBetterauth,
@@ -48,7 +48,13 @@ import { RiHotelLine } from 'react-icons/ri';
 import { MdHealthAndSafety } from 'react-icons/md';
 import { PiShoppingBagFill } from 'react-icons/pi';
 import { BsSuitcaseLgFill } from 'react-icons/bs';
-import { FaGolang, FaNode, FaStripe, FaStripeS } from 'react-icons/fa6';
+import {
+  FaGolang,
+  FaLaptopCode,
+  FaNode,
+  FaStripe,
+  FaStripeS,
+} from 'react-icons/fa6';
 
 const icons = [
   <MdHealthAndSafety />,
@@ -91,6 +97,9 @@ const icons = [
   <SiRedis />,
   <FaNode />,
   <FaGolang />,
+  <GiNewspaper />,
+  <MdCategory />,
+  <FaLaptopCode />,
 ];
 
 const fontSizes = {

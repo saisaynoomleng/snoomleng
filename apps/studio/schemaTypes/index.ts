@@ -1,4 +1,7 @@
 import {aboutType} from './documents/aboutType'
+import {blogCategoryType} from './documents/blogCategoryType'
+import {blogFocusType} from './documents/blogFocusType'
+import {blogType} from './documents/blogType'
 import {emplopymentType} from './documents/employmentType'
 import {heroType} from './documents/heroType'
 import {projectType} from './documents/projectType'
@@ -17,4 +20,7 @@ export const schemaTypes = [
   technologyType,
   projectType,
   emplopymentType,
+  blogCategoryType,
+  blogFocusType,
+  blogType,
 ]

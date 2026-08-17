@@ -1,9 +1,9 @@
 import {StructureResolver} from 'sanity/structure'
 
 import {CiSettings} from 'react-icons/ci'
-import {MdOutlineViewQuilt} from 'react-icons/md'
-import {GiFiles, GiStairsGoal, GiSuitcase} from 'react-icons/gi'
-import {FaLinux} from 'react-icons/fa'
+import {MdCategory, MdOutlineViewQuilt} from 'react-icons/md'
+import {GiFiles, GiNewspaper, GiStairsGoal, GiSuitcase} from 'react-icons/gi'
+import {FaLaptopCode, FaLinux} from 'react-icons/fa'
 
 export const structure: StructureResolver = (S) =>
   S.list()
@@ -17,4 +17,9 @@ export const structure: StructureResolver = (S) =>
       S.documentTypeListItem('technology').title('Tech Stacks').icon(FaLinux),
       S.documentTypeListItem('project').title('Projects').icon(GiFiles),
       S.documentTypeListItem('employment').title('Employment Histories').icon(GiSuitcase),
+
+      S.divider().title('Blogs'),
+      S.documentTypeListItem('blogCategory').title('Categories').icon(MdCategory),
+      S.documentTypeListItem('blogFocus').title('Focus').icon(FaLaptopCode),
+      S.documentTypeListItem('blog').title('Blogs').icon(GiNewspaper),
     ])
