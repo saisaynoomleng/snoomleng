@@ -10,7 +10,8 @@
     "deploy-graphql": "sanity graphql deploy",
     "dev": "sanity dev",
     "start": "sanity start",
-    "portfolio:schema": "sanity schema extract --path=../portfolio/src/sanity/extract.json"
+    "portfolio:schema": "sanity schema extract --path=../portfolio/src/sanity/extract.json",
+    "blog:schema": "sanity schema extract --path=../blog/src/sanity/extract.json"
   },
   "keywords": [
     "sanity"

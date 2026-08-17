@@ -14,9 +14,9 @@ type FooterProps = {
 };
 
 const iconMap = {
-  gitHub: <SiGithub aria-hidden={true} />,
-  leetcode: <SiLeetcode aria-hidden={true} />,
-  linkedIn: <FaLinkedin aria-hidden={true} />,
+  gitHub: SiGithub,
+  leetcode: SiLeetcode,
+  linkedIn: FaLinkedin,
 } as const;
 
 export const Footer = async ({
@@ -69,7 +69,7 @@ export const Footer = async ({
               <Link
                 key={link._key}
                 href={link.href as string}
-                className="hover:underline underline-offset-4 decoration-wavy decoration-primary"
+                className="hover:underline underline-offset-4 decoration-wavy decoration-primary w-fit"
               >
                 {link.label}
               </Link>
@@ -87,7 +87,10 @@ export const Footer = async ({
               <span>{contactInfo.state}</span>
             </p>
 
-            <Link href={`mailto:${contactInfo.email}`} className="link-url">
+            <Link
+              href={`mailto:${contactInfo.email}`}
+              className="link-url inline-block w-fit"
+            >
               {contactInfo.email}
             </Link>
           </address>
@@ -107,6 +110,8 @@ export const Footer = async ({
           {socialLinks &&
             socialLinks.map((link) => {
               if (!link.platform || !link.url || !link.icon) return null;
+              const Icon =
+                iconMap[link.icon as unknown as keyof typeof iconMap];
 
               return (
                 <Link
@@ -116,7 +121,8 @@ export const Footer = async ({
                   target="_blank"
                   className="text-fs-500 hover:text-primary"
                 >
-                  {iconMap[link.icon]}
+                  <span className="sr-only">{link.platform}</span>
+                  <Icon aria-hidden={true} />
                 </Link>
               );
             })}
