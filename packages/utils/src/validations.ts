@@ -1,6 +1,13 @@
 import * as z from 'zod';
 
 /**
+ * Validate ID Params
+ */
+export const ParamsIDSchema = z.object({
+  id: z.string(),
+});
+
+/**
  * Validate Contact Form Schema
  */
 export const ContactFormSchema = z.object({

@@ -4,6 +4,8 @@ import cors from 'cors';
 import env, { isTest } from './lib/env';
 import morgan from 'morgan';
 
+import ContactRouter from './modules/contacts/contacts.router';
+
 const app: Express = express();
 
 app.use(helmet());
@@ -28,9 +30,10 @@ app.get('/health-check', (req, res) => {
 });
 
 // routes
+app.use('/api/contacts', ContactRouter);
 
 app.use((req, res) => {
-  res.status(404).json({ message: 'Not Resources Found' });
+  res.status(404).json({ message: 'No Resources Found' });
 });
 
 export default app;
