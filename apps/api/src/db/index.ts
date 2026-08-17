@@ -7,15 +7,17 @@ import env, { isProd } from '../lib/env';
 import { remember } from '@epic-web/remember';
 
 const createPool = () => {
-  return new Pool({
+  const pool = new Pool({
     connectionString: env.DATABASE_URL,
-    min: 2,
-    max: 20,
-    ssl: {
-      rejectUnauthorized: false,
-    },
-    idleTimeoutMillis: 3000,
+    min: 0,
+    max: 10,
   });
+
+  pool.on('error', (err) => {
+    console.error('PG Pool Error:', err);
+  });
+
+  return pool;
 };
 
 let client: Pool;
@@ -24,9 +26,6 @@ if (isProd()) {
   client = createPool();
 } else {
   client = remember('dbPool', () => createPool());
-  client.on('error', (err) => {
-    console.log('PG Pool Error', err);
-  });
 }
 
 const db = drizzle({ client, relations, logger: true });

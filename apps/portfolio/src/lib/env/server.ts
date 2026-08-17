@@ -16,11 +16,13 @@ export const env = createEnv({
     SANITY_WRITE_TOKEN: z
       .string()
       .min(1, 'Sanity Write Token must have at least 1 character'),
+    API_URL: z.url(),
   },
   runtimeEnv: {
     SANITY_STUDIO_PROJECT_ID: process.env.SANITY_STUDIO_PROJECT_ID,
     SANITY_STUDIO_DATASET: process.env.SANITY_STUDIO_DATASET,
     SANITY_READ_TOKEN: process.env.SANITY_READ_TOKEN,
     SANITY_WRITE_TOKEN: process.env.SANITY_WRITE_TOKEN,
+    API_URL: process.env.API_URL,
   },
 });

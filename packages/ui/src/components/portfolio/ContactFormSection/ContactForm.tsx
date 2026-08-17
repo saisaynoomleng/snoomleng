@@ -19,6 +19,7 @@ import React from 'react';
 import { Controller, SubmitHandler, UseFormReturn } from 'react-hook-form';
 import { twMerge } from 'tailwind-merge';
 import clsx from 'clsx';
+import { Pending } from '#components/shared/SubmitButton/Pending';
 
 export type ContactFormProps = {
   form: UseFormReturn<InputContactFormSchema>;
@@ -131,7 +132,9 @@ export const ContactForm = ({
         <Button type="button" variant="outline" onClick={() => form.reset()}>
           Reset
         </Button>
-        <Button type="submit">Send a Message</Button>
+        <Button type="submit" disabled={form.formState.isSubmitting}>
+          {form.formState.isSubmitting ? <Pending /> : 'Send a message'}
+        </Button>
       </Field>
     </form>
   );

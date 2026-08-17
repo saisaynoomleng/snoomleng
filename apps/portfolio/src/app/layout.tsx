@@ -47,7 +47,12 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
           <Footer />
         </TooltipProvider>
 
-        <Toaster richColors position="bottom-center" duration={2} closeButton />
+        <Toaster
+          richColors
+          position="bottom-center"
+          duration={3000}
+          closeButton
+        />
         <SanityLive />
       </body>
     </html>

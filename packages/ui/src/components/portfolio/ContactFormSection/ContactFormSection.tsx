@@ -44,12 +44,17 @@ export const ContactFormSection = ({
     if (!result.success) {
       toast.error(result.message);
 
-      return form.setError(result.field as keyof InputContactFormSchema, {
-        message: result.message,
-      });
+      if (result.field) {
+        form.setError(result.field as keyof InputContactFormSchema, {
+          message: result.message,
+        });
+      }
+
+      return;
     }
 
-    return toast.success(result.message);
+    form.reset();
+    toast.success(result.message);
   };
 
   return (
