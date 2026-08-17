@@ -39,6 +39,7 @@ import {
   SiVim,
   SiVitest,
   SiZod,
+  SiRedis,
 } from 'react-icons/si';
 import { FaAws } from 'react-icons/fa';
 import { RxHamburgerMenu } from 'react-icons/rx';
@@ -47,6 +48,7 @@ import { RiHotelLine } from 'react-icons/ri';
 import { MdHealthAndSafety } from 'react-icons/md';
 import { PiShoppingBagFill } from 'react-icons/pi';
 import { BsSuitcaseLgFill } from 'react-icons/bs';
+import { FaGolang, FaNode, FaStripe, FaStripeS } from 'react-icons/fa6';
 
 const icons = [
   <MdHealthAndSafety />,
@@ -85,6 +87,10 @@ const icons = [
   <RxHamburgerMenu />,
   <IoIosArrowRoundDown />,
   <RiHotelLine />,
+  <FaStripe />,
+  <SiRedis />,
+  <FaNode />,
+  <FaGolang />,
 ];
 
 const fontSizes = {

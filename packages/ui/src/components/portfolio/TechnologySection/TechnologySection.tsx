@@ -25,6 +25,7 @@ import {
   SiPostgresql,
   SiReact,
   SiReacthookform,
+  SiRedis,
   SiSanity,
   SiShadcnui,
   SiStorybook,
@@ -35,6 +36,7 @@ import {
   SiVitest,
   SiZod,
 } from 'react-icons/si';
+import { FaGolang, FaNode, FaStripe } from 'react-icons/fa6';
 import { FaAws } from 'react-icons/fa';
 
 export type TechnologySectionProps = {
@@ -73,6 +75,10 @@ const iconMap = {
   clerk: SiClerk,
   vim: SiVim,
   drizzle: SiDrizzle,
+  stripe: FaStripe,
+  redis: SiRedis,
+  nodejs: FaNode,
+  go: FaGolang,
 } as const;
 
 export const TechnologySection = ({
