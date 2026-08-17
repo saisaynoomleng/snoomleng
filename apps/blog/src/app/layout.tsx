@@ -1,6 +1,8 @@
 import type { Metadata } from 'next';
 import { Josefin_Slab, Open_Sans } from 'next/font/google';
 import './globals.css';
+import { Header } from '@/components/Header';
+import { SanityLive } from '@/sanity/live';
 
 export const metadata: Metadata = {
   title: {
@@ -25,7 +27,12 @@ export const body = Open_Sans({
 export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
     <html lang="en" className={`${heading} ${body} h-full antialiased`}>
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full">
+        <Header />
+        {children}
+
+        <SanityLive />
+      </body>
     </html>
   );
 }

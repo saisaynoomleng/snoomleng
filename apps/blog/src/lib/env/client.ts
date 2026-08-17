@@ -10,9 +10,11 @@ export const env = createEnv({
     NEXT_PUBLIC_SANITY_DATASET: z
       .enum(['production', 'development'])
       .default('production'),
+    NEXT_PUBLIC_PORTFOLIO_URL: z.string(),
   },
   runtimeEnv: {
     NEXT_PUBLIC_SANITY_DATASET: process.env.NEXT_PUBLIC_SANITY_DATASET,
     NEXT_PUBLIC_SANITY_PROJECT_ID: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID,
+    NEXT_PUBLIC_PORTFOLIO_URL: process.env.NEXT_PUBLIC_PORTFOLIO_URL,
   },
 });

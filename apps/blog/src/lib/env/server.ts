@@ -12,11 +12,13 @@ export const env = createEnv({
       .default('production'),
     API_URL: z.url('Must be a valid URL'),
     SANITY_API_VERSION: z.string(),
+    SANITY_READ_TOKEN: z.string(),
   },
   runtimeEnv: {
     SANITY_STUDIO_PROJECT_ID: process.env.SANITY_STUDIO_PROJECT_ID,
     SANITY_STUDIO_DATASET: process.env.SANITY_STUDIO_DATASET,
     API_URL: process.env.API_URL,
     SANITY_API_VERSION: process.env.SANITY_API_VERSION,
+    SANITY_READ_TOKEN: process.env.SANITY_READ_TOKEN,
   },
 });

@@ -18,7 +18,7 @@ export const Header = async ({
 }: HeaderProps): Promise<React.JSX.Element> => {
   const { data: settings } = await sanityFetch({ query: HEADER_QUERY });
 
-  if (!settings) return <>Loading...</>;
+  if (!settings) return <></>;
 
   return (
     <header
