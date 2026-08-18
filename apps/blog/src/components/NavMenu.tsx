@@ -13,7 +13,7 @@ import { RxHamburgerMenu } from 'react-icons/rx';
 
 const NAV_LINKS = [
   { name: 'Home', href: '/' },
-  { name: 'Categories', href: '/categories' },
+  { name: 'Categories', href: '/category' },
   {
     name: 'About me',
     href: env.NEXT_PUBLIC_PORTFOLIO_URL ?? 'http://localhost:3000',
