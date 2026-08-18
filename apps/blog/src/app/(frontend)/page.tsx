@@ -1,3 +1,4 @@
+import { HomePageFilter } from '@/components/HomePageFilter';
 import { RenderMedia } from '@/components/RenderMedia';
 import { sanityFetch } from '@/sanity/live';
 import { ALL_BLOGS_QUERY_ASC, ALL_BLOGS_QUERY_DESC } from '@/sanity/query';
@@ -13,11 +14,10 @@ import { twMerge } from 'tailwind-merge';
 export default async function Home({
   searchParams,
 }: {
-  searchParams: Promise<{ page?: string; latest?: boolean }>;
+  searchParams: Promise<{ page?: string; filter?: 'latest' | 'oldest' }>;
 }) {
-  const { page, latest } = await searchParams;
-
-  const isLatest = latest ? 'true' : 'false';
+  const { page, filter } = await searchParams;
+  const isLatest = filter === 'latest';
 
   const blogPerPage = 8;
   const currentPage = Number(page ?? '1');
@@ -25,7 +25,7 @@ export default async function Home({
   const endIndex = startIndex + blogPerPage;
 
   const { data } = await sanityFetch({
-    query: latest ? ALL_BLOGS_QUERY_DESC : ALL_BLOGS_QUERY_ASC,
+    query: isLatest ? ALL_BLOGS_QUERY_DESC : ALL_BLOGS_QUERY_ASC,
     params: { startIndex, endIndex },
   });
 
@@ -34,6 +34,10 @@ export default async function Home({
 
   return (
     <Bounded className="grid justify-center items-center md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+      <div className="col-span-full place-self-end">
+        <HomePageFilter />
+      </div>
+
       {blogs.map((b) => (
         <Link href={`/blogs/${b.slug}`} key={b._id}>
           <BlogCard
@@ -56,7 +60,7 @@ export default async function Home({
               href={{
                 pathname: '/',
                 query: {
-                  ...(latest && { latest }),
+                  ...(filter && { filter }),
                   page: currentPage > 1 ? currentPage - 1 : currentPage,
                 },
               }}
@@ -82,7 +86,7 @@ export default async function Home({
                   href={{
                     pathname: '/',
                     query: {
-                      ...(latest && { latest }),
+                      ...(filter && { filter }),
                       page: pageNum,
                     },
                   }}
@@ -109,7 +113,7 @@ export default async function Home({
               href={{
                 pathname: '/',
                 query: {
-                  ...(latest && { latest }),
+                  ...(filter && { filter }),
                   page:
                     currentPage === totalPages ? currentPage : currentPage + 1,
                 },

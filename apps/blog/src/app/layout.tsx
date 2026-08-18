@@ -26,7 +26,11 @@ export const body = Open_Sans({
 
 export default function RootLayout({ children }: LayoutProps<'/'>) {
   return (
-    <html lang="en" className={`${heading} ${body} h-full antialiased`}>
+    <html
+      lang="en"
+      className={`${heading} ${body} h-full antialiased`}
+      data-scroll-behavior="smooth"
+    >
       <body className="min-h-full">
         <Header />
         {children}
