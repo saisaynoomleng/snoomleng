@@ -485,6 +485,17 @@ export type BLOG_LOGO_QUERY_RESULT = {
   imageAlt: string | null;
 } | null;
 
+// Source: src/sanity/query.ts
+// Variable: ALL_CATEGORIES_QUERY
+// Query: *[_type == 'blogCategory' && defined(slug.current)]  | order(_createdAt desc){    _id,    "imageUrl": mainImage.asset->url,    "imageAlt": mainImage.alt,    name,    "slug": slug.current  }
+export type ALL_CATEGORIES_QUERY_RESULT = Array<{
+  _id: string;
+  imageUrl: string | null;
+  imageAlt: string | null;
+  name: string | null;
+  slug: string | null;
+}>;
+
 // Query TypeMap
 import '@sanity/client';
 declare module '@sanity/client' {
@@ -492,5 +503,6 @@ declare module '@sanity/client' {
     '{\n  "blogs": *[_type == \'blog\'\n && defined(slug.current)]\n  | order(publishedAt desc)\n  [$startIndex...$endIndex]{\n    _id,\n    name,\n    "slug": slug.current,\n    publishedAt,\n    "imageUrl": mainImage.asset->url,\n    \'imageAlt\': mainImage.alt,\n    excerpt,\n    "focus": focus->name,\n    "category": category->name\n  },\n  "total": count(*[_type == \'blog\'\n                && defined(slug.current)])\n}': ALL_BLOGS_QUERY_DESC_RESULT;
     '{\n  "blogs": *[_type == \'blog\'\n && defined(slug.current)]\n  | order(publishedAt asc)\n  [$startIndex...$endIndex]{\n    _id,\n    name,\n    "slug": slug.current,\n    publishedAt,\n    "imageUrl": mainImage.asset->url,\n    \'imageAlt\': mainImage.alt,\n    excerpt,\n    "focus": focus->name,\n    "category": category->name\n  },\n  "total": count(*[_type == \'blog\'\n                && defined(slug.current)])\n}': ALL_BLOGS_QUERY_ASC_RESULT;
     '*[_type == \'siteSetting\'][0]{\n  "imageUrl": secondaryLogo.asset->url,\n  "imageAlt": secondaryLogo.alt\n}': BLOG_LOGO_QUERY_RESULT;
+    '*[_type == \'blogCategory\'\n && defined(slug.current)]\n  | order(_createdAt desc){\n    _id,\n    "imageUrl": mainImage.asset->url,\n    "imageAlt": mainImage.alt,\n    name,\n    "slug": slug.current\n  }': ALL_CATEGORIES_QUERY_RESULT;
   }
 }

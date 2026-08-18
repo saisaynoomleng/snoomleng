@@ -42,3 +42,13 @@ export const BLOG_LOGO_QUERY = defineQuery(`*[_type == 'siteSetting'][0]{
   "imageUrl": secondaryLogo.asset->url,
   "imageAlt": secondaryLogo.alt
 }`);
+
+export const ALL_CATEGORIES_QUERY = defineQuery(`*[_type == 'blogCategory'
+ && defined(slug.current)]
+  | order(_createdAt desc){
+    _id,
+    "imageUrl": mainImage.asset->url,
+    "imageAlt": mainImage.alt,
+    name,
+    "slug": slug.current
+  }`);
