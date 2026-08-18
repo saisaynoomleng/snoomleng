@@ -53,6 +53,7 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
           duration={3000}
           closeButton
         />
+
         <SanityLive />
       </body>
     </html>

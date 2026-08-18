@@ -59,7 +59,7 @@ export const blogType = defineType({
     select: {
       name: 'name',
       category: 'category.name',
-      focus: 'category.focus',
+      focus: 'focus.name',
       image: 'mainImage',
     },
     prepare({name, category, focus, image}) {

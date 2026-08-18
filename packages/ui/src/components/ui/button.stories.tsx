@@ -23,3 +23,7 @@ export const Default: Story = {
 export const Outline: Story = {
   render: (args) => <Button variant="outline">Click Me!</Button>,
 };
+
+export const Pagination: Story = {
+  render: (args) => <Button variant="pagination">1</Button>,
+};
