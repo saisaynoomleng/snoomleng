@@ -496,6 +496,21 @@ export type ALL_CATEGORIES_QUERY_RESULT = Array<{
   slug: string | null;
 }>;
 
+// Source: src/sanity/query.ts
+// Variable: BLOGS_BY_CATEGORY_QUERY
+// Query: *[_type == 'blog' && defined(slug.current) && category->name match $category]{     _id,    name,    "slug": slug.current,    publishedAt,    "imageUrl": mainImage.asset->url,    'imageAlt': mainImage.alt,    excerpt,    "focus": focus->name,    "category": category->name  }
+export type BLOGS_BY_CATEGORY_QUERY_RESULT = Array<{
+  _id: string;
+  name: string | null;
+  slug: string | null;
+  publishedAt: string | null;
+  imageUrl: string | null;
+  imageAlt: string | null;
+  excerpt: string | null;
+  focus: string | null;
+  category: string | null;
+}>;
+
 // Query TypeMap
 import '@sanity/client';
 declare module '@sanity/client' {
@@ -504,5 +519,6 @@ declare module '@sanity/client' {
     '{\n  "blogs": *[_type == \'blog\'\n && defined(slug.current)]\n  | order(publishedAt asc)\n  [$startIndex...$endIndex]{\n    _id,\n    name,\n    "slug": slug.current,\n    publishedAt,\n    "imageUrl": mainImage.asset->url,\n    \'imageAlt\': mainImage.alt,\n    excerpt,\n    "focus": focus->name,\n    "category": category->name\n  },\n  "total": count(*[_type == \'blog\'\n                && defined(slug.current)])\n}': ALL_BLOGS_QUERY_ASC_RESULT;
     '*[_type == \'siteSetting\'][0]{\n  "imageUrl": secondaryLogo.asset->url,\n  "imageAlt": secondaryLogo.alt\n}': BLOG_LOGO_QUERY_RESULT;
     '*[_type == \'blogCategory\'\n && defined(slug.current)]\n  | order(_createdAt desc){\n    _id,\n    "imageUrl": mainImage.asset->url,\n    "imageAlt": mainImage.alt,\n    name,\n    "slug": slug.current\n  }': ALL_CATEGORIES_QUERY_RESULT;
+    '*[_type == \'blog\'\n && defined(slug.current)\n && category->name match $category]{\n     _id,\n    name,\n    "slug": slug.current,\n    publishedAt,\n    "imageUrl": mainImage.asset->url,\n    \'imageAlt\': mainImage.alt,\n    excerpt,\n    "focus": focus->name,\n    "category": category->name\n  }': BLOGS_BY_CATEGORY_QUERY_RESULT;
   }
 }

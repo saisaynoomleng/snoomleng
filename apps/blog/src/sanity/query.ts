@@ -52,3 +52,17 @@ export const ALL_CATEGORIES_QUERY = defineQuery(`*[_type == 'blogCategory'
     name,
     "slug": slug.current
   }`);
+
+export const BLOGS_BY_CATEGORY_QUERY = defineQuery(`*[_type == 'blog'
+ && defined(slug.current)
+ && category->name match $category]{
+     _id,
+    name,
+    "slug": slug.current,
+    publishedAt,
+    "imageUrl": mainImage.asset->url,
+    'imageAlt': mainImage.alt,
+    excerpt,
+    "focus": focus->name,
+    "category": category->name
+  }`);
