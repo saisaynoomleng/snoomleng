@@ -14,7 +14,6 @@ import { RxHamburgerMenu } from 'react-icons/rx';
 const NAV_LINKS = [
   { name: 'Home', href: '/' },
   { name: 'Categories', href: '/categories' },
-  { name: 'Languages', href: '/languages' },
   {
     name: 'About me',
     href: env.NEXT_PUBLIC_PORTFOLIO_URL ?? 'http://localhost:3000',
@@ -39,9 +38,8 @@ export const DesktopNav = (): React.JSX.Element => {
             key={l.href}
             className={twMerge(
               clsx(
-                'font-bold',
-                pathname === l.href &&
-                  'underline underline-offset-4 decoration-wavy decoration-primary',
+                'font-bold hover:underline underline-offset-4 decoration-wavy decoration-primary',
+                pathname === l.href && 'underline ',
               ),
             )}
             rel={target && 'noreferrer noindex'}

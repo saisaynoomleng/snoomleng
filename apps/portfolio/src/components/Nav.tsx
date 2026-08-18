@@ -47,9 +47,9 @@ export const DesktopNav = ({
                 ),
               )}
               rel={
-                n.href?.startsWith('https') ? 'noreferrer noindex' : undefined
+                n.href?.startsWith('http') ? 'noreferrer noindex' : undefined
               }
-              target={n.href?.startsWith('https') ? '_blank' : ''}
+              target={n.href?.startsWith('http') ? '_blank' : ''}
             >
               {n.label}
             </Link>
@@ -126,9 +126,9 @@ export const MobileNav = ({
                   ),
                 )}
                 rel={
-                  n.href?.startsWith('https') ? 'noreferrer noindex' : undefined
+                  n.href?.startsWith('http') ? 'noreferrer noindex' : undefined
                 }
-                target={n.href?.startsWith('https') ? '_blank' : ''}
+                target={n.href?.startsWith('http') ? '_blank' : ''}
                 onClick={() => setOpen(false)}
               >
                 {n.label}

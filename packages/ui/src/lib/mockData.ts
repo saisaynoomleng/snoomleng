@@ -571,3 +571,17 @@ export const mockProjectDetailTable = {
   type: 'portfolio',
   startedAt: '2026-08-08',
 };
+
+export const mockBlogCard = {
+  _id: 'c2056954-8abf-4305-99c6-204e5c8a1f73',
+  category: 'Frontend',
+  excerpt: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse
+          asperiores,`,
+  focus: 'JavaScript',
+  imageAlt: 'asdf',
+  imageUrl:
+    'https://cdn.sanity.io/images/h5ref3kt/production/a1c1635be97e8ec0a896664b7cdbdb2e99299da6-736x736.jpg',
+  name: 'How JS works',
+  publishedAt: '2026-08-20',
+  slug: 'asdf',
+};

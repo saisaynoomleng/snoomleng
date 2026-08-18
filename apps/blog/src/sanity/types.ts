@@ -442,16 +442,40 @@ export type AllSanitySchemaTypes =
   | Geopoint;
 
 // Source: src/sanity/query.ts
-// Variable: ALL_BLOGS_QUERY
-// Query: *[_type == 'blog' && defined(slug.current)]  | order(publishedAt desc){    name,    "slug": slug.current,    publishedAt,    "imageUrl": mainImage.asset->url,    'imageAlt': mainImage.alt,    excerpt  }
-export type ALL_BLOGS_QUERY_RESULT = Array<{
-  name: string | null;
-  slug: string | null;
-  publishedAt: string | null;
-  imageUrl: string | null;
-  imageAlt: string | null;
-  excerpt: string | null;
-}>;
+// Variable: ALL_BLOGS_QUERY_DESC
+// Query: {  "blogs": *[_type == 'blog' && defined(slug.current)]  | order(publishedAt desc)  [$startIndex...$endIndex]{    _id,    name,    "slug": slug.current,    publishedAt,    "imageUrl": mainImage.asset->url,    'imageAlt': mainImage.alt,    excerpt,    "focus": focus->name,    "category": category->name  },  "total": count(*[_type == 'blog'                && defined(slug.current)])}
+export type ALL_BLOGS_QUERY_DESC_RESULT = {
+  blogs: Array<{
+    _id: string;
+    name: string | null;
+    slug: string | null;
+    publishedAt: string | null;
+    imageUrl: string | null;
+    imageAlt: string | null;
+    excerpt: string | null;
+    focus: string | null;
+    category: string | null;
+  }>;
+  total: number;
+};
+
+// Source: src/sanity/query.ts
+// Variable: ALL_BLOGS_QUERY_ASC
+// Query: {  "blogs": *[_type == 'blog' && defined(slug.current)]  | order(publishedAt asc)  [$startIndex...$endIndex]{    _id,    name,    "slug": slug.current,    publishedAt,    "imageUrl": mainImage.asset->url,    'imageAlt': mainImage.alt,    excerpt,    "focus": focus->name,    "category": category->name  },  "total": count(*[_type == 'blog'                && defined(slug.current)])}
+export type ALL_BLOGS_QUERY_ASC_RESULT = {
+  blogs: Array<{
+    _id: string;
+    name: string | null;
+    slug: string | null;
+    publishedAt: string | null;
+    imageUrl: string | null;
+    imageAlt: string | null;
+    excerpt: string | null;
+    focus: string | null;
+    category: string | null;
+  }>;
+  total: number;
+};
 
 // Source: src/sanity/query.ts
 // Variable: BLOG_LOGO_QUERY
@@ -465,7 +489,8 @@ export type BLOG_LOGO_QUERY_RESULT = {
 import '@sanity/client';
 declare module '@sanity/client' {
   interface SanityQueries {
-    '*[_type == \'blog\'\n && defined(slug.current)]\n  | order(publishedAt desc){\n    name,\n    "slug": slug.current,\n    publishedAt,\n    "imageUrl": mainImage.asset->url,\n    \'imageAlt\': mainImage.alt,\n    excerpt\n  }': ALL_BLOGS_QUERY_RESULT;
+    '{\n  "blogs": *[_type == \'blog\'\n && defined(slug.current)]\n  | order(publishedAt desc)\n  [$startIndex...$endIndex]{\n    _id,\n    name,\n    "slug": slug.current,\n    publishedAt,\n    "imageUrl": mainImage.asset->url,\n    \'imageAlt\': mainImage.alt,\n    excerpt,\n    "focus": focus->name,\n    "category": category->name\n  },\n  "total": count(*[_type == \'blog\'\n                && defined(slug.current)])\n}': ALL_BLOGS_QUERY_DESC_RESULT;
+    '{\n  "blogs": *[_type == \'blog\'\n && defined(slug.current)]\n  | order(publishedAt asc)\n  [$startIndex...$endIndex]{\n    _id,\n    name,\n    "slug": slug.current,\n    publishedAt,\n    "imageUrl": mainImage.asset->url,\n    \'imageAlt\': mainImage.alt,\n    excerpt,\n    "focus": focus->name,\n    "category": category->name\n  },\n  "total": count(*[_type == \'blog\'\n                && defined(slug.current)])\n}': ALL_BLOGS_QUERY_ASC_RESULT;
     '*[_type == \'siteSetting\'][0]{\n  "imageUrl": secondaryLogo.asset->url,\n  "imageAlt": secondaryLogo.alt\n}': BLOG_LOGO_QUERY_RESULT;
   }
 }
