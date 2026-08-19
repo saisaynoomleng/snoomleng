@@ -122,3 +122,24 @@ export const FOOTER_QUERY = defineQuery(`*[_type == 'siteSetting'][0]{
     url
   },
 }`);
+
+export const SEARCH_QUERY = defineQuery(`*[_type == 'blog'
+ && defined(slug.current)
+ && (
+   !(defined($search))
+    || name match text::query($search)
+    || category->name match text::query($search)
+    || focus->name match text::query($search)
+ )]
+  | order(publishedAt desc)
+  {
+    _id,
+    name,
+    "slug": slug.current,
+    publishedAt,
+    "imageUrl": mainImage.asset->url,
+    'imageAlt': mainImage.alt,
+    excerpt,
+    "focus": focus->name,
+    "category": category->name
+  }`);

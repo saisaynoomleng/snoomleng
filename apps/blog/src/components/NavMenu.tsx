@@ -6,10 +6,10 @@ import React, { useEffect, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 import clsx from 'clsx';
 import { env } from '@/lib/env/client';
-import Form from 'next/form';
 import { Button } from '@snoomleng/ui';
 import { IoClose } from 'react-icons/io5';
 import { RxHamburgerMenu } from 'react-icons/rx';
+import SearchForm from './SearchForm';
 
 const NAV_LINKS = [
   { name: 'Home', href: '/' },
@@ -51,10 +51,7 @@ export const DesktopNav = (): React.JSX.Element => {
       })}
 
       {/* search bar */}
-      <Form action="" className="flex gap-x-2">
-        <input type="text" className="border" />
-        <button onClick={() => console.log('search')}>Search</button>
-      </Form>
+      <SearchForm />
     </nav>
   );
 };
@@ -121,7 +118,7 @@ export const MobileNav = (): React.JSX.Element => {
           );
         })}
 
-        {/* search bar */}
+        <SearchForm />
       </nav>
     </>
   );

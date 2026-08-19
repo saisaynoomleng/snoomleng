@@ -28,7 +28,6 @@ export const Header = async (): Promise<React.JSX.Element> => {
         </Link>
       ) : null}
 
-      {/* DesktopNav */}
       <DesktopNav />
 
       <MobileNav />
