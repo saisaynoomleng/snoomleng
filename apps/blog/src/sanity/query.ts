@@ -111,3 +111,14 @@ export const BLOG_QUERY =
     "category": category->name
   }
 }`);
+
+export const FOOTER_QUERY = defineQuery(`*[_type == 'siteSetting'][0]{
+  "logoUrl": secondaryLogo.asset->url,
+  "logoAlt": secondaryLogo.alt,
+  socialLinks[]{
+    _key,
+    icon,
+    platform,
+    url
+  },
+}`);
