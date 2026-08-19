@@ -570,6 +570,21 @@ export type FOOTER_QUERY_RESULT = {
   }> | null;
 } | null;
 
+// Source: src/sanity/query.ts
+// Variable: SEARCH_QUERY
+// Query: *[_type == 'blog' && defined(slug.current) && (   !(defined($search))    || name match text::query($search)    || category->name match text::query($search)    || focus->name match text::query($search) )]  | order(publishedAt desc)  {    _id,    name,    "slug": slug.current,    publishedAt,    "imageUrl": mainImage.asset->url,    'imageAlt': mainImage.alt,    excerpt,    "focus": focus->name,    "category": category->name  }
+export type SEARCH_QUERY_RESULT = Array<{
+  _id: string;
+  name: string | null;
+  slug: string | null;
+  publishedAt: string | null;
+  imageUrl: string | null;
+  imageAlt: string | null;
+  excerpt: string | null;
+  focus: string | null;
+  category: string | null;
+}>;
+
 // Query TypeMap
 import '@sanity/client';
 declare module '@sanity/client' {
@@ -582,5 +597,6 @@ declare module '@sanity/client' {
     '*[_type == \'blog\'\n && defined(slug.current)\n && category->name match $category]{\n     _id,\n    name,\n    "slug": slug.current,\n    publishedAt,\n    "imageUrl": mainImage.asset->url,\n    \'imageAlt\': mainImage.alt,\n    excerpt,\n    "focus": focus->name,\n    "category": category->name\n  }': BLOGS_BY_CATEGORY_QUERY_RESULT;
     '*[_type == \'blog\' && slug.current == $slug][0]{\n  name,\n  publishedAt,\n  body,\n  "imageUrl": mainImage.asset->url,\n  "imageAlt": mainImage.alt,\n  "category": category->name,\n  "categorySlug": category->slug.current,\n  "focus": focus->name,\n  "seo": seo{\n    metaTitle,\n    metaDescription,\n    "ogImage": ogImage.asset->url\n  },\n  "relatedBlogs": *[_type == \'blog\'\n    && defined(slug.current)\n    && category._ref == ^.category._ref\n    && slug.current != $slug\n  ]{\n   _id,\n    name,\n    "slug": slug.current,\n    publishedAt,\n    "imageUrl": mainImage.asset->url,\n    \'imageAlt\': mainImage.alt,\n    excerpt,\n    "focus": focus->name,\n    "category": category->name\n  }\n}': BLOG_QUERY_RESULT;
     '*[_type == \'siteSetting\'][0]{\n  "logoUrl": secondaryLogo.asset->url,\n  "logoAlt": secondaryLogo.alt,\n  socialLinks[]{\n    _key,\n    icon,\n    platform,\n    url\n  },\n}': FOOTER_QUERY_RESULT;
+    '*[_type == \'blog\'\n && defined(slug.current)\n && (\n   !(defined($search))\n    || name match text::query($search)\n    || category->name match text::query($search)\n    || focus->name match text::query($search)\n )]\n  | order(publishedAt desc)\n  {\n    _id,\n    name,\n    "slug": slug.current,\n    publishedAt,\n    "imageUrl": mainImage.asset->url,\n    \'imageAlt\': mainImage.alt,\n    excerpt,\n    "focus": focus->name,\n    "category": category->name\n  }': SEARCH_QUERY_RESULT;
   }
 }
