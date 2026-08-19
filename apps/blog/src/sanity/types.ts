@@ -556,6 +556,20 @@ export type BLOG_QUERY_RESULT = {
   }>;
 } | null;
 
+// Source: src/sanity/query.ts
+// Variable: FOOTER_QUERY
+// Query: *[_type == 'siteSetting'][0]{  "logoUrl": secondaryLogo.asset->url,  "logoAlt": secondaryLogo.alt,  socialLinks[]{    _key,    icon,    platform,    url  },}
+export type FOOTER_QUERY_RESULT = {
+  logoUrl: string | null;
+  logoAlt: string | null;
+  socialLinks: Array<{
+    _key: string;
+    icon: string | null;
+    platform: 'git-hub' | 'leet-code' | 'linked-in' | null;
+    url: string | null;
+  }> | null;
+} | null;
+
 // Query TypeMap
 import '@sanity/client';
 declare module '@sanity/client' {
@@ -567,5 +581,6 @@ declare module '@sanity/client' {
     '*[_type == \'blogCategory\'\n && defined(slug.current)]\n  | order(_createdAt desc){\n    _id,\n    "imageUrl": mainImage.asset->url,\n    "imageAlt": mainImage.alt,\n    name,\n    "slug": slug.current\n  }': ALL_CATEGORIES_QUERY_RESULT;
     '*[_type == \'blog\'\n && defined(slug.current)\n && category->name match $category]{\n     _id,\n    name,\n    "slug": slug.current,\n    publishedAt,\n    "imageUrl": mainImage.asset->url,\n    \'imageAlt\': mainImage.alt,\n    excerpt,\n    "focus": focus->name,\n    "category": category->name\n  }': BLOGS_BY_CATEGORY_QUERY_RESULT;
     '*[_type == \'blog\' && slug.current == $slug][0]{\n  name,\n  publishedAt,\n  body,\n  "imageUrl": mainImage.asset->url,\n  "imageAlt": mainImage.alt,\n  "category": category->name,\n  "categorySlug": category->slug.current,\n  "focus": focus->name,\n  "seo": seo{\n    metaTitle,\n    metaDescription,\n    "ogImage": ogImage.asset->url\n  },\n  "relatedBlogs": *[_type == \'blog\'\n    && defined(slug.current)\n    && category._ref == ^.category._ref\n    && slug.current != $slug\n  ]{\n   _id,\n    name,\n    "slug": slug.current,\n    publishedAt,\n    "imageUrl": mainImage.asset->url,\n    \'imageAlt\': mainImage.alt,\n    excerpt,\n    "focus": focus->name,\n    "category": category->name\n  }\n}': BLOG_QUERY_RESULT;
+    '*[_type == \'siteSetting\'][0]{\n  "logoUrl": secondaryLogo.asset->url,\n  "logoAlt": secondaryLogo.alt,\n  socialLinks[]{\n    _key,\n    icon,\n    platform,\n    url\n  },\n}': FOOTER_QUERY_RESULT;
   }
 }

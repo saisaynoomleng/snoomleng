@@ -33,7 +33,10 @@ export default async function Home({
   const totalPages = Math.ceil(total / blogPerPage);
 
   return (
-    <Bounded className="grid justify-center items-center md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+    <Bounded
+      className="grid justify-center items-center md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 pb-8 md:pb-12"
+      padding="none"
+    >
       <div className="col-span-full place-self-end">
         <HomePageFilter />
       </div>
