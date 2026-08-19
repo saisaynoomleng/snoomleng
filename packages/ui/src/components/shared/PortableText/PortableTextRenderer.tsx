@@ -11,11 +11,13 @@ import clsx from 'clsx';
 type PortableTextRendererProps = {
   value: PortableTextBlock[];
   className?: string;
+  resolveImageUrl?: (value: any) => string;
 };
 
 export const PortableTextRenderer = ({
   value,
   className,
+  resolveImageUrl,
 }: PortableTextRendererProps): React.JSX.Element => {
   return (
     <Bounded
@@ -26,7 +28,22 @@ export const PortableTextRenderer = ({
         clsx('prose prose-sm md:prose-lg min-w-full', className),
       )}
     >
-      <PortableText value={value} components={component} />
+      <PortableText
+        value={value}
+        components={{
+          ...component,
+          types: {
+            imageWithAlt: ({ value }) => (
+              <img
+                src={resolveImageUrl?.(value)}
+                alt={value.alt ?? ''}
+                className="w-100 aspect-square mx-auto"
+                loading="lazy"
+              />
+            ),
+          },
+        }}
+      />
     </Bounded>
   );
 };

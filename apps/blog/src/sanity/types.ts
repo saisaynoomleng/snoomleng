@@ -442,6 +442,21 @@ export type AllSanitySchemaTypes =
   | Geopoint;
 
 // Source: src/sanity/query.ts
+// Variable: ALL_BLOGS_QUERY
+// Query: *[_type == 'blog' && defined(slug.current)]{    _id,    name,    "slug": slug.current,    publishedAt,    "imageUrl": mainImage.asset->url,    'imageAlt': mainImage.alt,    excerpt,    "focus": focus->name,    "category": category->name  }
+export type ALL_BLOGS_QUERY_RESULT = Array<{
+  _id: string;
+  name: string | null;
+  slug: string | null;
+  publishedAt: string | null;
+  imageUrl: string | null;
+  imageAlt: string | null;
+  excerpt: string | null;
+  focus: string | null;
+  category: string | null;
+}>;
+
+// Source: src/sanity/query.ts
 // Variable: ALL_BLOGS_QUERY_DESC
 // Query: {  "blogs": *[_type == 'blog' && defined(slug.current)]  | order(publishedAt desc)  [$startIndex...$endIndex]{    _id,    name,    "slug": slug.current,    publishedAt,    "imageUrl": mainImage.asset->url,    'imageAlt': mainImage.alt,    excerpt,    "focus": focus->name,    "category": category->name  },  "total": count(*[_type == 'blog'                && defined(slug.current)])}
 export type ALL_BLOGS_QUERY_DESC_RESULT = {
@@ -511,14 +526,46 @@ export type BLOGS_BY_CATEGORY_QUERY_RESULT = Array<{
   category: string | null;
 }>;
 
+// Source: src/sanity/query.ts
+// Variable: BLOG_QUERY
+// Query: *[_type == 'blog' && slug.current == $slug][0]{  name,  publishedAt,  body,  "imageUrl": mainImage.asset->url,  "imageAlt": mainImage.alt,  "category": category->name,  "categorySlug": category->slug.current,  "focus": focus->name,  "seo": seo{    metaTitle,    metaDescription,    "ogImage": ogImage.asset->url  },  "relatedBlogs": *[_type == 'blog'    && defined(slug.current)    && category._ref == ^.category._ref    && slug.current != $slug  ]{   _id,    name,    "slug": slug.current,    publishedAt,    "imageUrl": mainImage.asset->url,    'imageAlt': mainImage.alt,    excerpt,    "focus": focus->name,    "category": category->name  }}
+export type BLOG_QUERY_RESULT = {
+  name: string | null;
+  publishedAt: string | null;
+  body: BlockContent | null;
+  imageUrl: string | null;
+  imageAlt: string | null;
+  category: string | null;
+  categorySlug: string | null;
+  focus: string | null;
+  seo: {
+    metaTitle: string | null;
+    metaDescription: string | null;
+    ogImage: string | null;
+  } | null;
+  relatedBlogs: Array<{
+    _id: string;
+    name: string | null;
+    slug: string | null;
+    publishedAt: string | null;
+    imageUrl: string | null;
+    imageAlt: string | null;
+    excerpt: string | null;
+    focus: string | null;
+    category: string | null;
+  }>;
+} | null;
+
 // Query TypeMap
 import '@sanity/client';
 declare module '@sanity/client' {
   interface SanityQueries {
+    '*[_type == \'blog\'\n && defined(slug.current)]{\n    _id,\n    name,\n    "slug": slug.current,\n    publishedAt,\n    "imageUrl": mainImage.asset->url,\n    \'imageAlt\': mainImage.alt,\n    excerpt,\n    "focus": focus->name,\n    "category": category->name\n  }': ALL_BLOGS_QUERY_RESULT;
     '{\n  "blogs": *[_type == \'blog\'\n && defined(slug.current)]\n  | order(publishedAt desc)\n  [$startIndex...$endIndex]{\n    _id,\n    name,\n    "slug": slug.current,\n    publishedAt,\n    "imageUrl": mainImage.asset->url,\n    \'imageAlt\': mainImage.alt,\n    excerpt,\n    "focus": focus->name,\n    "category": category->name\n  },\n  "total": count(*[_type == \'blog\'\n                && defined(slug.current)])\n}': ALL_BLOGS_QUERY_DESC_RESULT;
     '{\n  "blogs": *[_type == \'blog\'\n && defined(slug.current)]\n  | order(publishedAt asc)\n  [$startIndex...$endIndex]{\n    _id,\n    name,\n    "slug": slug.current,\n    publishedAt,\n    "imageUrl": mainImage.asset->url,\n    \'imageAlt\': mainImage.alt,\n    excerpt,\n    "focus": focus->name,\n    "category": category->name\n  },\n  "total": count(*[_type == \'blog\'\n                && defined(slug.current)])\n}': ALL_BLOGS_QUERY_ASC_RESULT;
     '*[_type == \'siteSetting\'][0]{\n  "imageUrl": secondaryLogo.asset->url,\n  "imageAlt": secondaryLogo.alt\n}': BLOG_LOGO_QUERY_RESULT;
     '*[_type == \'blogCategory\'\n && defined(slug.current)]\n  | order(_createdAt desc){\n    _id,\n    "imageUrl": mainImage.asset->url,\n    "imageAlt": mainImage.alt,\n    name,\n    "slug": slug.current\n  }': ALL_CATEGORIES_QUERY_RESULT;
     '*[_type == \'blog\'\n && defined(slug.current)\n && category->name match $category]{\n     _id,\n    name,\n    "slug": slug.current,\n    publishedAt,\n    "imageUrl": mainImage.asset->url,\n    \'imageAlt\': mainImage.alt,\n    excerpt,\n    "focus": focus->name,\n    "category": category->name\n  }': BLOGS_BY_CATEGORY_QUERY_RESULT;
+    '*[_type == \'blog\' && slug.current == $slug][0]{\n  name,\n  publishedAt,\n  body,\n  "imageUrl": mainImage.asset->url,\n  "imageAlt": mainImage.alt,\n  "category": category->name,\n  "categorySlug": category->slug.current,\n  "focus": focus->name,\n  "seo": seo{\n    metaTitle,\n    metaDescription,\n    "ogImage": ogImage.asset->url\n  },\n  "relatedBlogs": *[_type == \'blog\'\n    && defined(slug.current)\n    && category._ref == ^.category._ref\n    && slug.current != $slug\n  ]{\n   _id,\n    name,\n    "slug": slug.current,\n    publishedAt,\n    "imageUrl": mainImage.asset->url,\n    \'imageAlt\': mainImage.alt,\n    excerpt,\n    "focus": focus->name,\n    "category": category->name\n  }\n}': BLOG_QUERY_RESULT;
   }
 }
