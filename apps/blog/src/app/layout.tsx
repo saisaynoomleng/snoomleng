@@ -6,10 +6,11 @@ import { SanityLive } from '@/sanity/live';
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | snoomleng',
-    default: 'snoomleng',
+    default: 'Snoom Leng Blog',
+    template: '%s | Snoom Leng',
   },
-  description: `Portfolio of Sai Say Noom Leng, a software engineer building modern web applications with a focus on frontend development, full-stack architecture, and thoughtful user experiences.`,
+  description:
+    'Explore articles on web development, JavaScript, TypeScript, React, Next.js, backend architecture, and modern software engineering.',
 };
 
 export const heading = Josefin_Slab({

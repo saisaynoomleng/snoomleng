@@ -2,10 +2,16 @@ import { urlFor } from '@/sanity/image';
 import { sanityFetch } from '@/sanity/live';
 import { ALL_CATEGORIES_QUERY } from '@/sanity/query';
 import { Bounded, SectionTitle } from '@snoomleng/ui';
+import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
+export const metadata: Metadata = {
+  title: 'Blog Categories',
+  description:
+    'Browse articles by category covering JavaScript, TypeScript, React, Next.js, backend development, software architecture, and modern web development.',
+};
 const CategoryPage = async (): Promise<React.JSX.Element> => {
   const { data: categories } = await sanityFetch({
     query: ALL_CATEGORIES_QUERY,

@@ -6,7 +6,6 @@ import {
   PortableTextRenderer,
   ProjectDetailTable,
   ProjectLink,
-  ProjectLinkProps,
   SectionTitle,
 } from '@snoomleng/ui';
 import { SlugParamsProps } from '@snoomleng/utils';

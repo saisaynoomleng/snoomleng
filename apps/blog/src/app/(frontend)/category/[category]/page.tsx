@@ -2,8 +2,24 @@ import { RenderMedia } from '@/components/RenderMedia';
 import { sanityFetch } from '@/sanity/live';
 import { BLOGS_BY_CATEGORY_QUERY } from '@/sanity/query';
 import { BlogCard, Bounded, SectionTitle } from '@snoomleng/ui';
+import { formatTitle, replaceDashWithSpace } from '@snoomleng/utils';
+import { Metadata } from 'next';
 import Link from 'next/link';
 import React from 'react';
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ category: string }>;
+}): Promise<Metadata> {
+  const { category } = await params;
+  const title = replaceDashWithSpace(formatTitle(category));
+
+  return {
+    title: `${title} Blogs`,
+    description: `Explore ${title} articles, tutorials, and insights covering software development, programming, and modern web technologies.`,
+  };
+}
 
 export const CategoryDetailPage = async ({
   params,
