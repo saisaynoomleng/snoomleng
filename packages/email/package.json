@@ -12,14 +12,17 @@
     "./styles": "./src/globals.css"
   },
   "dependencies": {
+    "@react-email/ui": "^6.9.2",
     "react": "19.2.8",
-    "react-dom": "19.2.8"
+    "react-dom": "19.2.8",
+    "react-email": "^6.9.2"
   },
   "devDependencies": {
     "@types/react": "^19",
     "@types/react-dom": "^19"
   },
   "scripts": {
-    "build": "tsc -p tsconfig.build.json"
+    "build": "tsc -p tsconfig.build.json",
+    "email:dev": "email dev --dir ./src/emails -p 3005"
   }
 }
