@@ -1,5 +1,212 @@
 import { fn } from 'storybook/test';
 
+export const mockPortableText = {
+  body: [
+    {
+      _key: 'ef30421bea5c',
+      _type: 'block',
+      children: [
+        {
+          _key: '84bf11055265',
+          _type: 'span',
+          marks: ['em'],
+          text: 'Safe Word is a series highlighting the latest trends in the jewelry market, keeping you up to date on all things that sparkle and shine.',
+        },
+      ],
+      markDefs: [],
+      style: 'normal',
+    },
+    {
+      _key: 'f692894c7508',
+      _type: 'block',
+      children: [
+        {
+          _key: '465149276f68',
+          _type: 'span',
+          marks: [],
+          text: 'Between the excitement of the Met Gala and the special Mother’s Day launches, May is a huge month for the world of jewelry. First up, Brent Neale unveils “Tides”; Cartier delivers its dazzling “Le Chœur des Pierres” high jewelry collection in Saint-Tropez; Louis Vuitton expands its fine jewelry universe with “Color Blossom” watches; and Audemars Piguet debuts two collaborations with Swatch and Ambush. For the rest of the month, we’ve got you covered on all the jewelry-related happenings worth knowing about.',
+        },
+      ],
+      markDefs: [],
+      style: 'normal',
+    },
+    {
+      _key: '70d3fcb33998',
+      _type: 'imageWithAlt',
+      alt: 'Courtesy of Audemars Piguet',
+      asset: {
+        _ref: 'image-744eee44b939d7d25b8e8c35aedb825756c495a8-980x980-heif',
+        _type: 'reference',
+      },
+    },
+    {
+      _key: 'c3def6261b21',
+      _type: 'block',
+      children: [
+        {
+          _key: '2d7e0f5f219d',
+          _type: 'span',
+          marks: [],
+          text: 'The Royal Oak just got “Ambushed.” Not along after its viral “Royal Pop” collection, the Swiss watchmaker has joined forces with Yoon Ahn and Verbal, the design duo behind Ambush, to reimagine its most sought-after model. Limited to just 150 pieces, the 38.5 mm titanium design pairs a glittering black aventurine dial, meant to resemble the night sky, with a striking red tourbillon. The slightly smaller version (the standard Royal Oak is 44 mm) also features an open-displayed self-winding 2982 movement, with “Y/V” and “Limited Edition” engravings.',
+        },
+      ],
+      markDefs: [],
+      style: 'normal',
+    },
+    {
+      _key: '8629f7c0f916',
+      _type: 'block',
+      children: [
+        {
+          _key: '42848a3d6e20',
+          _type: 'span',
+          marks: [],
+          text: 'Brent Neale Opens a New York City Salon and Introduces the ‘Tides’ Collection',
+        },
+      ],
+      markDefs: [],
+      style: 'h3',
+    },
+    {
+      _key: 'c3a8a9ce1602',
+      _type: 'imageWithAlt',
+      alt: 'Courtesy of Brent Neale',
+      asset: {
+        _ref: 'image-d47cc29a02e453e7db9f556e7a62e4a0bfeee129-1200x1500-heif',
+        _type: 'reference',
+      },
+    },
+    {
+      _key: 'd2846384c786',
+      _type: 'block',
+      children: [
+        {
+          _key: '7379a135dba3',
+          _type: 'span',
+          marks: [],
+          text: 'For her latest fine jewelry collection “Tides,” designer Brent Neale looked to the emotional, unpredictable rhythm of the sea as inspiration. That starting point manifested in the beach-ready lineup, which includes emerald cabochon sand dollar rings, diamond and 18K gold fish earrings, and exquisite pearl designs. Coinciding with the opening of her New York City salon, Neale celebrated the collection on May 19 with an intimate cocktail party attended by Blake Lively, Kate Mara, Sarah Hoover, and other friends of the brand. Like Neale’s work, the by-appointment-only space reimagines the traditional jewelry showroom through jewel-box-inspired interiors and a highly personal shopping experience.',
+        },
+      ],
+      markDefs: [],
+      style: 'normal',
+    },
+    {
+      _key: '40f062a31da1',
+      _type: 'block',
+      children: [
+        {
+          _key: '01a33d66daa6',
+          _type: 'span',
+          marks: [],
+          text: 'Cartier Debuts Its ‘Le ',
+        },
+        {
+          _key: 'c181522562cd',
+          _type: 'span',
+          marks: ['strong'],
+          text: 'Chœur',
+        },
+        {
+          _key: '91e188a3eca6',
+          _type: 'span',
+          marks: [],
+          text: ' des Pierres’ ',
+        },
+      ],
+      markDefs: [],
+      style: 'h3',
+    },
+    {
+      _key: '94fb91b57079',
+      _type: 'imageWithAlt',
+      alt: 'Coutersy',
+      asset: {
+        _ref: 'image-90013a207036eb6420704b8c050fe345410c99d3-1200x1500-heif',
+        _type: 'reference',
+      },
+    },
+    {
+      _key: '0e7d5d036489',
+      _type: 'block',
+      children: [
+        {
+          _key: '91e188a3eca6',
+          _type: 'span',
+          marks: [],
+          text: 'High Jewelry Collection in Saint-Tropez',
+        },
+      ],
+      markDefs: [],
+      style: 'h3',
+    },
+    {
+      _key: '48a1368620da',
+      _type: 'block',
+      children: [
+        {
+          _key: 'f74a98f9d5de',
+          _type: 'span',
+          marks: [],
+          text: 'If there’s a capital of Riviera glamour, it’s Saint-Tropez—and Cartier rose to the occasion, unveiling its “Le Chœur des Pierres” collection against the glittering backdrop of a Provençal castle. Presented as a “chorus of stones,” the line centers on the four classical precious stones and encompasses 150 artistically composed pieces, objects, and high jewelry timepieces. Highlights include the dazzling Haryma necklace, a showcase of yellow and orange diamonds interlaced with garnets and white diamonds, and the Panthère Kentia, a jaw-dropping collier made from sapphires, emeralds, and onyx. “Letting a stone speak is to recognize in it a memory of the world, a beauty shaped by time and imbued with eternity,” Cartier’s director of high jewelry creation Jacqueline Karachi-Langane, said in a statement. “Each gemstone is an encounter, an alchemy that resonates with our vision and our quest for the Cartier ideal.”',
+        },
+      ],
+      markDefs: [],
+      style: 'normal',
+    },
+    {
+      _key: '19fba518573c',
+      _type: 'block',
+      children: [
+        {
+          _key: '56e46c83951e',
+          _type: 'span',
+          marks: [],
+          text: 'Louis Vuitton Adds ‘Color Blossom’ Watches to Its Fine Jewelry Line',
+        },
+      ],
+      markDefs: [],
+      style: 'h3',
+    },
+    {
+      _key: 'dcb0e50dd0a6',
+      _type: 'imageWithAlt',
+      alt: 'Courtesy of Louis Vuitton',
+      asset: {
+        _ref: 'image-95d68d3121acc29f9080c2cd95fb34c5307d4052-1200x1500-heif',
+        _type: 'reference',
+      },
+    },
+    {
+      _key: '3e14498b2cb4',
+      _type: 'block',
+      children: [
+        {
+          _key: 'f1e451cee6ab',
+          _type: 'span',
+          marks: [],
+          text: 'In celebration of the 130th anniversary of the monogram flower, Louis Vuitton is marking the milestone with a special addition to its beloved fine jewelry universe: “Color Blossom” watches. Unveiled with a campaign fronted by house ambassador Ana de Armas and lensed by Inez & Vinoodh, the release blends the know-how of the maison’s high jewelry offerings into a wearable timepiece. Rendered in luminous mother-of-pearl, vibrant amazonite, pink gold, and nearly 1 carat of diamonds, each 26mm watch pairs rich gemstones with soft tonal straps and sculptural detailing. “We wished to reinterpret an iconic jewelry collection, presenting a women’s timepiece with a jewelry spirit,” notes Matthieu Hegi, artistic director at La Fabrique du Temps Louis Vuitton, in a statement. “With the mother-of-pearl or hard stone dials, or a diamond-set case, there is also an inherently precious element.”',
+        },
+      ],
+      markDefs: [],
+      style: 'normal',
+    },
+    {
+      _key: 'a081654d7449',
+      _type: 'block',
+      children: [
+        {
+          _key: '788c2054a9a7',
+          _type: 'span',
+          marks: [],
+          text: '\n',
+        },
+      ],
+      markDefs: [],
+      style: 'normal',
+    },
+  ],
+};
+
 export const mockFormAction = fn(async () => {
   return {
     success: true,

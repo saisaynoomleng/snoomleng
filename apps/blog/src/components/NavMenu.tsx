@@ -50,7 +50,6 @@ export const DesktopNav = (): React.JSX.Element => {
         );
       })}
 
-      {/* search bar */}
       <SearchForm />
     </nav>
   );
@@ -118,7 +117,7 @@ export const MobileNav = (): React.JSX.Element => {
           );
         })}
 
-        <SearchForm />
+        <SearchForm setOpen={setOpen} />
       </nav>
     </>
   );

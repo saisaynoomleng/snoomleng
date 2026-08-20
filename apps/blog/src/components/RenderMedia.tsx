@@ -17,7 +17,7 @@ export const RenderMedia = ({
 }: RenderMediaProps): React.JSX.Element => {
   return (
     <Image
-      src={urlFor(src).format('webp').url()}
+      src={urlFor(src).format('webp').width(400).url()}
       className={twMerge(clsx('', className))}
       priority
       alt={alt}
