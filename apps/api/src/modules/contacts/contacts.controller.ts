@@ -1,5 +1,6 @@
 import type { Request, Response, NextFunction } from 'express';
 import { contactService } from './contact.service';
+import { sendContactEmail } from '@snoomleng/email';
 
 export const ContactController = () => {
   const service = contactService();
@@ -26,15 +27,15 @@ export const ContactController = () => {
     },
     create: async (req: Request, res: Response, next: NextFunction) => {
       try {
-        await service.create(req.body);
+        const contact = req.body;
+        await service.create(contact);
 
-        return res
-          .status(201)
-          .json({
-            success: true,
-            message:
-              "Thank you for contacting! I'll be in touch with you soon!",
-          });
+        await sendContactEmail(contact);
+
+        return res.status(201).json({
+          success: true,
+          message: "Thank you for contacting! I'll be in touch with you soon!",
+        });
       } catch (error) {
         return next(error);
       }

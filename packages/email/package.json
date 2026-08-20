@@ -12,6 +12,7 @@
     "./styles": "./src/globals.css"
   },
   "dependencies": {
+    "@aws-sdk/client-ses": "^3.1114.0",
     "@react-email/ui": "^6.9.2",
     "react": "19.2.8",
     "react-dom": "19.2.8",
