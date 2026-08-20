@@ -106,6 +106,13 @@ const component: PortableTextComponents = {
         </a>
       );
     },
+    strong: ({ children }) => <span className="font-bold">{children}</span>,
+    em: ({ children }) => <span className="italic">{children}</span>,
+    underline: ({ children }) => (
+      <span className="underline underline-offset-4 decoration-wavy">
+        {children}
+      </span>
+    ),
   },
   list: {
     bullet: ({ children }) => (

@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import React, { ComponentPropsWithoutRef } from 'react';
 import { twMerge } from 'tailwind-merge';
 
-type Heading = 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
+type Heading = 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
 
 type SectionTitleProps<T extends Heading> = {
   as?: T;
