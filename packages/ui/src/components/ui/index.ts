@@ -8,3 +8,4 @@ export * from './select';
 export * from './pagination';
 export * from './input';
 export * from './input-group';
+export * from './sidebar';
