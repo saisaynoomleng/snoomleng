@@ -22,8 +22,8 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
         <TooltipProvider>
           <SidebarProvider>
             <QueryProvider>
-              <SidebarTrigger />
               <SidebarNav />
+              <SidebarTrigger className="shadow-none! border-none size-10 translate-none!" />
               {children}
 
               <Toaster richColors closeButton position="top-center" />
