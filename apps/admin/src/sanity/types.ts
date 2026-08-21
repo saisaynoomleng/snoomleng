@@ -449,10 +449,61 @@ export type LOGO_QUERY_RESULT = {
   imageAlt: string | null;
 } | null;
 
+// Source: src/sanity/query.ts
+// Variable: SETTING_QUERY
+// Query: *[_type == 'siteSetting'][0]{    "branding": {      siteName,      "primaryLogo": {        "imageUrl": primaryLogo.asset->url,        "imageAlt": primaryLogo.alt,      },      "secondaryLogo": {      "imageUrl": secondaryLogo.asset->url,      "imageAlt": secondaryLogo.alt,        },      socialLinks[]{        _key,        icon,        platform,        url      },      contactInfo,      mode[],      isAvailable,    },  "navigation": navigation[]{                  _key,                  href,                  isButton,                  label                },  "footer": {    "columns": footerColumns[]{      _key,      columnLinks[]{        _key,        href,        label      }    },    "text": footerText  }}
+export type SETTING_QUERY_RESULT = {
+  branding: {
+    siteName: string | null;
+    primaryLogo: {
+      imageUrl: string | null;
+      imageAlt: string | null;
+    };
+    secondaryLogo: {
+      imageUrl: string | null;
+      imageAlt: string | null;
+    };
+    socialLinks: Array<{
+      _key: string;
+      icon: string | null;
+      platform: 'git-hub' | 'leet-code' | 'linked-in' | null;
+      url: string | null;
+    }> | null;
+    contactInfo: {
+      email?: string;
+      linkedInUrl?: string;
+      leetCodeURL?: string;
+      gitHubURL?: string;
+      city?: string;
+      state?: string;
+    } | null;
+    mode: Array<string> | null;
+    isAvailable: boolean | null;
+  };
+  navigation: Array<{
+    _key: string;
+    href: string | null;
+    isButton: boolean | null;
+    label: string | null;
+  }> | null;
+  footer: {
+    columns: Array<{
+      _key: string;
+      columnLinks: Array<{
+        _key: string;
+        href: string | null;
+        label: string | null;
+      }> | null;
+    }> | null;
+    text: string | null;
+  };
+} | null;
+
 // Query TypeMap
 import '@sanity/client';
 declare module '@sanity/client' {
   interface SanityQueries {
     '*[_type == \'siteSetting\'][0]{\n  "imageUrl": primaryLogo.asset->url,\n  "imageAlt": primaryLogo.alt\n}': LOGO_QUERY_RESULT;
+    '*[_type == \'siteSetting\'][0]{\n    "branding": {\n      siteName,\n      "primaryLogo": {\n        "imageUrl": primaryLogo.asset->url,\n        "imageAlt": primaryLogo.alt,\n      },\n      "secondaryLogo": {\n      "imageUrl": secondaryLogo.asset->url,\n      "imageAlt": secondaryLogo.alt,\n        },\n      socialLinks[]{\n        _key,\n        icon,\n        platform,\n        url\n      },\n      contactInfo,\n      mode[],\n      isAvailable,\n    },\n\n  "navigation": navigation[]{\n                  _key,\n                  href,\n                  isButton,\n                  label\n                },\n\n  "footer": {\n    "columns": footerColumns[]{\n      _key,\n      columnLinks[]{\n        _key,\n        href,\n        label\n      }\n    },\n    "text": footerText\n  }\n}': SETTING_QUERY_RESULT;
   }
 }

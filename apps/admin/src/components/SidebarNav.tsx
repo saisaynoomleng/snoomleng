@@ -80,7 +80,6 @@ export const SidebarNav = ({
                 <SidebarMenuButton asChild>
                   <Link
                     href={l.url}
-
                     className={clsx(
                       pathname === l.url
                         ? 'bg-primary text-background font-semibold'
@@ -104,7 +103,14 @@ export const SidebarNav = ({
             {MARKETING_LINKS.map((l) => (
               <SidebarMenuItem key={l.url}>
                 <SidebarMenuButton asChild>
-                  <Link href={l.url}>
+                  <Link
+                    href={l.url}
+                    className={clsx(
+                      pathname === l.url
+                        ? 'bg-primary text-background font-semibold'
+                        : '',
+                    )}
+                  >
                     <span>{l.icon}</span>
                     <span>{l.name}</span>
                   </Link>
