@@ -11,7 +11,8 @@
     "dev": "sanity dev",
     "start": "sanity start",
     "portfolio:schema": "sanity schema extract --path=../portfolio/src/sanity/extract.json",
-    "blog:schema": "sanity schema extract --path=../blog/src/sanity/extract.json"
+    "blog:schema": "sanity schema extract --path=../blog/src/sanity/extract.json",
+    "admin:schema": "sanity schema extract --path=../admin/src/sanity/extract.json"
   },
   "keywords": [
     "sanity"

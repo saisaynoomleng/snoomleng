@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import {
   Sidebar,
@@ -13,6 +15,7 @@ import {
 } from '@snoomleng/ui';
 import Image from 'next/image';
 import clsx from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 import { CiSettings } from 'react-icons/ci';
 import { MdCategory, MdOutlineViewQuilt } from 'react-icons/md';
@@ -20,6 +23,13 @@ import { GiFiles, GiNewspaper, GiStairsGoal, GiSuitcase } from 'react-icons/gi';
 import { FaLaptopCode, FaLinux } from 'react-icons/fa';
 import Link from 'next/link';
 import { BsMailboxFlag } from 'react-icons/bs';
+import { Media } from '@snoomleng/utils';
+import { usePathname } from 'next/navigation';
+
+type SidebarProps = {
+  className?: string;
+  media: Media;
+};
 
 const OPERATION_LINKS = [
   { name: 'Page Heroes', url: '/heroes', icon: <MdOutlineViewQuilt /> },
@@ -36,12 +46,27 @@ const MARKETING_LINKS = [
   { name: 'Blogs', url: '/blogs', icon: <GiNewspaper /> },
 ];
 
-export const SidebarNav = (): React.JSX.Element => {
+const LINK_CLASS = '';
+
+export const SidebarNav = ({
+  className,
+  media,
+}: SidebarProps): React.JSX.Element => {
+  const pathname = usePathname();
+
   return (
-    <Sidebar>
+    <Sidebar className={twMerge(clsx(className))}>
       <SidebarHeader>
         <Link href="/">
-          <Image width={100} height={100} src={''} alt="" />
+          {media.src && media.alt && (
+            <Image
+              width={100}
+              height={100}
+              src={media.src}
+              alt={media.src}
+              className="mx-auto"
+            />
+          )}
         </Link>
       </SidebarHeader>
 
@@ -56,7 +81,11 @@ export const SidebarNav = (): React.JSX.Element => {
                   <Link
                     href={l.url}
 
-                    className={clsx('')}
+                    className={clsx(
+                      pathname === l.url
+                        ? 'bg-primary text-background font-semibold'
+                        : '',
+                    )}
                   >
                     <span>{l.icon}</span>
                     <span>{l.name}</span>
