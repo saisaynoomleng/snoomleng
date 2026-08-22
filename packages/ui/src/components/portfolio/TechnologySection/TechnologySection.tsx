@@ -50,7 +50,7 @@ export type TechnologyProps = {
   name: string;
 };
 
-const iconMap = {
+export const TECH_STACK_ICON_MAP = {
   storybook: SiStorybook,
   linux: SiLinux,
   nextjs: SiNextdotjs,
@@ -96,7 +96,8 @@ export const TechnologySection = ({
 
       <div className="grid grid-cols-6 md:grid-cols-8 lg:grid-cols-12 gap-4 place-items-center">
         {techs.map((t) => {
-          const Icon = iconMap[t.icon as keyof typeof iconMap];
+          const Icon =
+            TECH_STACK_ICON_MAP[t.icon as keyof typeof TECH_STACK_ICON_MAP];
 
           return (
             <Tooltip key={t._id}>

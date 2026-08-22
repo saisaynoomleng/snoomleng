@@ -53,3 +53,29 @@ export const SETTING_QUERY = defineQuery(`*[_type == 'siteSetting'][0]{
     "text": footerText
   }
 }`);
+
+export const ALL_TECH_STACK_QUERY = defineQuery(`{
+  "techs": *[_type == 'technology'
+ && defined(slug.current)]{
+  name,
+  "slug": slug.current,
+  "iconText": icon,
+  type,
+ },
+  "total": count(*[_type == 'technology'
+ && defined(slug.current)]),
+   "frontendCount": count(*[_type == 'technology'
+ && type == 'frontend']),
+  "backendCount": count(*[_type == 'technology'
+ && type == 'backend']),
+  "aiCount": count(*[_type == 'technology'
+ && type == 'ai']),
+  "toolingCount": count(*[_type == 'technology'
+ && type == 'tooling']),
+  "devopsCount": count(*[_type == 'technology'
+ && type == 'devops']),
+  "badgeCount": count(*[_type == 'technology'
+ && type == 'badge']),
+  "cloudCount": count(*[_type == 'technology'
+ && type == 'cloud-and-infrastructure'])
+}`);
