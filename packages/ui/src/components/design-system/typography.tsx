@@ -53,7 +53,13 @@ import { RiHotelLine } from 'react-icons/ri';
 import { MdHealthAndSafety } from 'react-icons/md';
 import { PiShoppingBagFill } from 'react-icons/pi';
 import { BsMailboxFlag, BsSuitcaseLgFill } from 'react-icons/bs';
-import { FaGolang, FaLaptopCode, FaNode, FaStripe } from 'react-icons/fa6';
+import {
+  FaGolang,
+  FaImages,
+  FaLaptopCode,
+  FaNode,
+  FaStripe,
+} from 'react-icons/fa6';
 import { HiMiniMagnifyingGlass } from 'react-icons/hi2';
 
 const icons = [
@@ -104,6 +110,7 @@ const icons = [
   <MdKeyboardDoubleArrowRight />,
   <HiMiniMagnifyingGlass />,
   <BsMailboxFlag />,
+  <FaImages />,
 ];
 
 const fontSizes = {

@@ -1,5 +1,43 @@
 import { fn } from 'storybook/test';
 
+export const mockBrandingForm = {
+  city: 'Cleveland',
+  email: 'saileng9723@gmail.com',
+  gitHubURL: 'https://github.com/saisaynoomleng',
+  leetCodeURL: 'https://leetcode.com/u/saisaynoomleng/',
+  linkedInUrl: 'https://www.linkedin.com/in/sai-say-noom-leng-72a94031a/',
+  state: 'Ohio',
+  isAvailable: true,
+  mode: ['Full Time', 'Part Time', 'Contract', 'Freelance'],
+  primaryLogoUrl:
+    'https://cdn.sanity.io/images/h5ref3kt/production/517d6e33977bdf43425a8d5f8a8d60bd77f2dd4c-739x591.png',
+  primaryLogoAlt: 'snoomleng primary logo',
+  secondaryLogoUrl:
+    'https://cdn.sanity.io/images/h5ref3kt/production/ab0361bfb7d8bff8555baad7119162395750416a-742x595.png',
+  secondaryLogoAlt: 'snoomleng secondary logo',
+  siteName: 'snoomleng',
+  socialLinks: [
+    {
+      _key: '5f9c845073ea',
+      icon: 'linkedIn',
+      platform: 'linked-in',
+      url: 'https://www.linkedin.com/in/sai-say-noom-leng-72a94031a/',
+    },
+    {
+      _key: '85095f34576f',
+      icon: 'gitHub',
+      platform: 'git-hub',
+      url: 'https://github.com/saisaynoomleng',
+    },
+    {
+      _key: 'b387866abc08',
+      icon: 'leetcode',
+      platform: 'leet-code',
+      url: 'https://leetcode.com/u/saisaynoomleng/',
+    },
+  ],
+};
+
 export const mockPortableText = {
   body: [
     {

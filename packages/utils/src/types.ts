@@ -21,6 +21,7 @@ export type ActionResponse<T> =
   | {
       success: true;
       message: string;
+      data?: T;
     }
   | { success: false; message: string; field?: keyof T };
 
@@ -36,3 +37,16 @@ export type ImageResponse =
 export type SlugParamsProps = {
   params: Promise<{ slug: string }>;
 };
+
+/**
+ * Allowed image types for input image field
+ */
+export const ALLOWED_IMAGE_TYPES = [
+  'image/jpg',
+  'image/jpeg',
+  'image/png',
+  'image/webp',
+  'image/svg',
+  'image/avif',
+  'image/gif',
+];

@@ -82,3 +82,35 @@ export const maximumImageSize = (
 
   return true;
 };
+
+/**
+ * Return the image MIME type
+ * @param type string
+ * @returns string
+ */
+export const formatImageType = (type: string): string => {
+  const [, extension] = type.split('/');
+
+  return extension?.toUpperCase() ?? '';
+};
+
+/**
+ * Return the image file size in Unit String
+ * @param size number
+ * @returns string
+ */
+export const formatImageSize = (size: number): string => {
+  if (size >= 1024 * 1024 * 1024) {
+    return `${(size / (1024 * 1024 * 1024)).toFixed(2)} GB`;
+  }
+
+  if (size >= 1024 * 1024) {
+    return `${(size / (1024 * 1024)).toFixed(2)} MB`;
+  }
+
+  if (size >= 1024) {
+    return `${(size / 1024).toFixed(2)} KB`;
+  }
+
+  return `${size} bytes`;
+};
