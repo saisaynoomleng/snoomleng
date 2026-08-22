@@ -451,7 +451,7 @@ export type LOGO_QUERY_RESULT = {
 
 // Source: src/sanity/query.ts
 // Variable: SETTING_QUERY
-// Query: *[_type == 'siteSetting'][0]{    "branding": {      siteName,      "primaryLogo": {        "imageUrl": primaryLogo.asset->url,        "imageAlt": primaryLogo.alt,      },      "secondaryLogo": {      "imageUrl": secondaryLogo.asset->url,      "imageAlt": secondaryLogo.alt,        },      socialLinks[]{        _key,        icon,        platform,        url      },      contactInfo,      mode[],      isAvailable,    },  "navigation": navigation[]{                  _key,                  href,                  isButton,                  label                },  "footer": {    "columns": footerColumns[]{      _key,      columnLinks[]{        _key,        href,        label      }    },    "text": footerText  }}
+// Query: *[_type == 'siteSetting'][0]{    "branding": {      siteName,      "primaryLogo": {        "imageUrl": primaryLogo.asset->url,        "imageAlt": primaryLogo.alt,      },      "secondaryLogo": {        "imageUrl": secondaryLogo.asset->url,        "imageAlt": secondaryLogo.alt,      },      socialLinks[]{        _key,        icon,        platform,        url      },      contactInfo{        city,        email,        githubURL,        leetCodeURL,        linkedInUrl,        state      },      mode[],      isAvailable,    },  "navigation": navigation[]{                  _key,                  href,                  isButton,                  label                },  "footer": {    "columns": footerColumns[]{      _key,      columnLinks[]{        _key,        href,        label      }    },    "text": footerText  }}
 export type SETTING_QUERY_RESULT = {
   branding: {
     siteName: string | null;
@@ -470,12 +470,12 @@ export type SETTING_QUERY_RESULT = {
       url: string | null;
     }> | null;
     contactInfo: {
-      email?: string;
-      linkedInUrl?: string;
-      leetCodeURL?: string;
-      gitHubURL?: string;
-      city?: string;
-      state?: string;
+      city: string | null;
+      email: string | null;
+      githubURL: null;
+      leetCodeURL: string | null;
+      linkedInUrl: string | null;
+      state: string | null;
     } | null;
     mode: Array<string> | null;
     isAvailable: boolean | null;
@@ -504,6 +504,6 @@ import '@sanity/client';
 declare module '@sanity/client' {
   interface SanityQueries {
     '*[_type == \'siteSetting\'][0]{\n  "imageUrl": primaryLogo.asset->url,\n  "imageAlt": primaryLogo.alt\n}': LOGO_QUERY_RESULT;
-    '*[_type == \'siteSetting\'][0]{\n    "branding": {\n      siteName,\n      "primaryLogo": {\n        "imageUrl": primaryLogo.asset->url,\n        "imageAlt": primaryLogo.alt,\n      },\n      "secondaryLogo": {\n      "imageUrl": secondaryLogo.asset->url,\n      "imageAlt": secondaryLogo.alt,\n        },\n      socialLinks[]{\n        _key,\n        icon,\n        platform,\n        url\n      },\n      contactInfo,\n      mode[],\n      isAvailable,\n    },\n\n  "navigation": navigation[]{\n                  _key,\n                  href,\n                  isButton,\n                  label\n                },\n\n  "footer": {\n    "columns": footerColumns[]{\n      _key,\n      columnLinks[]{\n        _key,\n        href,\n        label\n      }\n    },\n    "text": footerText\n  }\n}': SETTING_QUERY_RESULT;
+    '*[_type == \'siteSetting\'][0]{\n    "branding": {\n      siteName,\n      "primaryLogo": {\n        "imageUrl": primaryLogo.asset->url,\n        "imageAlt": primaryLogo.alt,\n      },\n      "secondaryLogo": {\n        "imageUrl": secondaryLogo.asset->url,\n        "imageAlt": secondaryLogo.alt,\n      },\n      socialLinks[]{\n        _key,\n        icon,\n        platform,\n        url\n      },\n      contactInfo{\n        city,\n        email,\n        githubURL,\n        leetCodeURL,\n        linkedInUrl,\n        state\n      },\n      mode[],\n      isAvailable,\n    },\n\n  "navigation": navigation[]{\n                  _key,\n                  href,\n                  isButton,\n                  label\n                },\n\n  "footer": {\n    "columns": footerColumns[]{\n      _key,\n      columnLinks[]{\n        _key,\n        href,\n        label\n      }\n    },\n    "text": footerText\n  }\n}': SETTING_QUERY_RESULT;
   }
 }

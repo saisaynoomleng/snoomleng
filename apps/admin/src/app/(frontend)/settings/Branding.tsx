@@ -5,5 +5,5 @@ type BrandingProps = {
 };
 
 export const Branding = ({ className }: BrandingProps) => {
-  return <Bounded></Bounded>;
+  return <Bounded>s</Bounded>;
 };

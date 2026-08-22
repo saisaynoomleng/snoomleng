@@ -13,16 +13,23 @@ export const SETTING_QUERY = defineQuery(`*[_type == 'siteSetting'][0]{
         "imageAlt": primaryLogo.alt,
       },
       "secondaryLogo": {
-      "imageUrl": secondaryLogo.asset->url,
-      "imageAlt": secondaryLogo.alt,
-        },
+        "imageUrl": secondaryLogo.asset->url,
+        "imageAlt": secondaryLogo.alt,
+      },
       socialLinks[]{
         _key,
         icon,
         platform,
         url
       },
-      contactInfo,
+      contactInfo{
+        city,
+        email,
+        githubURL,
+        leetCodeURL,
+        linkedInUrl,
+        state
+      },
       mode[],
       isAvailable,
     },
