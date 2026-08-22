@@ -99,3 +99,29 @@ export const BrandingFormOutputSchema = BrandingFormSchema.omit({
   secondaryLogoUrl: z.url(),
 });
 export type BrandingFormOutputSchema = z.infer<typeof BrandingFormOutputSchema>;
+
+/**
+ * Validate Tech Stack Form Schema
+ */
+export const TechStackFormSchema = z.object({
+  name: z.string().min(1, 'Name must have at least 1 character'),
+  slug: z.string().min(1, 'Slug must have at least 1 character'),
+  iconText: z.string().min(1, 'Tech Stack slug must have at least 1 character'),
+  type: z.enum([
+    'frontend',
+    'backend',
+    'ai',
+    'tooling',
+    'devops',
+    'badge',
+    'cloud-and-infrastructure',
+  ]),
+});
+/**
+ * Validate Tech Stack Form Input Schema
+ */
+export type TechStackFormInputSchema = z.input<typeof TechStackFormSchema>;
+/**
+ * Validate Tech Stack Form Output Schema
+ */
+export type TechstackFormOutputSchema = z.output<typeof TechStackFormSchema>;
