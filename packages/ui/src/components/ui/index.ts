@@ -9,3 +9,4 @@ export * from './pagination';
 export * from './input';
 export * from './input-group';
 export * from './sidebar';
+export * from './button-group';
