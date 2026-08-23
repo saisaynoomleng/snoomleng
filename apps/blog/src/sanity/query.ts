@@ -146,7 +146,8 @@ export const SEARCH_QUERY = defineQuery(`*[_type == 'blog'
 
 export const ALL_TECH_QUERY = defineQuery(`{
   "techs": *[_type == 'technology'
- && defined(slug.current)]{
+ && defined(slug.current)]
+  |order(_createdAt desc){
   name,
   "slug": slug.current,
   "iconText": icon,
