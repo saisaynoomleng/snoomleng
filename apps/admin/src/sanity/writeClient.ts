@@ -1,5 +1,3 @@
-'use server';
-
 import { env } from '@/lib/env/server';
 import { client } from './client';
 

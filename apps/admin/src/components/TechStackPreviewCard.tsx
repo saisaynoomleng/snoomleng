@@ -14,35 +14,6 @@ import Link from 'next/link';
 import React from 'react';
 import { IoIosEye } from 'react-icons/io';
 import { IoPencil } from 'react-icons/io5';
-
-import {
-  SiBetterauth,
-  SiClerk,
-  SiDocker,
-  SiDrizzle,
-  SiExpress,
-  SiGithub,
-  SiGsap,
-  SiLinux,
-  SiNeon,
-  SiNextdotjs,
-  SiNginx,
-  SiPostgresql,
-  SiReact,
-  SiReacthookform,
-  SiRedis,
-  SiSanity,
-  SiShadcnui,
-  SiStorybook,
-  SiTailwindcss,
-  SiTanstack,
-  SiTypescript,
-  SiVim,
-  SiVitest,
-  SiZod,
-} from 'react-icons/si';
-import { FaGolang, FaNode, FaStripe } from 'react-icons/fa6';
-import { FaAws } from 'react-icons/fa';
 import clsx from 'clsx';
 
 export type TECH_TYPES =

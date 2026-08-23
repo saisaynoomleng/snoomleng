@@ -50,7 +50,7 @@ import {
 } from 'react-icons/si';
 import { FaAws } from 'react-icons/fa';
 import { RxHamburgerMenu } from 'react-icons/rx';
-import { IoIosArrowRoundDown } from 'react-icons/io';
+import { IoIosArrowRoundDown, IoIosEye } from 'react-icons/io';
 import { RiHotelLine } from 'react-icons/ri';
 import { MdHealthAndSafety } from 'react-icons/md';
 import { PiShoppingBagFill } from 'react-icons/pi';
@@ -63,6 +63,8 @@ import {
   FaStripe,
 } from 'react-icons/fa6';
 import { HiMiniMagnifyingGlass } from 'react-icons/hi2';
+import { IoPencil } from 'react-icons/io5';
+import { GoPlus } from 'react-icons/go';
 
 const icons = [
   <MdHealthAndSafety />,
@@ -115,6 +117,9 @@ const icons = [
   <FaImages />,
   <MdGridView />,
   <MdViewList />,
+  <IoPencil />,
+  <IoIosEye />,
+  <GoPlus />,
 ];
 
 const fontSizes = {

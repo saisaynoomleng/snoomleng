@@ -4,7 +4,6 @@ import {
   MutationCache,
   QueryClient,
   QueryClientProvider,
-  useQuery,
 } from '@tanstack/react-query';
 import React from 'react';
 

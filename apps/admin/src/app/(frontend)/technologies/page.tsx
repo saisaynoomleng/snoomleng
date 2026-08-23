@@ -1,16 +1,10 @@
 'use client';
 
-import React, { useContext } from 'react';
+import React from 'react';
 import { useAllTechStacks } from './hooks';
-import {
-  AdminDashboardSkeleton,
-  Bounded,
-  SectionTitle,
-  TECH_STACK_ICON_MAP,
-} from '@snoomleng/ui';
+import { AdminDashboardSkeleton, Bounded, SectionTitle } from '@snoomleng/ui';
 import { notFound } from 'next/navigation';
 import { formatTitle, replaceDashWithSpace } from '@snoomleng/utils';
-
 import { ChangeViewButton } from '@/components/ChangeViewButton';
 import { useChangeComponentView } from '@/hooks/useChangeComponentView';
 import {
@@ -18,6 +12,7 @@ import {
   TechStackPreviewCard,
 } from '@/components/TechStackPreviewCard';
 import clsx from 'clsx';
+import AddNewButton from '@/components/AddNewButton';
 
 const TechnologyPage = (): React.JSX.Element => {
   const { data: techStacks, isLoading, isError } = useAllTechStacks();
@@ -75,7 +70,8 @@ const TechnologyPage = (): React.JSX.Element => {
           view === 'grid' ? 'grid-cols-4' : 'grid-cols-1',
         )}
       >
-        <div className="col-span-full place-self-end">
+        <div className="col-span-full flex justify-between">
+          <AddNewButton href="/technologies/create" />
           <ChangeViewButton view={view} setView={setView} />
         </div>
 
