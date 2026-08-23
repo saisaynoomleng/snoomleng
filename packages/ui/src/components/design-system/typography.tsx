@@ -14,9 +14,11 @@ import { Card, CardContent } from '#components/ui/card';
 import { CiSettings } from 'react-icons/ci';
 import {
   MdCategory,
+  MdGridView,
   MdKeyboardDoubleArrowLeft,
   MdKeyboardDoubleArrowRight,
   MdOutlineViewQuilt,
+  MdViewList,
 } from 'react-icons/md';
 import { GiFiles, GiNewspaper, GiStairsGoal, GiSuitcase } from 'react-icons/gi';
 import { FaLinux } from 'react-icons/fa';
@@ -111,6 +113,8 @@ const icons = [
   <HiMiniMagnifyingGlass />,
   <BsMailboxFlag />,
   <FaImages />,
+  <MdGridView />,
+  <MdViewList />,
 ];
 
 const fontSizes = {

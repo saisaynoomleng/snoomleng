@@ -31,9 +31,13 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
           <SidebarProvider>
             <QueryProvider>
               <SidebarNav
-                media={{ src: logo?.imageUrl || '', alt: logo?.imageAlt || '' }}
+                media={{
+                  src: logo?.imageUrl || '',
+                  alt: logo?.imageAlt || '',
+                }}
               />
               <SidebarTrigger className="shadow-none! border-none size-10 translate-none!" />
+
               {children}
 
               <SanityLive />

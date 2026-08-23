@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useContext } from 'react';
 import { useAllTechStacks } from './hooks';
 import {
   AdminDashboardSkeleton,
@@ -10,39 +10,18 @@ import {
 } from '@snoomleng/ui';
 import { notFound } from 'next/navigation';
 import { formatTitle, replaceDashWithSpace } from '@snoomleng/utils';
-import Link from 'next/link';
 
+import { ChangeViewButton } from '@/components/ChangeViewButton';
+import { useChangeComponentView } from '@/hooks/useChangeComponentView';
 import {
-  SiBetterauth,
-  SiClerk,
-  SiDocker,
-  SiDrizzle,
-  SiExpress,
-  SiGithub,
-  SiGsap,
-  SiLinux,
-  SiNeon,
-  SiNextdotjs,
-  SiNginx,
-  SiPostgresql,
-  SiReact,
-  SiReacthookform,
-  SiRedis,
-  SiSanity,
-  SiShadcnui,
-  SiStorybook,
-  SiTailwindcss,
-  SiTanstack,
-  SiTypescript,
-  SiVim,
-  SiVitest,
-  SiZod,
-} from 'react-icons/si';
-import { FaGolang, FaNode, FaStripe } from 'react-icons/fa6';
-import { FaAws } from 'react-icons/fa';
+  TECH_TYPES,
+  TechStackPreviewCard,
+} from '@/components/TechStackPreviewCard';
+import clsx from 'clsx';
 
 const TechnologyPage = (): React.JSX.Element => {
   const { data: techStacks, isLoading, isError } = useAllTechStacks();
+  const { view, setView } = useChangeComponentView();
 
   if (isLoading) return <AdminDashboardSkeleton />;
 
@@ -90,16 +69,25 @@ const TechnologyPage = (): React.JSX.Element => {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div
+        className={clsx(
+          'grid gap-3',
+          view === 'grid' ? 'grid-cols-4' : 'grid-cols-1',
+        )}
+      >
+        <div className="col-span-full place-self-end">
+          <ChangeViewButton view={view} setView={setView} />
+        </div>
+
         {techs.map((tech) => (
-          <Link
-            href={`/technologies/${tech.slug}/edit`}
+          <TechStackPreviewCard
             key={tech.slug}
-            className="flex gap-y-3 justify-between hover:bg-primary hover:text-background px-2 py-1 border border-border/10"
-          >
-            <p className="font-semibold">{tech.name}</p>
-            {tech.type && <p>{replaceDashWithSpace(formatTitle(tech.type))}</p>}
-          </Link>
+            view={view}
+            name={tech.name || ''}
+            slug={tech.slug || ''}
+            type={tech.type as unknown as TECH_TYPES}
+            iconText={tech.iconText || ''}
+          />
         ))}
       </div>
     </Bounded>
