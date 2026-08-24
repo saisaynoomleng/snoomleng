@@ -148,6 +148,7 @@ export const ALL_TECH_QUERY = defineQuery(`{
   "techs": *[_type == 'technology'
  && defined(slug.current)]
   |order(_createdAt desc){
+  _id,
   name,
   "slug": slug.current,
   "iconText": icon,

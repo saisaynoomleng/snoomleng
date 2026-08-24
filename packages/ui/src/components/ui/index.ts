@@ -10,3 +10,4 @@ export * from './input';
 export * from './input-group';
 export * from './sidebar';
 export * from './button-group';
+export * from './alert-dialog';

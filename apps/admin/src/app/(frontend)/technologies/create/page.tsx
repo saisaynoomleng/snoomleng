@@ -1,7 +1,7 @@
 'use client';
 
 import { Bounded, CreateTechStackForm, SectionTitle } from '@snoomleng/ui';
-import { useCreateTechStack } from '../hooks';
+import { useCreateTechStack } from '../../../../hooks/useTechStack';
 
 const CreateTechStackPage = () => {
   const { mutateAsync: action } = useCreateTechStack();
