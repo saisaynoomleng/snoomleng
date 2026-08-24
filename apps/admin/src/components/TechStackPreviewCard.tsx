@@ -4,6 +4,15 @@ import {
   TooltipContent,
   TooltipTrigger,
   TECH_STACK_ICON_MAP,
+  AlertDialog,
+  AlertDialogTrigger,
+  AlertDialogContent,
+  AlertDialogTitle,
+  AlertDialogHeader,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogCancel,
+  AlertDialogAction,
 } from '@snoomleng/ui';
 import {
   formatTitle,
@@ -15,6 +24,8 @@ import React from 'react';
 import { IoIosEye } from 'react-icons/io';
 import { IoPencil } from 'react-icons/io5';
 import clsx from 'clsx';
+import { useRemoveTechStack } from '@/hooks/useTechStack';
+import { UseMutateAsyncFunction } from '@tanstack/react-query';
 
 export type TECH_TYPES =
   | 'frontend'
@@ -31,9 +42,11 @@ type TechStackPreviewCardProps = {
   name: string;
   iconText: string;
   type: TECH_TYPES;
+  _id: string;
 };
 
 export const TechStackPreviewCard = ({
+  _id,
   view,
   slug,
   name,
@@ -42,6 +55,7 @@ export const TechStackPreviewCard = ({
 }: TechStackPreviewCardProps): React.JSX.Element => {
   const Icon =
     TECH_STACK_ICON_MAP[iconText as keyof typeof TECH_STACK_ICON_MAP];
+  const { mutateAsync: removeAction } = useRemoveTechStack(_id);
 
   return (
     <>
@@ -56,7 +70,7 @@ export const TechStackPreviewCard = ({
             </span>
           </p>
 
-          <LinkButtons slug={slug} view={view} />
+          <LinkButtons slug={slug} view={view} removeAction={removeAction} />
         </div>
       ) : (
         <div className="grid grid-cols-3 items-center  px-2 py-1 border border-border/20">
@@ -65,7 +79,7 @@ export const TechStackPreviewCard = ({
             {replaceDashWithNoSpace(formatTitle(type))}
           </p>
 
-          <LinkButtons slug={slug} view={view} />
+          <LinkButtons slug={slug} view={view} removeAction={removeAction} />
         </div>
       )}
     </>
@@ -74,9 +88,11 @@ export const TechStackPreviewCard = ({
 const LinkButtons = ({
   slug,
   view,
+  removeAction,
 }: {
   slug: string;
   view: 'grid' | 'list';
+  removeAction: UseMutateAsyncFunction;
 }) => {
   return (
     <div
@@ -123,6 +139,37 @@ const LinkButtons = ({
         </TooltipTrigger>
         <TooltipContent>Edit</TooltipContent>
       </Tooltip>
+
+      <AlertDialog>
+        <AlertDialogTrigger asChild>
+          <Button
+            variant="outline"
+            className={clsx(
+              'shadow-none! translate-none! border-brand-error-600 text-brand-error-600!',
+              view === 'grid' && 'flex-1',
+            )}
+          >
+            Remove
+          </Button>
+        </AlertDialogTrigger>
+        <AlertDialogContent>
+          <AlertDialogHeader>
+            <AlertDialogTitle>
+              Are you sure to delete this Tech Stack?
+            </AlertDialogTitle>
+            <AlertDialogDescription>
+              This action cannot be undone. This will permanently delete Tech
+              Stack from Content Lake.
+            </AlertDialogDescription>
+          </AlertDialogHeader>
+          <AlertDialogFooter>
+            <AlertDialogCancel>Cancel</AlertDialogCancel>
+            <AlertDialogAction onClick={() => removeAction()} className="">
+              Continue
+            </AlertDialogAction>
+          </AlertDialogFooter>
+        </AlertDialogContent>
+      </AlertDialog>
     </div>
   );
 };

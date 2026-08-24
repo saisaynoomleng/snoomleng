@@ -57,6 +57,7 @@ export const SETTING_QUERY = defineQuery(`*[_type == 'siteSetting'][0]{
 export const ALL_TECH_STACK_QUERY = defineQuery(`{
   "techs": *[_type == 'technology'
  && defined(slug.current)]{
+  _id,
   name,
   "slug": slug.current,
   "iconText": icon,

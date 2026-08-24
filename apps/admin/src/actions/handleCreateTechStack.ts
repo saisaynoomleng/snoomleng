@@ -28,7 +28,7 @@ export const handleCreateTechStack = async (
 
     const id = crypto.randomUUID();
 
-    await writeClient.createIfNotExists({
+    await writeClient.create({
       _id: id,
       _type: 'technology',
       name,

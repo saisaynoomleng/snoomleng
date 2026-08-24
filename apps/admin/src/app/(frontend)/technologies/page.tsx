@@ -1,7 +1,10 @@
 'use client';
 
 import React from 'react';
-import { useAllTechStacks } from './hooks';
+import {
+  useAllTechStacks,
+  useRemoveTechStack,
+} from '../../../hooks/useTechStack';
 import { AdminDashboardSkeleton, Bounded, SectionTitle } from '@snoomleng/ui';
 import { notFound } from 'next/navigation';
 import { formatTitle, replaceDashWithSpace } from '@snoomleng/utils';
@@ -83,6 +86,7 @@ const TechnologyPage = (): React.JSX.Element => {
             slug={tech.slug || ''}
             type={tech.type as unknown as TECH_TYPES}
             iconText={tech.iconText || ''}
+            _id={tech._id}
           />
         ))}
       </div>
