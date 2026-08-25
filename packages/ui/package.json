@@ -14,7 +14,9 @@
   "dependencies": {
     "@base-ui/react": "^1.7.0",
     "@hookform/resolvers": "^5.7.1",
+    "@portabletext/editor": "^7.12.0",
     "@portabletext/react": "^8.0.1",
+    "@portabletext/toolbar": "^8.0.49",
     "@shadcn/react": "^0.3.0",
     "@snoomleng/utils": "workspace:*",
     "@tailwindcss/vite": "^4.3.3",

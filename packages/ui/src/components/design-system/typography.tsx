@@ -13,11 +13,20 @@ import { Card, CardContent } from '#components/ui/card';
 
 import { CiSettings } from 'react-icons/ci';
 import {
+  MdAddLink,
   MdCategory,
+  MdCode,
   MdGridView,
   MdKeyboardDoubleArrowLeft,
   MdKeyboardDoubleArrowRight,
+  MdOutlineFormatBold,
+  MdOutlineFormatItalic,
+  MdOutlineFormatListBulleted,
+  MdOutlineFormatListNumbered,
+  MdOutlineFormatUnderlined,
+  MdOutlineImage,
   MdOutlineViewQuilt,
+  MdStrikethroughS,
   MdViewList,
 } from 'react-icons/md';
 import { GiFiles, GiNewspaper, GiStairsGoal, GiSuitcase } from 'react-icons/gi';
@@ -48,7 +57,7 @@ import {
   SiZod,
   SiRedis,
 } from 'react-icons/si';
-import { FaAws } from 'react-icons/fa';
+import { FaAws, FaHighlighter } from 'react-icons/fa';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import { IoIosArrowRoundDown, IoIosEye } from 'react-icons/io';
 import { RiHotelLine } from 'react-icons/ri';
@@ -120,6 +129,16 @@ const icons = [
   <IoPencil />,
   <IoIosEye />,
   <GoPlus />,
+  <FaHighlighter />,
+  <MdOutlineFormatBold />,
+  <MdOutlineFormatItalic />,
+  <MdOutlineFormatUnderlined />,
+  <MdStrikethroughS />,
+  <MdOutlineFormatListBulleted />,
+  <MdOutlineFormatListNumbered />,
+  <MdAddLink />,
+  <MdOutlineImage />,
+  <MdCode />,
 ];
 
 const fontSizes = {

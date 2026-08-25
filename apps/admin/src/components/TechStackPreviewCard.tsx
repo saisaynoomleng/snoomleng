@@ -131,7 +131,7 @@ const LinkButtons = ({
               view === 'grid' && 'flex-1',
             )}
           >
-            <Link href={`/technologies/${slug}/edit`}>
+            <Link href={`/technologies/${slug}`}>
               <IoPencil />
               {view === 'grid' && <span>Edit</span>}
             </Link>
