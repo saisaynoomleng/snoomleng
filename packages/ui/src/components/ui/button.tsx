@@ -21,6 +21,8 @@ const buttonVariants = cva(
         link: 'text-primary underline-offset-4 hover:underline',
         pagination:
           'shadow-none! hover:translate-0 hover:text-primary hover:border-primary',
+        toolbar:
+          'shadow-none! hover:translate-0 hover:text-primary hover:border-primary',
       },
       size: {
         default:

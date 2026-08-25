@@ -80,3 +80,12 @@ export const ALL_TECH_STACK_QUERY = defineQuery(`{
   "cloudCount": count(*[_type == 'technology'
  && type == 'cloud-and-infrastructure'])
 }`);
+
+export const TECH_STACK_QUERY = defineQuery(`*[_type == 'technology'
+ && slug.current == $slug][0]{
+  name,
+  "slug": slug.current,
+  icon,
+  type,
+  _id
+ }`);

@@ -1,6 +1,7 @@
 'use client';
 
-import { handleCreateTechStack } from '@/actions/handleCreateTechStack';
+import { handleCreateTechStack } from '@/actions/TechStack/handleCreateTechStack';
+import { handleEditTechStack } from '@/actions/TechStack/handleEditTechStack';
 import { hanldeRemoveDocument } from '@/actions/handleRemoveDocument';
 import { getAllTechStacks } from '@/lib/dal';
 import { queryKeys } from '@/lib/queryKeys';
@@ -57,6 +58,30 @@ export const useRemoveTechStack = (_id: string) => {
         queryKey: queryKeys.techStacks.all,
       });
       router.push('/technologies');
+    },
+
+    onError: (error) => {
+      console.error(error);
+    },
+  });
+};
+
+export const useEditTechStack = (_id: string) => {
+  const queryClient = useQueryClient();
+  const router = useRouter();
+
+  return useMutation({
+    mutationFn: async (data: TechStackFormInputSchema) =>
+      handleEditTechStack(data, _id),
+
+    onSuccess: async (result) => {
+      if (!result.success) return;
+
+      queryClient.invalidateQueries({
+        queryKey: queryKeys.techStacks.byId(_id),
+      });
+
+      router.refresh();
     },
 
     onError: (error) => {

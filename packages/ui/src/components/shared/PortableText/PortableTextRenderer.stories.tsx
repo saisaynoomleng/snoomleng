@@ -6,7 +6,7 @@ import {
 import { mockPortableText } from '#lib/mockData';
 
 const meta: Meta<typeof PortableTextRenderer> = {
-  title: 'Components/PortableText/Renderer',
+  title: 'Components/Shared/PortableText/Renderer',
   component: PortableTextRenderer,
   tags: ['autodocs'],
   parameters: {
