@@ -547,6 +547,38 @@ export type TECH_STACK_QUERY_RESULT = {
   _id: string;
 } | null;
 
+// Source: src/sanity/query.ts
+// Variable: ALL_HEROES_QUERY
+// Query: {    "heroes": *[_type == 'hero'  && defined(slug.current)]{    _id,    name,    "slug": slug.current,    "imageUrl": mainImage.asset->url,    "imageAlt": mainImage.alt,  },     "total": count(*[_type == 'hero'              && defined(slug.current)])}
+export type ALL_HEROES_QUERY_RESULT = {
+  heroes: Array<{
+    _id: string;
+    name: string | null;
+    slug: string | null;
+    imageUrl: string | null;
+    imageAlt: string | null;
+  }>;
+  total: number;
+};
+
+// Source: src/sanity/query.ts
+// Variable: HERO_QUERY
+// Query: *[_type == 'hero' && slug.current == $slug][0]{  name,  "slug": slug.current,  position,  title,  body,  "imageUrl": mainImage.asset->url,  "imageAlt": mainImage.alt,  actions[] }
+export type HERO_QUERY_RESULT = {
+  name: string | null;
+  slug: string | null;
+  position: Array<string> | null;
+  title: string | null;
+  body: BlockContent | null;
+  imageUrl: string | null;
+  imageAlt: string | null;
+  actions: Array<{
+    label?: string;
+    href?: string;
+    _key: string;
+  }> | null;
+} | null;
+
 // Query TypeMap
 import '@sanity/client';
 declare module '@sanity/client' {
@@ -555,5 +587,7 @@ declare module '@sanity/client' {
     '*[_type == \'siteSetting\'][0]{\n    "branding": {\n      siteName,\n      "primaryLogo": {\n        "imageUrl": primaryLogo.asset->url,\n        "imageAlt": primaryLogo.alt,\n      },\n      "secondaryLogo": {\n        "imageUrl": secondaryLogo.asset->url,\n        "imageAlt": secondaryLogo.alt,\n      },\n      socialLinks[]{\n        _key,\n        icon,\n        platform,\n        url\n      },\n      contactInfo{\n        city,\n        email,\n        githubURL,\n        leetCodeURL,\n        linkedInUrl,\n        state\n      },\n      mode[],\n      isAvailable,\n    },\n\n  "navigation": navigation[]{\n                  _key,\n                  href,\n                  isButton,\n                  label\n                },\n\n  "footer": {\n    "columns": footerColumns[]{\n      _key,\n      columnLinks[]{\n        _key,\n        href,\n        label\n      }\n    },\n    "text": footerText\n  }\n}': SETTING_QUERY_RESULT;
     "{\n  \"techs\": *[_type == 'technology'\n && defined(slug.current)]{\n  _id,\n  name,\n  \"slug\": slug.current,\n  \"iconText\": icon,\n  type,\n },\n  \"total\": count(*[_type == 'technology'\n && defined(slug.current)]),\n   \"frontendCount\": count(*[_type == 'technology'\n && type == 'frontend']),\n  \"backendCount\": count(*[_type == 'technology'\n && type == 'backend']),\n  \"aiCount\": count(*[_type == 'technology'\n && type == 'ai']),\n  \"toolingCount\": count(*[_type == 'technology'\n && type == 'tooling']),\n  \"devopsCount\": count(*[_type == 'technology'\n && type == 'devops']),\n  \"badgeCount\": count(*[_type == 'technology'\n && type == 'badge']),\n  \"cloudCount\": count(*[_type == 'technology'\n && type == 'cloud-and-infrastructure'])\n}": ALL_TECH_STACK_QUERY_RESULT;
     '*[_type == \'technology\'\n && slug.current == $slug][0]{\n  name,\n  "slug": slug.current,\n  icon,\n  type,\n  _id\n }': TECH_STACK_QUERY_RESULT;
+    '{\n    "heroes": *[_type == \'hero\'\n  && defined(slug.current)]{\n    _id,\n    name,\n    "slug": slug.current,\n    "imageUrl": mainImage.asset->url,\n    "imageAlt": mainImage.alt,\n  }, \n    "total": count(*[_type == \'hero\'\n              && defined(slug.current)])\n}': ALL_HEROES_QUERY_RESULT;
+    '*[_type == \'hero\'\n && slug.current == $slug][0]{\n  name,\n  "slug": slug.current,\n  position,\n  title,\n  body,\n  "imageUrl": mainImage.asset->url,\n  "imageAlt": mainImage.alt,\n  actions[]\n }': HERO_QUERY_RESULT;
   }
 }

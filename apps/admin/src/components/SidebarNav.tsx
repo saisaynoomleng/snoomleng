@@ -65,6 +65,7 @@ export const SidebarNav = ({
               src={media.src}
               alt={media.src}
               className="mx-auto"
+              priority
             />
           )}
         </Link>
