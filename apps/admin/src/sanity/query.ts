@@ -89,3 +89,28 @@ export const TECH_STACK_QUERY = defineQuery(`*[_type == 'technology'
   type,
   _id
  }`);
+
+export const ALL_HEROES_QUERY = defineQuery(`{
+    "heroes": *[_type == 'hero'
+  && defined(slug.current)]{
+    _id,
+    name,
+    "slug": slug.current,
+    "imageUrl": mainImage.asset->url,
+    "imageAlt": mainImage.alt,
+  }, 
+    "total": count(*[_type == 'hero'
+              && defined(slug.current)])
+}`);
+
+export const HERO_QUERY = defineQuery(`*[_type == 'hero'
+ && slug.current == $slug][0]{
+  name,
+  "slug": slug.current,
+  position,
+  title,
+  body,
+  "imageUrl": mainImage.asset->url,
+  "imageAlt": mainImage.alt,
+  actions[]
+ }`);

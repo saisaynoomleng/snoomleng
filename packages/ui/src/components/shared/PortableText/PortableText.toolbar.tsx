@@ -65,10 +65,6 @@ export const PortableTextToolbar = () => {
       {toolbarSchema.annotations?.map((a) => (
         <AnnotationButton key={a.name} schemaType={a} />
       ))}
-
-      {toolbarSchema.blockObjects.map((b) => (
-        <BlockObjectButtons key={b.name} schemaType={b} />
-      ))}
     </div>
   );
 };
