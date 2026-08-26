@@ -10,12 +10,12 @@ import { auth } from './lib/auth';
 
 const app: Express = express();
 
-app.all('/api/auth/*', toNodeHandler(auth));
+app.all('/api/auth/{*any}', toNodeHandler(auth));
 
 app.use(helmet());
 app.use(
   cors({
-    origin: env.ALLOW_ORIGINS,
+    origin: env.ALLOW_ORIGINS.split(','),
     credentials: true,
   }),
 );
