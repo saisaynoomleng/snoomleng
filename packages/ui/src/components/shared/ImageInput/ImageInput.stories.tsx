@@ -14,15 +14,8 @@ const meta: Meta<typeof ImageInput> = {
     },
   },
 
-  args: {
-    legend: 'Upload Primary Logo',
-  },
+  args: {},
   argTypes: {
-    legend: {
-      control: 'text',
-      description: 'Legend text for the image input field set',
-    },
-
     errorMessage: {
       control: 'text',
       description: 'Error message to display on UI',

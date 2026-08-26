@@ -24,7 +24,7 @@ const HeroDetailPage = async ({
 
   if (!page) return notFound();
 
-  const { name, slug, position, title, body, imageUrl, imageAlt } = page;
+  const { name, position, title, body, imageUrl, imageAlt } = page;
 
   const SPAN_CLASSES = 'font-semibold text-primary';
 

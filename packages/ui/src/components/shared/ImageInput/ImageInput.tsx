@@ -7,15 +7,7 @@ import {
   AttachmentGroup,
   AttachmentMedia,
 } from '#components/ui/attachment';
-import {
-  Field,
-  FieldGroup,
-  FieldLabel,
-  FieldLegend,
-  FieldSet,
-  FieldDescription,
-  FieldError,
-} from '#components/ui/field';
+import { Field, FieldLabel, FieldError } from '#components/ui/field';
 import { Input } from '#components/ui/input';
 import { formatImageSize, formatImageType } from '@snoomleng/utils';
 import clsx from 'clsx';
@@ -29,31 +21,29 @@ type PreviewProps = {
 };
 
 type ImageInputProps = {
-  legend: string;
-  errorMessage?: string;
   onChange: (file: File) => void;
   className?: string;
+  errorMessage?: string;
 } & Omit<ComponentPropsWithoutRef<'input'>, 'onChange' | 'type'>;
 
 export const ImageInput = ({
-  legend,
-  errorMessage,
   onChange,
   className,
+  errorMessage,
   ...props
 }: ImageInputProps): React.JSX.Element => {
   const [preview, setPreview] = useState<PreviewProps>();
 
   useEffect(() => {
     return () => {
-      if (preview?.src) {
+      if (preview) {
         URL.revokeObjectURL(preview.src);
       }
     };
-  }, [preview?.src]);
+  }, [preview]);
 
   const onImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0] as File;
+    const file = e.target.files?.[0];
 
     if (!file) return;
 
@@ -66,11 +56,8 @@ export const ImageInput = ({
   };
 
   return (
-    <FieldGroup className={twMerge(clsx('flex flex-col gap-y-3', className))}>
-      <FieldSet>
-        <FieldLegend>{legend}</FieldLegend>
-        <FieldDescription>All fields are required</FieldDescription>
-      </FieldSet>
+    <Field className={twMerge(clsx('flex flex-col gap-y-3', className))}>
+      <FieldLabel htmlFor="image">Upload an Image</FieldLabel>
 
       <AttachmentGroup className="self-center">
         {preview ? (
@@ -96,17 +83,15 @@ export const ImageInput = ({
         )}
       </AttachmentGroup>
 
-      <Field>
-        <FieldLabel htmlFor="image">Upload an Image</FieldLabel>
-        <Input
-          type="file"
-          accept="image/*"
-          id="image"
-          onChange={onImageUpload}
-          {...props}
-        />
-        {errorMessage && <FieldError>{errorMessage}</FieldError>}
-      </Field>
-    </FieldGroup>
+      <Input
+        type="file"
+        accept="image/*"
+        id="image"
+        onChange={onImageUpload}
+        {...props}
+      />
+
+      <FieldError>{errorMessage}</FieldError>
+    </Field>
   );
 };
