@@ -4,4 +4,8 @@ export const queryKeys = {
     bySlug: (slug: string) => ['technologies', slug] as const,
     byId: (id: string) => ['technologies', id] as const,
   },
+
+  heroes: {
+    all: ['heroes'] as const,
+  },
 };
