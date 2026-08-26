@@ -5,8 +5,12 @@ import env, { isTest } from './lib/env';
 import morgan from 'morgan';
 
 import ContactRouter from './modules/contacts/contacts.router';
+import { toNodeHandler } from 'better-auth/node';
+import { auth } from './lib/auth';
 
 const app: Express = express();
+
+app.all('/api/auth/*', toNodeHandler(auth));
 
 app.use(helmet());
 app.use(

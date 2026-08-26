@@ -2,25 +2,44 @@ import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
 import { render } from 'react-email';
 import ContactEmail from './emails/ContactEmail';
 
-const ses = new SESClient({
-  region: 'us-east-1',
-});
+const ses = (region: string, accessKeyId: string, secretAccessKey: string) =>
+  new SESClient({
+    region,
+    credentials: {
+      accessKeyId,
+      secretAccessKey,
+    },
+  });
 
-export const sendContactEmail = async ({ email }: { email: string }) => {
+type SendContactEmailProps = {
+  email: string;
+  aws: {
+    region: string;
+    accessKeyId: string;
+    secretAccessKey: string;
+  };
+};
+
+export const sendContactEmail = async ({
+  email,
+  aws,
+}: SendContactEmailProps) => {
   const html = await render(ContactEmail());
 
   try {
-    await ses.send(
+    const client = ses(aws.region, aws.accessKeyId, aws.secretAccessKey);
+
+    await client.send(
       new SendEmailCommand({
-        Source: 'contact@snoomleng.com',
+        Source: 'noreply@snoomleng.com',
         Destination: {
-          ToAddresses: ['contact@snoomleng.com', 'saileng9723@gmail.com'],
+          ToAddresses: ['saileng9723@gmail.com'],
         },
         ReplyToAddresses: [email],
 
         Message: {
           Subject: {
-            Data: `Contact Reached!`,
+            Data: `Thank you for contacting Me!`,
           },
           Body: {
             Html: {

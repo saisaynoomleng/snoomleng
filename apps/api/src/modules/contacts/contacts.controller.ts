@@ -1,6 +1,8 @@
 import type { Request, Response, NextFunction } from 'express';
 import { contactService } from './contact.service';
+import db from '../../db';
 import { sendContactEmail } from '@snoomleng/email';
+import env from '../../lib/env';
 
 export const ContactController = () => {
   const service = contactService();
@@ -27,14 +29,24 @@ export const ContactController = () => {
     },
     create: async (req: Request, res: Response, next: NextFunction) => {
       try {
-        const contact = req.body;
-        await service.create(contact);
+        await db.transaction(async (tx) => {
+          const contact = req.body;
+          await service.create(contact);
 
-        await sendContactEmail(contact);
+          await sendContactEmail({
+            ...contact,
+            aws: {
+              region: env.AWS_REGION,
+              accessKeyId: env.AWS_ACCESS_KEY_ID,
+              secretAccessKey: env.AWS_SECRET_ACCESS_KEY,
+            },
+          });
 
-        return res.status(201).json({
-          success: true,
-          message: "Thank you for contacting! I'll be in touch with you soon!",
+          return res.status(201).json({
+            success: true,
+            message:
+              "Thank you for contacting! I'll be in touch with you soon!",
+          });
         });
       } catch (error) {
         return next(error);
