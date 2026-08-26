@@ -36,6 +36,11 @@ const schema = z.object({
   // Rate Limiting
   RATE_LIMIT_WINDOW_MS: z.coerce.number(),
   RATE_LIMIT_MAX_REQUESTS: z.coerce.number(),
+
+  // AWS
+  AWS_REGION: z.string().min(1, 'Region must have at least 1 character'),
+  AWS_ACCESS_KEY_ID: z.string(),
+  AWS_SECRET_ACCESS_KEY: z.string(),
 });
 
 type Env = z.infer<typeof schema>;
