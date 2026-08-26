@@ -1,5 +1,4 @@
 import * as z from 'zod';
-import { maximumImageSize } from './formatter';
 import { ALLOWED_IMAGE_TYPES } from './types';
 
 /**

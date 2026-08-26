@@ -61,6 +61,7 @@ export const CreateHeroForm = ({
     }
 
     toast.success(result.message);
+    form.reset();
   };
 
   return (

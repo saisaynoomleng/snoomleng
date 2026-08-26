@@ -243,7 +243,7 @@ export const HeroForm = ({
           <Field>
             <FieldLabel htmlFor="body">Text Content</FieldLabel>
             <PortableTextEditInput
-              value={field.value}
+              value={field.value ?? []}
               onChange={field.onChange}
             />
           </Field>
@@ -267,7 +267,7 @@ export const HeroForm = ({
                 </FieldLabel>
                 <Input
                   id={`callToActions.${i}.label`}
-                  {...form.register(`callToActions.${i}.label`)}
+                  {...register(`callToActions.${i}.label`)}
                 />
                 {errors.callToActions?.[i]?.label && (
                   <FieldError>
@@ -282,7 +282,7 @@ export const HeroForm = ({
                 </FieldLabel>
                 <Input
                   id={`f.${i}.href`}
-                  {...form.register(`callToActions.${i}.href`)}
+                  {...register(`callToActions.${i}.href`)}
                 />
                 {errors.callToActions?.[i]?.href && (
                   <FieldError>

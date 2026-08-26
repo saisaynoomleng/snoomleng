@@ -1,3 +1,4 @@
+import AddNewButton from '@/components/AddNewButton';
 import { urlFor } from '@/sanity/image';
 import { sanityFetch } from '@/sanity/live';
 import { ALL_HEROES_QUERY } from '@/sanity/query';
@@ -21,6 +22,8 @@ const HeroPage = async () => {
         <span>Total Pages:</span>
         <span>{total}</span>
       </p>
+
+      <AddNewButton href="/heroes/create" />
 
       <div className="grid grid-cols-2 gap-4">
         {data.heroes.map((h) => (
