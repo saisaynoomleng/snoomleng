@@ -172,7 +172,8 @@ export const SignUpFormSchema = z.object({
   confirmPassword: z
     .string()
     .min(8, 'Password must have at least 8 characters')
-    .max(128, 'Password cannot exceeds 128 characters'),
+    .max(128, 'Password cannot exceeds 128 characters')
+    .optional(),
   imageUrl: z.url().optional(),
 });
 /**
