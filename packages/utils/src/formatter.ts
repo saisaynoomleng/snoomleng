@@ -72,16 +72,8 @@ export const replaceDashWithNoSpace = (input: string): string => {
  * @param maxSize number
  * @returns string | boolean
  */
-export const maximumImageSize = (
-  size: number,
-  maxSize: number,
-): string | boolean => {
-  if (size > maxSize * 1024 * 1024) {
-    return `File size cannot exceeds ${maxSize}MB`;
-  }
-
-  return true;
-};
+export const exceedsImageSize = (size: number, maxSize: number): boolean =>
+  size > maxSize * 1024 * 1024;
 
 /**
  * Return the image MIME type

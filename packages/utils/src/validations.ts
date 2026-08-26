@@ -125,3 +125,37 @@ export type TechStackFormInputSchema = z.input<typeof TechStackFormSchema>;
  * Validate Tech Stack Form Output Schema
  */
 export type TechstackFormOutputSchema = z.output<typeof TechStackFormSchema>;
+
+/**
+ * Validate Hero Form Schema
+ */
+export const HeroFormSchema = z.object({
+  name: z.string().min(1, 'Name must have at least 1 character'),
+  slug: z.string().min(1, 'Slug must have at least 1 character'),
+  positions: z
+    .array(
+      z.object({
+        value: z.string().min(1, 'Position must have at least 1 character'),
+      }),
+    )
+    .min(1, 'At least 1 position is required'),
+  title: z.string().min(1, 'Title must have at least 1 character'),
+  body: z.array(z.any()),
+  imageAssetId: z.string(),
+  imageAlt: z.string().min(1, 'Image alternative text is required'),
+  callToActions: z.array(
+    z.object({
+      _key: z.string().min(1, 'Required to genearate a page on the website'),
+      href: z.string().min(1, 'Required to redirect to a page on the website'),
+      label: z.string().min(1, 'Label must have at least 1 character'),
+    }),
+  ),
+});
+/**
+ * Validate Hero Form Input Schema
+ */
+export type HeroFormInputSchema = z.input<typeof HeroFormSchema>;
+/**
+ * Validate Hero Form output Schema
+ */
+export type HeroFormOutputSchema = z.output<typeof HeroFormSchema>;
