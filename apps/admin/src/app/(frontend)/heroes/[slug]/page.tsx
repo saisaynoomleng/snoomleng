@@ -11,6 +11,7 @@ import {
 import { formatTitle } from '@snoomleng/utils';
 import Image from 'next/image';
 import { notFound } from 'next/navigation';
+import { EditForm } from './EditForm';
 
 const HeroDetailPage = async ({
   params,
@@ -24,7 +25,7 @@ const HeroDetailPage = async ({
 
   if (!page) return notFound();
 
-  const { name, position, title, body, imageUrl, imageAlt } = page;
+  const { name, position, title, body, imageUrl, imageAlt, actions } = page;
 
   const SPAN_CLASSES = 'font-semibold text-primary';
 
@@ -56,7 +57,13 @@ const HeroDetailPage = async ({
             <span>Positions: </span>
 
             {position?.map((p, i) => {
-              if (i !== 0) return <span className={SPAN_CLASSES}> • {p}</span>;
+              if (i !== 0)
+                return (
+                  <span key={i} className={SPAN_CLASSES}>
+                    {' '}
+                    • {p}
+                  </span>
+                );
 
               return (
                 <span key={i} className={SPAN_CLASSES}>
@@ -75,15 +82,29 @@ const HeroDetailPage = async ({
             )}
           </p>
 
-          <div className="border-l-2 border-primary pl-2">
+          <div className="border-l-2 border-primary pl-2 space-y-2">
+            <p className={SPAN_CLASSES}>Text Content</p>
             {body && (
               <PortableTextRenderer value={body as PortableTextBlock[]} />
             )}
+          </div>
+
+          <div className="border-l-2 border-primary pl-2 space-y-2">
+            <p className={SPAN_CLASSES}>Actions</p>
+            {actions?.map((a) => (
+              <p key={a._key}>
+                <span className={SPAN_CLASSES}>{a.label}</span>
+                <span> {'=>'} </span>
+                <span className={SPAN_CLASSES}>{a.href}</span>
+              </p>
+            ))}
           </div>
         </div>
       </div>
 
       <Separator />
+
+      <EditForm data={page} />
     </Bounded>
   );
 };
