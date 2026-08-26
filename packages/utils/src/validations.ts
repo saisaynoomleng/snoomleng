@@ -158,3 +158,28 @@ export type HeroFormInputSchema = z.input<typeof HeroFormSchema>;
  * Validate Hero Form output Schema
  */
 export type HeroFormOutputSchema = z.output<typeof HeroFormSchema>;
+
+/**
+ * Validate Sign Up Form Schema
+ */
+export const SignUpFormSchema = z.object({
+  name: z.string().min(1, 'Name must have at least 1 character'),
+  email: z.email('Must be a valid email address'),
+  password: z
+    .string()
+    .min(8, 'Password must have at least 8 characters')
+    .max(128, 'Password cannot exceeds 128 characters'),
+  confirmPassword: z
+    .string()
+    .min(8, 'Password must have at least 8 characters')
+    .max(128, 'Password cannot exceeds 128 characters'),
+  imageUrl: z.url().optional(),
+});
+/**
+ * Validate Sign Up Form Input Schema
+ */
+export type SignUpFormInputSchema = z.input<typeof SignUpFormSchema>;
+/**
+ * Validate Sign Up Form Output Schema
+ */
+export type SignUpFormOutputSchema = z.output<typeof SignUpFormSchema>;
