@@ -1,5 +1,6 @@
 'use server';
 
+import { signUp } from '@/lib/auth-server';
 import { env } from '@/lib/env/server';
 import {
   ActionResponse,
@@ -26,20 +27,18 @@ export const handleSignUp = async (
 
     const { name, email, password } = result.data;
 
-    const response = await fetch(`${env.API_URL}/api/auth/sign-up/email`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Origin: 'http://localhost:3002',
-      },
-      body: JSON.stringify({ name, email, password }),
+    const { data: singUpData, error } = await signUp.email({
+      name,
+      email,
+      password,
+      callbackURL: '/',
     });
 
-    if (!response.ok) {
-      console.error('error', await response.text());
+    if (error) {
+      console.error(error);
       return {
         success: false,
-        message: 'Something went wrong',
+        message: 'erorr',
       };
     }
 

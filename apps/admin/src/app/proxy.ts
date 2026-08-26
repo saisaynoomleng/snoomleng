@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { env } from './lib/env/server';
+import { getSession } from '../lib/auth-server';
+import { headers } from 'next/headers';
 
 export async function proxy(request: NextRequest) {
   const publicRoutes = ['/sign-in', '/sign-up'];
@@ -8,13 +9,11 @@ export async function proxy(request: NextRequest) {
     return NextResponse.next();
   }
 
-  const response = await fetch(`${env.API_URL}/api/auth/get-session`, {
-    headers: {
-      cookie: request.headers.get('cookie') ?? '',
+  const session = await getSession({
+    fetchOptions: {
+      headers: await headers(),
     },
   });
-
-  const session = await response.json();
 
   if (!session) {
     return NextResponse.redirect(new URL('/sign-in', request.url));
