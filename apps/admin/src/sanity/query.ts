@@ -105,6 +105,7 @@ export const ALL_HEROES_QUERY = defineQuery(`{
 
 export const HERO_QUERY = defineQuery(`*[_type == 'hero'
  && slug.current == $slug][0]{
+  _id,
   name,
   "slug": slug.current,
   position,
@@ -112,5 +113,6 @@ export const HERO_QUERY = defineQuery(`*[_type == 'hero'
   body,
   "imageUrl": mainImage.asset->url,
   "imageAlt": mainImage.alt,
-  actions[]
+  actions[],
+  "imageAssetId": mainImage.asset._ref
  }`);
