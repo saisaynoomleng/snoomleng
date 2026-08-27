@@ -8,11 +8,12 @@ import db, {
 } from '../db';
 import env from './env';
 import { admin } from 'better-auth/plugins';
+import { nextCookies } from 'better-auth/next-js';
 
 export const auth = betterAuth({
   appName: 'snoomleng api',
 
-  plugins: [admin()],
+  plugins: [admin(), nextCookies()],
 
   database: drizzleAdapter(db, {
     provider: 'pg',
@@ -42,6 +43,10 @@ export const auth = betterAuth({
     },
     expiresIn: 60 * 60 * 24 * 7,
     updateAge: 60 * 60 * 24,
+    cookieCache: {
+      enabled: true,
+      maxAge: 60 * 5,
+    },
   },
 
   account: {

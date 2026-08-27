@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import { body, heading } from '../lib/fonts';
 import {
+  Bounded,
   SidebarProvider,
   SidebarTrigger,
   Toaster,
@@ -11,6 +12,7 @@ import { SidebarNav } from '@/components/SidebarNav';
 import { QueryProvider } from '@/components/QueryProvider/QueryProvider';
 import { sanityFetch, SanityLive } from '@/sanity/live';
 import { LOGO_QUERY } from '@/sanity/query';
+import { MainNav } from '@/components/MainNav';
 
 export const metadata: Metadata = {
   title: 'snoomleng admin',
@@ -38,7 +40,10 @@ export default async function RootLayout({ children }: LayoutProps<'/'>) {
               />
               <SidebarTrigger className="shadow-none! border-none size-10 translate-none!" />
 
-              {children}
+              <Bounded as="main" size="full" padding="none" centered={false}>
+                <MainNav />
+                {children}
+              </Bounded>
 
               <SanityLive />
               <Toaster richColors closeButton position="top-center" />

@@ -15,9 +15,7 @@ const meta: Meta<typeof SignUpForm> = {
     },
   },
 
-  args: {
-    action: mockFormAction,
-  },
+  args: {},
   argTypes: {},
 };
 

@@ -17,24 +17,17 @@ import {
 } from '#components/ui/field';
 import { Input } from '#components/ui/input';
 import { zodResolver } from '@hookform/resolvers/zod';
-import {
-  ActionResponse,
-  SignInFormInputSchema,
-  SignInFormOutputSchema,
-  SignInFormSchema,
-} from '@snoomleng/utils';
+import { SignInFormInputSchema, SignInFormSchema } from '@snoomleng/utils';
 import clsx from 'clsx';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
 import { twMerge } from 'tailwind-merge';
 
 type SignInFormProps = {
   className?: string;
-  action: (
-    data: SignInFormInputSchema,
-  ) => Promise<ActionResponse<SignInFormOutputSchema>>;
+  onSubmit: SubmitHandler<SignInFormInputSchema>;
 };
 
-export const SignInForm = ({ className, action }: SignInFormProps) => {
+export const SignInForm = ({ className, onSubmit }: SignInFormProps) => {
   const form = useForm<SignInFormInputSchema>({
     resolver: zodResolver(SignInFormSchema),
     defaultValues: {
@@ -42,16 +35,6 @@ export const SignInForm = ({ className, action }: SignInFormProps) => {
       password: '',
     },
   });
-
-  const onSubmit: SubmitHandler<SignInFormInputSchema> = async (data) => {
-    const result = await action(data);
-
-    if (!result.success) {
-      return form.setError(result.field as keyof SignInFormOutputSchema, {
-        message: result.message,
-      });
-    }
-  };
 
   return (
     <form

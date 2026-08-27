@@ -1,18 +1,46 @@
 'use client';
 
-import { handleSignUp } from '@/actions/auth/handleSignUp';
-import { Bounded, SignUpForm } from '@snoomleng/ui';
+import { authClient } from '@/lib/auth-client';
+import { Bounded, SignUpForm, toast } from '@snoomleng/ui';
+import { SignUpFormInputSchema } from '@snoomleng/utils';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import React from 'react';
 
-const SignUp = () => {
+const SignUpPage = (): React.JSX.Element => {
+  const router = useRouter();
+
+  const onSubmit = async (data: SignUpFormInputSchema) => {
+    await authClient.signUp.email(
+      {
+        name: data.name,
+        email: data.email,
+        password: data.password,
+      },
+      {
+        onSuccess: () => {
+          router.push('/');
+        },
+
+        onError: (ctx) => {
+          toast.error(ctx.error.message);
+        },
+      },
+    );
+  };
+
   return (
     <Bounded
-      className="flex justify-center items-center"
-      size="full"
       centered={false}
+      size="full"
+      className="flex flex-col justify-center items-center h-dvh"
     >
-      <SignUpForm action={handleSignUp} />
+      <SignUpForm onSubmit={onSubmit} />
+      <Link href="/sign-in" className="link-url">
+        Already a member?
+      </Link>
     </Bounded>
   );
 };
 
-export default SignUp;
+export default SignUpPage;

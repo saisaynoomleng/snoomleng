@@ -3,7 +3,6 @@
 import { Button } from '#components/ui/button';
 import {
   Card,
-  CardAction,
   CardContent,
   CardDescription,
   CardFooter,
@@ -18,28 +17,20 @@ import {
 } from '#components/ui/field';
 import { Input } from '#components/ui/input';
 import { zodResolver } from '@hookform/resolvers/zod';
-import {
-  ActionResponse,
-  SignUpFormInputSchema,
-  SignUpFormOutputSchema,
-  SignUpFormSchema,
-} from '@snoomleng/utils';
+import { SignUpFormInputSchema, SignUpFormSchema } from '@snoomleng/utils';
 import clsx from 'clsx';
 import React from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
-import { toast } from 'sonner';
 import { twMerge } from 'tailwind-merge';
 
 type SignUpFormProps = {
   className?: string;
-  action: (
-    data: SignUpFormInputSchema,
-  ) => Promise<ActionResponse<SignUpFormOutputSchema>>;
+  onSubmit: SubmitHandler<SignUpFormInputSchema>;
 };
 
 export const SignUpForm = ({
-  action,
   className,
+  onSubmit,
 }: SignUpFormProps): React.JSX.Element => {
   const form = useForm<SignUpFormInputSchema>({
     resolver: zodResolver(SignUpFormSchema),
@@ -50,28 +41,6 @@ export const SignUpForm = ({
       confirmPassword: '',
     },
   });
-
-  const onSubmit: SubmitHandler<SignUpFormInputSchema> = async (data) => {
-    const password = form.getValues('password');
-    const confirmPassword = form.getValues('confirmPassword');
-
-    if (password !== confirmPassword) {
-      return form.setError('password', {
-        message: 'Passwords must match!',
-      });
-    }
-
-    const result = await action(data);
-
-    if (!result.success) {
-      toast.error(result.message);
-      return form.setError(result.field as keyof SignUpFormOutputSchema, {
-        message: 'Error signing up!',
-      });
-    }
-
-    toast.success(result.message);
-  };
 
   return (
     <form

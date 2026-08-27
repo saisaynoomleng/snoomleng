@@ -8,4 +8,8 @@ export const queryKeys = {
   heroes: {
     all: ['heroes'] as const,
   },
+
+  auth: {
+    all: ['auth'] as const,
+  },
 };

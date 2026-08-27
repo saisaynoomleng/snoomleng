@@ -11,15 +11,14 @@ import ContactRouter from './modules/contacts/contacts.router';
 
 const app: Express = express();
 
-app.all('/api/auth/{*any}', toNodeHandler(auth));
-
-app.use(helmet());
 app.use(
   cors({
     origin: env.ALLOW_ORIGINS.split(','),
     credentials: true,
   }),
 );
+app.all('/api/auth/{*any}', toNodeHandler(auth));
+app.use(helmet());
 
 app.use(
   morgan('dev', {
