@@ -3,7 +3,6 @@
 import { Button } from '#components/ui/button';
 import {
   Card,
-  CardAction,
   CardContent,
   CardDescription,
   CardFooter,
@@ -18,13 +17,7 @@ import {
 } from '#components/ui/field';
 import { Input } from '#components/ui/input';
 import { zodResolver } from '@hookform/resolvers/zod';
-import {
-  ActionResponse,
-  CallToAction,
-  SignUpFormInputSchema,
-  SignUpFormOutputSchema,
-  SignUpFormSchema,
-} from '@snoomleng/utils';
+import { SignUpFormInputSchema, SignUpFormSchema } from '@snoomleng/utils';
 import clsx from 'clsx';
 import React from 'react';
 import { Controller, SubmitHandler, useForm } from 'react-hook-form';
@@ -32,18 +25,12 @@ import { twMerge } from 'tailwind-merge';
 
 type SignUpFormProps = {
   className?: string;
-  action: (
-    data: SignUpFormInputSchema,
-  ) => Promise<ActionResponse<SignUpFormOutputSchema>>;
-  callToAction: CallToAction;
-  renderAction: (props: CallToAction) => React.ReactElement;
+  onSubmit: SubmitHandler<SignUpFormInputSchema>;
 };
 
 export const SignUpForm = ({
-  action,
   className,
-  callToAction,
-  renderAction,
+  onSubmit,
 }: SignUpFormProps): React.JSX.Element => {
   const form = useForm<SignUpFormInputSchema>({
     resolver: zodResolver(SignUpFormSchema),
@@ -54,27 +41,6 @@ export const SignUpForm = ({
       confirmPassword: '',
     },
   });
-
-  const onSubmit: SubmitHandler<SignUpFormInputSchema> = async (data) => {
-    const result = await action(data);
-
-    if (!result.success) {
-      return form.setError(result.field as keyof SignUpFormOutputSchema, {
-        message: 'Error signing up!',
-      });
-    }
-
-    const password = form.getValues('password');
-    const confirmPassword = form.getValues('confirmPassword');
-
-    if (password !== confirmPassword) {
-      return form.setError('password', {
-        message: 'Passwords must match!',
-      });
-    }
-
-    return;
-  };
 
   return (
     <form
@@ -152,7 +118,7 @@ export const SignUpForm = ({
             />
 
             <Controller
-              name="password"
+              name="confirmPassword"
               control={form.control}
               render={({ field, fieldState }) => (
                 <Field>
@@ -162,7 +128,7 @@ export const SignUpForm = ({
                   <Input
                     {...field}
                     type="password"
-                    id="password"
+                    id="confirmPassword"
                     aria-invalid={fieldState.invalid}
                   />
                   {fieldState.invalid && (

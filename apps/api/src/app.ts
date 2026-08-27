@@ -4,21 +4,21 @@ import cors from 'cors';
 import env, { isTest } from './lib/env';
 import morgan from 'morgan';
 
-import ContactRouter from './modules/contacts/contacts.router';
 import { toNodeHandler } from 'better-auth/node';
 import { auth } from './lib/auth';
 
+import ContactRouter from './modules/contacts/contacts.router';
+
 const app: Express = express();
 
-app.all('/api/auth/{*any}', toNodeHandler(auth));
-
-app.use(helmet());
 app.use(
   cors({
     origin: env.ALLOW_ORIGINS.split(','),
     credentials: true,
   }),
 );
+app.all('/api/auth/{*any}', toNodeHandler(auth));
+app.use(helmet());
 
 app.use(
   morgan('dev', {

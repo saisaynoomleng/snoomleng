@@ -6,7 +6,10 @@ export const UserTable = t.pgTable('users', {
   name: t.varchar('name', { length: 255 }).notNull(),
   email: t.varchar('email', { length: 255 }).notNull().unique(),
   emailVerified: t.boolean('email_verified').default(false),
-  imageUrl: t.varchar('image_url', { length: 255 }).notNull(),
+  imageUrl: t.varchar('image_url', { length: 255 }),
   role: userRole('role').notNull().default('user'),
+  banned: t.boolean('banned').default(false),
+  banReason: t.text('ban_reason'),
+  banExpires: t.timestamp('ban_expires'),
   ...timestamps,
 });

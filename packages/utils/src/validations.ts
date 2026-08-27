@@ -172,8 +172,8 @@ export const SignUpFormSchema = z.object({
   confirmPassword: z
     .string()
     .min(8, 'Password must have at least 8 characters')
-    .max(128, 'Password cannot exceeds 128 characters'),
-  imageUrl: z.url().optional(),
+    .max(128, 'Password cannot exceeds 128 characters')
+    .optional(),
 });
 /**
  * Validate Sign Up Form Input Schema
@@ -183,3 +183,19 @@ export type SignUpFormInputSchema = z.input<typeof SignUpFormSchema>;
  * Validate Sign Up Form Output Schema
  */
 export type SignUpFormOutputSchema = z.output<typeof SignUpFormSchema>;
+
+/**
+ * Validate Sign In Form Schema
+ */
+export const SignInFormSchema = z.object({
+  email: z.email('Must be a valid email address'),
+  password: z.string().min(8).max(128),
+});
+/**
+ * Validate Sign In Form Input
+ */
+export type SignInFormInputSchema = z.input<typeof SignInFormSchema>;
+/**
+ * Validate Sign In Form Output
+ */
+export type SignInFormOutputSchema = z.output<typeof SignInFormSchema>;
