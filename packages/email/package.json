@@ -24,6 +24,6 @@
   },
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
-    "email:dev": "email dev --dir ./src/emails -p 3005"
+    "dev": "email dev --dir ./src/emails -p 3005"
   }
 }
