@@ -16,6 +16,7 @@ import { toast } from 'sonner';
 
 import { ContactForm } from './ContactForm';
 import { ContactDetail } from './ContactDetail';
+import { AnimateSlideIn } from '#components/animations/index';
 
 type ContactFormProps = {
   className?: string;
@@ -64,11 +65,18 @@ export const ContactFormSection = ({
       padding="none"
       id="contacts"
     >
-      <SectionTitle label="Let's Work Together" />
+      <AnimateSlideIn direction="top">
+        <SectionTitle label="Let's Work Together" />
+      </AnimateSlideIn>
 
       <div className="grid md:grid-cols-2 md:gap-x-6 gap-y-4 p-4">
-        <ContactForm form={form} onSubmit={onSubmit} />
-        <ContactDetail />
+        <AnimateSlideIn direction="left" className="h-full">
+          <ContactForm form={form} onSubmit={onSubmit} />
+        </AnimateSlideIn>
+
+        <AnimateSlideIn direction="right" className="h-full">
+          <ContactDetail />
+        </AnimateSlideIn>
       </div>
     </Bounded>
   );
