@@ -5,6 +5,7 @@ import { CallToAction } from '@snoomleng/utils';
 import { twMerge } from 'tailwind-merge';
 import clsx from 'clsx';
 import { ProjectCard } from './ProjectCard';
+import { AnimateScrollScrub } from '#components/animations/index';
 
 type ProjectSectionProps = {
   className?: string;
@@ -44,7 +45,9 @@ export const ProjectSection = ({
     >
       <SectionTitle label="Things i shipped" />
 
-      <ProjectCard projects={projects} renderAction={renderAction} />
+      <AnimateScrollScrub>
+        <ProjectCard projects={projects} renderAction={renderAction} />
+      </AnimateScrollScrub>
     </Bounded>
   );
 };

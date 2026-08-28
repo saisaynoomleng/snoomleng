@@ -5,6 +5,11 @@ import { twMerge } from 'tailwind-merge';
 import clsx from 'clsx';
 import { Button } from '#components/ui/button';
 import { PortableTextBlock } from '@portabletext/react';
+import {
+  AnimateImageFillIn,
+  AnimateSlideIn,
+  AnimateSlideInGroup,
+} from '#components/animations/index';
 
 export type HeroSectionProps = {
   title: string;
@@ -41,7 +46,7 @@ export const HeroSection = ({
       )}
     >
       <div className="flex flex-col gap-y-6 md:gap-y-8 md:justify-center">
-        <div className="flex gap-x-2 items-baseline">
+        <AnimateSlideIn direction="top" className="flex gap-x-2 items-baseline">
           <span className="w-3 aspect-square bg-primary"></span>
           {position.map((item, index) => (
             <React.Fragment key={item}>
@@ -56,32 +61,44 @@ export const HeroSection = ({
               </p>
             </React.Fragment>
           ))}
-        </div>
+        </AnimateSlideIn>
 
-        <h1 className="text-fs-600 md:text-fs-700 uppercase">{title}</h1>
+        <AnimateSlideIn direction="left">
+          <h1 className="text-fs-600 md:text-fs-700 uppercase">{title}</h1>
+        </AnimateSlideIn>
 
-        {body && <PortableTextRenderer value={body} />}
+        <AnimateSlideIn direction="right">
+          {body && <PortableTextRenderer value={body} />}
+        </AnimateSlideIn>
 
-        <div className="flex gap-x-4 items-center">
+        <AnimateSlideInGroup
+          direction="bottom"
+          className="flex gap-x-4 items-center"
+        >
           {Array.isArray(actions) ? (
             actions.map((action, i) => (
-              <Button
-                asChild
-                key={action._key}
-                variant={(i + 1) % 2 === 0 ? 'outline' : 'default'}
-              >
-                {renderAction({ label: action.label, href: action.href })}
-              </Button>
+              <div data-animate-item key={action._key}>
+                <Button
+                  asChild
+                  variant={(i + 1) % 2 === 0 ? 'outline' : 'default'}
+                >
+                  {renderAction({ label: action.label, href: action.href })}
+                </Button>
+              </div>
             ))
           ) : (
-            <Button asChild>
-              {renderAction({ label: actions.label, href: actions.href })}
-            </Button>
+            <div animate-slide-in>
+              <Button asChild>
+                {renderAction({ label: actions.label, href: actions.href })}
+              </Button>
+            </div>
           )}
-        </div>
+        </AnimateSlideInGroup>
       </div>
 
-      {renderMedia({ src: media.src, alt: media.alt })}
+      <AnimateImageFillIn>
+        {renderMedia({ src: media.src, alt: media.alt })}
+      </AnimateImageFillIn>
     </Bounded>
   );
 };

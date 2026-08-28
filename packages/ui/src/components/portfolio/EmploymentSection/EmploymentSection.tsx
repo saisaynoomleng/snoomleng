@@ -4,6 +4,10 @@ import { PortableTextBlock } from '@portabletext/react';
 import { twMerge } from 'tailwind-merge';
 import clsx from 'clsx';
 import { formatYear } from '@snoomleng/utils';
+import {
+  AnimateSlideIn,
+  AnimateSlideInGroup,
+} from '#components/animations/index';
 
 export type EmployementSectionProps = {
   className?: string;
@@ -30,11 +34,17 @@ export const EmploymentSection = ({
       padding="none"
       spacing="sm"
     >
-      <SectionTitle label="Employment Histories" />
+      <AnimateSlideIn direction="top">
+        <SectionTitle label="Employment Histories" />
+      </AnimateSlideIn>
 
-      <div className="flex flex-col gap-y-4">
+      <AnimateSlideInGroup direction="top" className="flex flex-col gap-y-4">
         {employments.map((e) => (
-          <div key={e._id} className="border-b border-border/20 px-4 md:px-6">
+          <div
+            key={e._id}
+            className="border-b border-border/20 px-4 md:px-6"
+            data-animate-item
+          >
             <div className="flex justify-between items-center">
               <p className="font-semibold">
                 <span>{e.name}</span>{' '}
@@ -58,7 +68,7 @@ export const EmploymentSection = ({
             )}
           </div>
         ))}
-      </div>
+      </AnimateSlideInGroup>
     </Bounded>
   );
 };

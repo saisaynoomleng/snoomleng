@@ -4,6 +4,7 @@ import { twMerge } from 'tailwind-merge';
 import clsx from 'clsx';
 import { PortableTextBlock } from '@portabletext/react';
 import { AboutSpec } from './AboutSpec';
+import { AnimateSlideIn } from '#components/animations/index';
 
 type AboutSectionProps = {
   className?: string;
@@ -27,19 +28,23 @@ export const AboutSection = ({
       padding="none"
       spacing="md"
     >
-      <SectionTitle label="About me" />
+      <AnimateSlideIn direction="top">
+        <SectionTitle label="About me" />
+      </AnimateSlideIn>
 
       <div className="grid gap-y-6 md:grid-cols-2 md:gap-x-6 md:justify-center md:items-center">
-        <AboutSpec
-          className="place-self-center"
-          location={location}
-          mode={mode}
-          status={status}
-        />
+        <AnimateSlideIn direction="left">
+          <AboutSpec
+            className="place-self-center"
+            location={location}
+            mode={mode}
+            status={status}
+          />
+        </AnimateSlideIn>
 
-        <div className="prose prose-sm w-full">
+        <AnimateSlideIn direction="right" className="prose prose-sm w-full">
           {body && <PortableTextRenderer value={body} />}
-        </div>
+        </AnimateSlideIn>
       </div>
     </Bounded>
   );
