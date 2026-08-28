@@ -21,8 +21,8 @@
   },
   "dependencies": {
     "@epic-web/remember": "^1.1.0",
-    "@snoomleng/utils": "workspace:*",
     "@snoomleng/email": "workspace:*",
+    "@snoomleng/utils": "workspace:*",
     "better-auth": "^1.7.2",
     "cors": "^2.8.6",
     "drizzle-orm": "1.0.0-rc.4",

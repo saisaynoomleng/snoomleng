@@ -16,3 +16,7 @@ export const getAllHeroes = async () => {
 
   return data;
 };
+
+export const getAllContacts = async () => {
+  // const data = await
+};

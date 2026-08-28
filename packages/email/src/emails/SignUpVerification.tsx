@@ -7,6 +7,7 @@ import {
   Head,
   Preview,
   Link,
+  Text,
 } from 'react-email';
 import { Logo } from './Logo';
 import { Website } from './Website';
@@ -38,11 +39,12 @@ const SignUpVerification = ({ text, url }: SignUpVerificationProps) => {
             <Logo />
 
             <Section className="flex gap-x-2 items-center">
+              <Text>{text}</Text>
               <Link
                 href={url}
                 className="underline underline-offset-4 decoration-wavy decoration-brand text-black font-semibold"
               >
-                {text}
+                Click this to verify your email!
               </Link>
             </Section>
 

@@ -33,10 +33,10 @@ type SidebarProps = {
 
 const OPERATION_LINKS = [
   { name: 'Page Heroes', url: '/heroes', icon: <MdOutlineViewQuilt /> },
-  { name: 'About Me', url: '/about', icon: <GiStairsGoal /> },
+  // { name: 'About Me', url: '/about', icon: <GiStairsGoal /> },
   { name: 'Tech Stacks', url: '/technologies', icon: <FaLinux /> },
-  { name: 'Projects', url: '/projects', icon: <GiFiles /> },
-  { name: 'Employment Histories', url: '/employments', icon: <GiSuitcase /> },
+  // { name: 'Projects', url: '/projects', icon: <GiFiles /> },
+  // { name: 'Employment Histories', url: '/employments', icon: <GiSuitcase /> },
   { name: 'Contacts', url: '/contacts', icon: <BsMailboxFlag /> },
 ];
 

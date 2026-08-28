@@ -16,7 +16,7 @@ export async function proxy(request: NextRequest) {
 
   const session = await response.json();
 
-  if (!session) {
+  if (!session?.user || session.user.role !== 'admin') {
     return NextResponse.redirect(new URL('/sign-in', request.url));
   }
 

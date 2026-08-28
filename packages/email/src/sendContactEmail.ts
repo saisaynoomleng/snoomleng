@@ -33,9 +33,8 @@ export const sendContactEmail = async ({
       new SendEmailCommand({
         Source: 'noreply@snoomleng.com',
         Destination: {
-          ToAddresses: ['saileng9723@gmail.com'],
+          ToAddresses: [email],
         },
-        ReplyToAddresses: [email],
 
         Message: {
           Subject: {
