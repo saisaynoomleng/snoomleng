@@ -1,5 +1,6 @@
 import * as t from 'drizzle-orm/pg-core';
 import { timestamps, userRole } from './schema-helper';
+import { InferSelectModel } from 'drizzle-orm';
 
 export const UserTable = t.pgTable('users', {
   id: t.uuid('id').primaryKey().defaultRandom(),
@@ -13,3 +14,5 @@ export const UserTable = t.pgTable('users', {
   banExpires: t.timestamp('ban_expires'),
   ...timestamps,
 });
+
+export type UserTableSchema = InferSelectModel<typeof UserTable>;

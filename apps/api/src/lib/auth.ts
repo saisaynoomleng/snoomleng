@@ -7,13 +7,22 @@ import db, {
   VerificationTable,
 } from '../db';
 import env from './env';
-import { admin } from 'better-auth/plugins';
+import { admin, oAuthProxy } from 'better-auth/plugins';
 import { nextCookies } from 'better-auth/next-js';
+import { sendVerificationEmail } from './helper';
 
 export const auth = betterAuth({
   appName: 'snoomleng api',
 
-  plugins: [admin(), nextCookies()],
+  plugins: [
+    admin({
+      defaultRole: 'user',
+      adminRoles: ['admin'],
+      adminUserIds: ['68b1a43f-e392-49d0-9819-56938cb0e1b2'],
+    }),
+    oAuthProxy(),
+    nextCookies(),
+  ],
 
   database: drizzleAdapter(db, {
     provider: 'pg',
@@ -64,6 +73,15 @@ export const auth = betterAuth({
     autoSignIn: true,
     minPasswordLength: 8,
     maxPasswordLength: 128,
+    requireEmailVerification: true,
+  },
+
+  emailVerification: {
+    sendVerificationEmail: async ({ user, url }) => {
+      void sendVerificationEmail({ user, url });
+    },
+    sendOnSignUp: true,
+    autoSignInAfterVerification: true,
   },
 
   secret: env.BETTER_AUTH_SECRET,
