@@ -1,5 +1,5 @@
 import * as t from 'drizzle-orm/pg-core';
-import { ContactStauts, timestamps } from './schema-helper';
+import { ContactStauts, timestamps } from './schema-helper.js';
 
 export const ContactTable = t.pgTable('contacts', {
   id: t.uuid('id').primaryKey().defaultRandom(),

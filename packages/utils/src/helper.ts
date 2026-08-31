@@ -1,5 +1,5 @@
 import { exceedsImageSize } from './formatter';
-import { ALLOWED_IMAGE_TYPES, ImageResponse } from './types';
+import { ALLOWED_IMAGE_TYPES, ImageResponse } from './types.js';
 
 /**
  * Generate a random key for sanity

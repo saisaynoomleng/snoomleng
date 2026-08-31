@@ -1,9 +1,9 @@
 import 'dotenv/config';
 
-import { relations } from './relations';
+import { relations } from './relations.js';
 import { Pool } from 'pg';
 import { drizzle } from 'drizzle-orm/node-postgres';
-import env, { isProd } from '../lib/env';
+import env, { isProd } from '../lib/env.js';
 import { remember } from '@epic-web/remember';
 
 const createPool = () => {
@@ -30,4 +30,4 @@ if (isProd()) {
 
 const db = drizzle({ client, relations, logger: true });
 export default db;
-export * from './schema';
+export * from './schema/index.js';

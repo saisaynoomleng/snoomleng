@@ -5,11 +5,11 @@ import db, {
   SessionTable,
   UserTable,
   VerificationTable,
-} from '../db';
-import env from './env';
+} from '../db/index.js';
+import env from './env.js';
 import { admin, oAuthProxy } from 'better-auth/plugins';
 import { nextCookies } from 'better-auth/next-js';
-import { sendVerificationEmail } from './helper';
+import { sendVerificationEmail } from './helper.js';
 
 export const auth = betterAuth({
   appName: 'snoomleng api',

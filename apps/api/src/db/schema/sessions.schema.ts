@@ -1,6 +1,6 @@
 import * as t from 'drizzle-orm/pg-core';
-import { UserTable } from './users.schema';
-import { timestamps } from './schema-helper';
+import { UserTable } from './users.schema.js';
+import { timestamps } from './schema-helper.js';
 
 export const SessionTable = t.pgTable(
   'sessions',

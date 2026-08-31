@@ -9,8 +9,8 @@ import {
   Link,
   Text,
 } from 'react-email';
-import { Logo } from './Logo';
-import { Website } from './Website';
+import { Logo } from './Logo.js';
+import { Website } from './Website.js';
 
 type SignUpVerificationProps = { text: string; url: string };
 

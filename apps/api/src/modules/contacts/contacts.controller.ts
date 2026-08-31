@@ -1,8 +1,8 @@
 import type { Request, Response, NextFunction } from 'express';
-import { contactService } from './contact.service';
-import db from '../../db';
+import { contactService } from './contact.service.js';
+import db from '../../db/index.js';
 import { sendContactEmail } from '@snoomleng/email';
-import env from '../../lib/env';
+import env from '../../lib/env.js';
 
 export const ContactController = () => {
   const service = contactService();

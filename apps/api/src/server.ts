@@ -1,6 +1,6 @@
-import app from './app';
+import app from './app.js';
 import http from 'node:http';
-import env from './lib/env';
+import env from './lib/env.js';
 
 export const server = http.createServer(app);
 

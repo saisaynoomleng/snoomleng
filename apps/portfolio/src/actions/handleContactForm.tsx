@@ -1,6 +1,6 @@
 'use server';
 
-import { env } from '@/lib/env/server';
+import { env } from '@/lib/env/client';
 import {
   ActionResponse,
   ContactFormSchema,
@@ -24,7 +24,7 @@ export const handleContactForm = async (
       };
     }
 
-    const response = await fetch(`${env.API_URL}/api/contacts`, {
+    const response = await fetch(`${env.NEXT_PUBLIC_API_URL}/api/contacts`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

@@ -1,2 +1,2 @@
-export * from './db';
-export * from './lib/auth';
+export * from './db/index.js';
+export * from './lib/auth.js';

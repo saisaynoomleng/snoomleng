@@ -1,5 +1,5 @@
 import { InputContactFormSchema } from '@snoomleng/utils';
-import { contactRepository } from './contact.respository';
+import { contactRepository } from './contact.respository.js';
 
 export const contactService = () => {
   const repository = contactRepository();

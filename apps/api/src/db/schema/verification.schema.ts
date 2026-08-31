@@ -1,5 +1,5 @@
 import * as t from 'drizzle-orm/pg-core';
-import { timestamps } from './schema-helper';
+import { timestamps } from './schema-helper.js';
 
 export const VerificationTable = t.pgTable(
   'verifications',

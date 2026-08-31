@@ -1,5 +1,5 @@
 import * as t from 'drizzle-orm/pg-core';
-import { timestamps } from './schema-helper';
+import { timestamps } from './schema-helper.js';
 
 export const BlogTable = t.pgTable('blogs', {
   id: t.uuid('id').primaryKey().defaultRandom(),
