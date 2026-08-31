@@ -2,7 +2,7 @@
 
 import { sendSignUpEmail } from '@snoomleng/email';
 import { User } from 'better-auth/types';
-import env from './env';
+import env from './env.js';
 
 type SendVerificationEmailProps = {
   user: User;

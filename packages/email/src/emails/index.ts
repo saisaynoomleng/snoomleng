@@ -1,1 +1,1 @@
-export * from './ContactEmail';
+export * from './ContactEmail.js';

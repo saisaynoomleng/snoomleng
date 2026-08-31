@@ -1,5 +1,5 @@
 import * as t from 'drizzle-orm/pg-core';
-import { timestamps, userRole } from './schema-helper';
+import { timestamps, userRole } from './schema-helper.js';
 import { InferSelectModel } from 'drizzle-orm';
 
 export const UserTable = t.pgTable('users', {

@@ -1,13 +1,13 @@
 import express, { type Express } from 'express';
 import helmet from 'helmet';
 import cors from 'cors';
-import env, { isTest } from './lib/env';
+import env, { isTest } from './lib/env.js';
 import morgan from 'morgan';
 
 import { toNodeHandler } from 'better-auth/node';
-import { auth } from './lib/auth';
+import { auth } from './lib/auth.js';
 
-import ContactRouter from './modules/contacts/contacts.router';
+import ContactRouter from './modules/contacts/contacts.router.js';
 
 const app: Express = express();
 

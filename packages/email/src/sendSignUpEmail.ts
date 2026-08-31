@@ -1,6 +1,6 @@
 import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
 import { render } from 'react-email';
-import SignUpVerification from './emails/SignUpVerification';
+import SignUpVerification from './emails/SignUpVerification.js';
 
 type sendSignUpEmailProps = {
   text: string;

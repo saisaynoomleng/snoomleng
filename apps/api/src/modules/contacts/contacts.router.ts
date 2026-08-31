@@ -1,6 +1,6 @@
 import { Router } from 'express';
-import { ContactController } from './contacts.controller';
-import { ValidateBody, ValidateParams } from '../../middlewares/validations';
+import { ContactController } from './contacts.controller.js';
+import { ValidateBody, ValidateParams } from '../../middlewares/validations.js';
 import { ContactFormSchema, ParamsIDSchema } from '@snoomleng/utils';
 
 const router: Router = Router();

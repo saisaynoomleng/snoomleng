@@ -1,6 +1,6 @@
 import { SESClient, SendEmailCommand } from '@aws-sdk/client-ses';
 import { render } from 'react-email';
-import ContactEmail from './emails/ContactEmail';
+import ContactEmail from './emails/ContactEmail.js';
 
 const ses = (region: string, accessKeyId: string, secretAccessKey: string) =>
   new SESClient({

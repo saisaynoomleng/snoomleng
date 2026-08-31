@@ -1,5 +1,5 @@
 import { eq } from 'drizzle-orm';
-import db, { ContactTable } from '../../db';
+import db, { ContactTable } from '../../db/index.js';
 import { InputContactFormSchema } from '@snoomleng/utils';
 
 export const contactRepository = () => {

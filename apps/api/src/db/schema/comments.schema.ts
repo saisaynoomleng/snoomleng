@@ -1,6 +1,6 @@
 import * as t from 'drizzle-orm/pg-core';
-import { BlogTable } from './blogs.schema';
-import { timestamps } from './schema-helper';
+import { BlogTable } from './blogs.schema.js';
+import { timestamps } from './schema-helper.js';
 
 export const CommentTable = t.pgTable('comments', {
   id: t.uuid('id').primaryKey().defaultRandom(),

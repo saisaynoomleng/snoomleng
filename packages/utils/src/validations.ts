@@ -1,5 +1,5 @@
 import * as z from 'zod';
-import { ALLOWED_IMAGE_TYPES } from './types';
+import { ALLOWED_IMAGE_TYPES } from './types.js';
 
 /**
  * Validate ID Params
